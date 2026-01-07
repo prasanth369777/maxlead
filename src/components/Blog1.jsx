@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import Lenis from "@studio-freight/lenis";
+import { Link } from "react-router-dom";
 
 const blogs = [
   {
@@ -125,13 +126,13 @@ export default function BlogSectionClassic() {
                 ))}
               </div>
 
-              <a
-                href="#"
-                className="inline-flex items-center text-orange-500 font-medium hover:underline"
-              >
-                Read More
-                <ExternalLink className="ml-2 w-4 h-4" />
-              </a>
+             <Link
+  to="/blog"
+  className="inline-flex items-center text-orange-500 font-medium hover:underline"
+>
+  Read More
+  <ExternalLink className="ml-2 w-4 h-4" />
+</Link>
             </div>
           </div>
         ))}

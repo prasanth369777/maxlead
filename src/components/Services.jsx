@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   Layers,
   Megaphone,
-  Search,
   Printer,
   MapPin,
   Smartphone,
