@@ -1,4 +1,4 @@
-import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { ExternalLink } from 'lucide-react';
 import { useEffect, useState } from "react";
 
 const projects = [

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
-import { ExternalLink } from "lucide-react";
+import { Search } from 'lucide-react';
+
 import Lenis from "@studio-freight/lenis";
 const blogs = [
   {
