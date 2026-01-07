@@ -1,110 +1,80 @@
-import { Facebook, Twitter, Instagram, Linkedin, Github, Mail } from 'lucide-react';
-import Logo from '../assests/logo.png'; // import your logo
+import { Link } from "react-router-dom";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-slate-950 border-t border-slate-800">
-      {/* Changed max-w-7xl to max-w-[95%] for wider layout */}
-      <div className="max-w-[95%] mx-auto px-6 lg:px-12 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14 mb-16">
-          
-          {/* Logo + Socials */}
-          <div>
-            <div className="mb-6">
-              <img src={Logo} alt="MUHA Logo" className="h-20 w-auto" /> {/* bigger logo */}
-            </div>
-            <p className="text-gray-400 mb-8 leading-relaxed text-lg">
-              Transforming bold ideas into exceptional digital experiences since 2025.
-            </p>
-            <div className="flex space-x-4">
-              {[
-                { icon: Facebook, href: '#' },
-                { icon: Twitter, href: '#' },
-                { icon: Instagram, href: '#' },
-                { icon: Linkedin, href: '#' },
-                { icon: Github, href: '#' }
-              ].map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 transition-all duration-300 hover:scale-110"
-                >
-                  <social.icon className="w-6 h-6" />
-                </a>
-              ))}
-            </div>
-          </div>
+    <footer className="bg-black text-gray-300 py-16">
+      <div className="max-w-screen-xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
 
-          {/* Services */}
-          <div>
-            <h4 className="text-white font-semibold mb-6 text-lg">Services</h4>
-            <ul className="space-y-3 text-base">
-              {['UI/UX Design', 'Web Development', 'Graphic Design', 'Logo Design', 'Digital Marketing', 'SEO Services'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="text-white font-semibold mb-6 text-lg">Company</h4>
-            <ul className="space-y-3 text-base">
-              {['About Us', 'Our Work', 'Careers', 'Blog', 'Privacy Policy', 'Terms of Service'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h4 className="text-white font-semibold mb-6 text-lg">Newsletter</h4>
-            <p className="text-gray-400 mb-6 text-base">
-              Subscribe to get the latest news and updates.
-            </p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 px-5 py-3 bg-slate-800 border border-slate-700 rounded-l-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500"
-              />
-              <button className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-r-lg hover:shadow-lg hover:scale-105 transition-all">
-                <Mail className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
+        {/* Company */}
+        <div>
+          <h4 className="text-white font-bold mb-4">MaxLead Advertising</h4>
+          <p className="text-sm text-gray-400">
+            Trusted advertising & distribution partner across the UAE.
+          </p>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-slate-800 pt-10">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {currentYear} MUHA Agency. All rights reserved.
-            </p>
-            <div className="flex space-x-8">
-              <a href="#" className="text-gray-400 hover:text-cyan-400 text-sm transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-cyan-400 text-sm transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-cyan-400 text-sm transition-colors">
-                Cookie Policy
-              </a>
-            </div>
-          </div>
+        {/* Quick Links */}
+        <div>
+          <h4 className="text-white font-bold mb-4">Quick Links</h4>
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/" className="hover:text-orange-400">Home</Link></li>
+            <li><Link to="/about" className="hover:text-orange-400">About</Link></li>
+            <li><Link to="/services" className="hover:text-orange-400">Services</Link></li>
+            <li><Link to="/work" className="hover:text-orange-400">Work</Link></li>
+            <li><Link to="/blog" className="hover:text-orange-400">Blog</Link></li>
+            <li><Link to="/contact" className="hover:text-orange-400">Contact</Link></li>
+          </ul>
         </div>
+
+        {/* Services */}
+        <div>
+          <h4 className="text-white font-bold mb-4">Services</h4>
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/services#print" className="hover:text-orange-400">Printing</Link></li>
+            <li><Link to="/services#distribution" className="hover:text-orange-400">Flyer Distribution</Link></li>
+            <li><Link to="/services#sms" className="hover:text-orange-400">SMS Marketing</Link></li>
+            <li><Link to="/services#digital" className="hover:text-orange-400">Digital Marketing</Link></li>
+            <li><Link to="/services#outdoor" className="hover:text-orange-400">Outdoor Advertising</Link></li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h4 className="text-white font-bold mb-4">Contact</h4>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <a
+                href="mailto:info@maxleadadvertising.com"
+                className="hover:text-orange-400"
+              >
+                info@maxleadadvertising.com
+              </a>
+            </li>
+            <li>
+              <a
+                href="tel:+971XXXXXXXXX"
+                className="hover:text-orange-400"
+              >
+                +971 XXXXXXXX
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/971XXXXXXXXX"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-orange-400"
+              >
+                WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="text-center text-xs text-gray-500 mt-12">
+        © {new Date().getFullYear()} MaxLead Advertising. All rights reserved.
       </div>
     </footer>
   );
 }
-    
