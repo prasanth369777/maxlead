@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import logo from "../assests/logo.png";
@@ -7,14 +7,15 @@ export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const navigate = useNavigate();
+  const servicesRef = useRef(null);
 
   const services = [
-    { name: "Printing Services", path: "/services#print" },
-    { name: "Flyer Distribution", path: "/services#distribution" },
-    { name: "SMS Marketing", path: "/services#sms" },
-    { name: "Digital Marketing", path: "/services#digital" },
-    { name: "Outdoor Advertising", path: "/services#outdoor" },
-    { name: "Event Promotions", path: "/services#events" },
+    { name: "Printing Services", path: "/flyer" },
+    { name: "Flyer Distribution", path: "/flyer" },
+    { name: "SMS Marketing", path: "/flyer" },
+    { name: "Digital Marketing", path: "/flyer" },
+    { name: "Outdoor Advertising", path: "/flyer" },
+    { name: "Event Promotions", path: "/flyer" },
   ];
 
   const handleServiceClick = (path) => {
@@ -23,32 +24,45 @@ export default function Navigation() {
     navigate(path);
   };
 
+  // CLOSE SERVICES DROPDOWN ON OUTSIDE CLICK
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target)) {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-black via-gray-900 to-black border-b border-gray-700 backdrop-blur-xl">
       <div className="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center text-white">
-        
-        {/* Logo */}
+
+        {/* LOGO */}
         <Link to="/" className="flex items-center gap-3">
           <img
             src={logo}
-            alt="MaxLead Advertising Logo"
+            alt="MaxLead Advertising"
             className="h-10 w-10 rounded-full border border-gray-600"
           />
-          <span className="hidden sm:block font-bold text-lg tracking-wide">
-            MaxLead
-          </span>
+          <span className="hidden sm:block font-bold text-lg">MaxLead</span>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-10 text-base font-medium">
-          <NavLink to="/" className="nav-link">Home</NavLink>
-          <NavLink to="/about" className="nav-link">About</NavLink>
+        {/* DESKTOP MENU */}
+        <div className="hidden md:flex items-center gap-10 font-medium">
 
-          {/* Services Dropdown */}
-          <div className="relative">
+          <NavLink to="/" className="nav-link">Home</NavLink>
+          <NavLink to="/about" className="nav-link">About Us</NavLink>
+
+          {/* SERVICES – HOVER OPEN & STAY */}
+          <div
+            ref={servicesRef}
+            className="relative"
+            onMouseEnter={() => setServicesOpen(true)}
+          >
             <button
               type="button"
-              onClick={() => setServicesOpen((prev) => !prev)}
               className="flex items-center gap-1 text-gray-300 hover:text-orange-400 transition"
             >
               Services
@@ -60,32 +74,35 @@ export default function Navigation() {
             </button>
 
             {servicesOpen && (
-              <div className="absolute top-full left-0 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden">
+              <div
+                className="absolute top-full left-0 mt-4 w-72 bg-white
+                           rounded-xl shadow-2xl border border-gray-200 z-50"
+              >
                 {services.map((item) => (
-                  <button
+                  <NavLink
                     key={item.name}
-                    type="button"
-                    onClick={() => handleServiceClick(item.path)}
-                    className="w-full text-left px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition"
+                    to={item.path}
+                    onClick={() => setServicesOpen(false)}
+                    className="block px-6 py-3 text-sm text-gray-700
+                               hover:bg-orange-50 hover:text-orange-600 transition"
                   >
                     {item.name}
-                  </button>
+                  </NavLink>
                 ))}
               </div>
             )}
           </div>
 
-          <NavLink to="/work" className="nav-link">Work</NavLink>
+          <NavLink to="/industries" className="nav-link">Industries</NavLink>
+          <NavLink to="/work" className="nav-link">Clients</NavLink>
           <NavLink to="/blog" className="nav-link">Blog</NavLink>
-          <NavLink to="/contact" className="nav-link">Contact</NavLink>
+          <NavLink to="/contact" className="nav-link">Contact Us</NavLink>
         </div>
 
-        {/* Mobile Toggle */}
+        {/* MOBILE TOGGLE */}
         <button
-          type="button"
           className="md:hidden"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Toggle Menu"
+          onClick={() => setMenuOpen(!menuOpen)}
         >
           <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {menuOpen ? (
@@ -97,23 +114,13 @@ export default function Navigation() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden bg-black transition-all duration-500 ${
-          menuOpen ? "max-h-[600px] py-4" : "max-h-0 overflow-hidden"
-        }`}
-      >
-        <NavLink to="/" onClick={() => setMenuOpen(false)} className="mobile-link">
-          Home
-        </NavLink>
-        <NavLink to="/about" onClick={() => setMenuOpen(false)} className="mobile-link">
-          About
-        </NavLink>
+      {/* MOBILE MENU */}
+      <div className={`md:hidden bg-black transition-all duration-500 ${menuOpen ? "max-h-[600px] py-4" : "max-h-0 overflow-hidden"}`}>
+        <NavLink to="/" onClick={() => setMenuOpen(false)} className="mobile-link">Home</NavLink>
+        <NavLink to="/about" onClick={() => setMenuOpen(false)} className="mobile-link">About Us</NavLink>
 
-        {/* Mobile Services Dropdown */}
         <button
-          type="button"
-          onClick={() => setServicesOpen((prev) => !prev)}
+          onClick={() => setServicesOpen(!servicesOpen)}
           className="w-full flex justify-center items-center gap-2 py-3 text-gray-300"
         >
           Services
@@ -125,7 +132,6 @@ export default function Navigation() {
             {services.map((item) => (
               <button
                 key={item.name}
-                type="button"
                 onClick={() => handleServiceClick(item.path)}
                 className="block w-full py-2 text-sm text-gray-400 hover:text-orange-400 transition"
               >
@@ -135,29 +141,23 @@ export default function Navigation() {
           </div>
         )}
 
-        <NavLink to="/work" onClick={() => setMenuOpen(false)} className="mobile-link">
-          Work
-        </NavLink>
-        <NavLink to="/blog" onClick={() => setMenuOpen(false)} className="mobile-link">
-          Blog
-        </NavLink>
-        <NavLink to="/contact" onClick={() => setMenuOpen(false)} className="mobile-link">
-          Contact
-        </NavLink>
+        <NavLink to="/industries" onClick={() => setMenuOpen(false)} className="mobile-link">Industries</NavLink>
+        <NavLink to="/work" onClick={() => setMenuOpen(false)} className="mobile-link">Clients</NavLink>
+        <NavLink to="/blog" onClick={() => setMenuOpen(false)} className="mobile-link">Blog</NavLink>
+        <NavLink to="/contact" onClick={() => setMenuOpen(false)} className="mobile-link">Contact Us</NavLink>
       </div>
 
-      {/* Local Styles */}
       <style>{`
         .nav-link {
           color: #d1d5db;
-          transition: color 0.3s;
+          transition: color .3s;
         }
         .nav-link:hover {
           color: #fb923c;
         }
         .mobile-link {
           display: block;
-          padding: 0.75rem;
+          padding: .75rem;
           text-align: center;
           color: #d1d5db;
         }

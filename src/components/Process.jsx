@@ -1,42 +1,42 @@
 import { useEffect, useState } from "react";
 import {
   Lightbulb,
+  Target,
   Layout,
   Rocket,
   BarChart3,
-  Repeat,
 } from "lucide-react";
 
 const steps = [
   {
-    title: "Strategy & Planning",
+    title: "Understand Business Goals",
     description:
-      "We analyze your business goals, audience, and select the most effective advertising channels.",
+      "We start by understanding your business objectives, brand positioning, and growth expectations.",
     icon: Lightbulb,
   },
   {
-    title: "Creative Development",
+    title: "Audience & Location Analysis",
     description:
-      "Designing creatives, ad copies, print materials, and promotional assets.",
+      "We analyze your target audience, locations, and demographics to ensure precise and effective targeting.",
+    icon: Target,
+  },
+  {
+    title: "Tailored Marketing Strategy",
+    description:
+      "Based on insights, we create a customized marketing strategy aligned with your goals and budget.",
     icon: Layout,
   },
   {
     title: "Campaign Execution",
     description:
-      "Launching print distribution, SMS campaigns, digital ads, and on-ground promotions.",
+      "We execute flyer distribution, SMS campaigns, digital ads, or outdoor promotions with precision.",
     icon: Rocket,
   },
   {
-    title: "Tracking & Analytics",
+    title: "Tracking & Optimization",
     description:
-      "Monitoring reach, engagement, and performance across all channels.",
+      "We track performance, measure results, and optimize campaigns to deliver consistent outcomes.",
     icon: BarChart3,
-  },
-  {
-    title: "Optimization & Scaling",
-    description:
-      "Optimizing campaigns and scaling what works best to maximize ROI.",
-    icon: Repeat,
   },
 ];
 
@@ -52,15 +52,15 @@ export default function ProcessVertical() {
 
   return (
     <section className="relative py-32 bg-gradient-to-b from-white to-gray-100 overflow-hidden">
-      {/* Floating circles */}
+      {/* Floating background */}
       <div
-        className="absolute w-72 h-72 bg-orange-300/20 rounded-full blur-3xl pointer-events-none transition-transform duration-300"
+        className="absolute w-72 h-72 bg-orange-300/20 rounded-full blur-3xl pointer-events-none"
         style={{
           transform: `translate(${cursorPos.x * 0.03}px, ${cursorPos.y * 0.03}px)`,
         }}
       />
       <div
-        className="absolute w-64 h-64 bg-yellow-300/20 rounded-full blur-3xl pointer-events-none transition-transform duration-300"
+        className="absolute w-64 h-64 bg-yellow-300/20 rounded-full blur-3xl pointer-events-none"
         style={{
           transform: `translate(${cursorPos.x * -0.02}px, ${cursorPos.y * -0.02}px)`,
         }}
@@ -68,24 +68,24 @@ export default function ProcessVertical() {
 
       {/* Header */}
       <div className="relative z-10 text-center mb-20 px-4">
-        <div className="inline-block px-4 py-2 bg-white/50 rounded-full border border-gray-300 mb-6">
-          <span className="text-orange-500 font-semibold">Process</span>
+        <div className="inline-block px-4 py-2 bg-white/60 rounded-full border border-gray-300 mb-6">
+          <span className="text-orange-500 font-semibold">Our Process</span>
         </div>
         <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-          Our{" "}
+          How We{" "}
           <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
-            Workflow
+            Deliver Results
           </span>
         </h2>
         <p className="text-gray-700 text-xl max-w-3xl mx-auto">
-          A proven step-by-step process to plan, execute, optimize, and scale
-          successful advertising campaigns.
+          We follow a structured process to ensure every campaign delivers
+          consistent results — not random promotions.
         </p>
       </div>
 
       {/* PROCESS FLOW */}
       <div className="relative z-10 max-w-screen-xl mx-auto px-4">
-        {/* Desktop Horizontal */}
+        {/* Desktop */}
         <div className="hidden lg:grid grid-cols-5 gap-10">
           {steps.map((step, idx) => {
             const Icon = step.icon;
@@ -101,7 +101,6 @@ export default function ProcessVertical() {
                   {step.description}
                 </p>
 
-                {/* Connector line */}
                 {idx !== steps.length - 1 && (
                   <div className="absolute top-8 right-[-50%] w-full h-px bg-orange-300"></div>
                 )}
@@ -110,7 +109,7 @@ export default function ProcessVertical() {
           })}
         </div>
 
-        {/* Mobile Vertical */}
+        {/* Mobile */}
         <div className="lg:hidden space-y-16 max-w-md mx-auto">
           {steps.map((step, idx) => {
             const Icon = step.icon;
@@ -129,21 +128,19 @@ export default function ProcessVertical() {
         </div>
       </div>
 
-      {/* Extra floating elements */}
+      {/* Decorative */}
       <div className="absolute top-10 left-10 w-16 h-16 bg-orange-300/20 rounded-full blur-2xl animate-pulse"></div>
       <div className="absolute bottom-20 right-20 w-24 h-24 bg-yellow-300/20 rounded-full blur-3xl animate-pulse"></div>
 
-      <style>
-        {`
-          @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-          }
-          .animate-bounce {
-            animation: bounce 2s infinite;
-          }
-        `}
-      </style>
+      <style>{`
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        .animate-bounce {
+          animation: bounce 2s infinite;
+        }
+      `}</style>
     </section>
   );
 }

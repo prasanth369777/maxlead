@@ -105,7 +105,7 @@ export default function Services() {
   return (
     <section
   id="services"
-  className="relative py-48 min-h-[100vh] bg-gradient-to-b from-white to-gray-100"
+  className="relative py-40 min-h-[100vh] bg-gradient-to-b from-white to-gray-100"
 >
 
       {/* Header */}

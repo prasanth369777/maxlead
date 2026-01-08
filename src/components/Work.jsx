@@ -1,194 +1,136 @@
 import { useEffect, useState } from "react";
-import { ExternalLink } from "lucide-react";
 
-const projects = [
+const industries = [
   {
-    title: "Citywide Flyer Distribution",
-    category: "Print & Distribution",
+    title: "Retail & FMCG",
     description:
-      "Large-scale flyer printing and door-to-door distribution campaign covering residential and commercial areas.",
-    image:
-      "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Flyer Printing", "Door-to-Door", "Targeted Areas", "Local Marketing"],
-    color: "from-orange-300 to-red-400",
+      "Helping retail brands, supermarkets, FMCG companies, jewelry stores, and furniture brands increase footfall and product visibility through targeted distribution and promotions.",
   },
   {
-    title: "Retail Promotion Printing",
-    category: "Print & Distribution",
+    title: "Food, Hospitality & Lifestyle",
     description:
-      "High-quality posters, flyers, and banners printed for retail promotions and in-store visibility.",
-    image:
-      "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Posters", "Banners", "Flyer Printing", "Brand Visibility"],
-    color: "from-orange-400 to-red-500",
+      "Driving awareness and customer engagement for restaurants, cafes, hotels, luxury brands, and travel businesses using location-based marketing and digital visibility.",
   },
   {
-    title: "Bulk SMS Campaign",
-    category: "SMS Marketing",
+    title: "Healthcare & Wellness",
     description:
-      "Targeted bulk SMS campaign designed to increase engagement, responses, and customer reach.",
-    image:
-      "https://images.pexels.com/photos/6476587/pexels-photo-6476587.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Bulk SMS", "Promotional SMS", "Customer Engagement"],
-    color: "from-yellow-300 to-orange-400",
+      "Supporting clinics, hospitals, wellness centers, beauty salons, and cosmetic brands with responsible, targeted communication and trust-based marketing.",
   },
   {
-    title: "Digital Lead Ads Campaign",
-    category: "Digital Advertising",
+    title: "Real Estate & Automotive",
     description:
-      "Paid advertising campaign across Google and Meta focused on driving high-quality leads.",
-    image:
-      "https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Google Ads", "Meta Ads", "Lead Generation"],
-    color: "from-orange-400 to-yellow-500",
+      "Generating leads and brand visibility for real estate developers, car rentals, and automobile dealers through strategic distribution and digital campaigns.",
   },
   {
-    title: "Outdoor Brand Activation",
-    category: "Outdoor Advertising",
+    title: "Education & Institutions",
     description:
-      "On-ground brand activation and kiosk advertising campaign to maximize local brand visibility.",
-    image:
-      "https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Kiosk Advertising", "Event Promotion", "Brand Activation"],
-    color: "from-orange-300 to-red-400",
+      "Helping schools, universities, training institutes, and driving schools reach parents and students through targeted offline and online campaigns.",
+  },
+  {
+    title: "Events, Exhibitions & Promotions",
+    description:
+      "Promoting exhibitions, events, conferences, and activations with high-impact distribution and promotional strategies.",
+  },
+  {
+    title: "Professional & Financial Services",
+    description:
+      "Supporting banks, insurance companies, lawyers, advocates, and crypto companies with compliant and effective marketing solutions.",
+  },
+  {
+    title: "E-Commerce & Digital Brands",
+    description:
+      "Helping online-first brands grow traffic, visibility, and conversions using performance-driven digital campaigns.",
+  },
+  {
+    title: "Entertainment & Leisure",
+    description:
+      "Promoting amusement parks and theme parks with high-reach campaigns designed to drive footfall and engagement.",
   },
 ];
 
-export default function Work() {
+export default function IndustrySolutions() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMouseMove = (e) =>
-      setCursorPos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const move = (e) => setCursorPos({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
   }, []);
 
   return (
-    <section
-      id="work"
-      className="relative py-40 bg-gradient-to-b from-white to-orange-50 overflow-hidden"
-    >
-      {/* Background Effects */}
+    <section className="relative py-32 bg-gradient-to-b from-white to-gray-100 overflow-hidden">
+      {/* Floating background */}
       <div
-        className="absolute w-96 h-96 bg-gradient-to-r from-orange-300 to-red-400 rounded-full blur-3xl opacity-30 pointer-events-none"
-        style={{
-          transform: `translate(${cursorPos.x * 0.02}px, ${cursorPos.y * 0.02}px)`,
-        }}
+        className="absolute w-96 h-96 bg-orange-300/20 rounded-full blur-3xl pointer-events-none"
+        style={{ transform: `translate(${cursorPos.x * 0.02}px, ${cursorPos.y * 0.02}px)` }}
       />
       <div
-        className="absolute w-80 h-80 bg-gradient-to-r from-orange-200 to-yellow-400 rounded-full blur-3xl opacity-20 pointer-events-none"
-        style={{
-          transform: `translate(${cursorPos.x * -0.03}px, ${cursorPos.y * -0.03}px)`,
-        }}
+        className="absolute w-72 h-72 bg-yellow-300/20 rounded-full blur-3xl pointer-events-none"
+        style={{ transform: `translate(${cursorPos.x * -0.02}px, ${cursorPos.y * -0.02}px)` }}
       />
 
-      <div className="relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-24">
-          <span className="inline-block px-4 py-2 bg-orange-100 rounded-full border border-orange-300 text-orange-600 font-semibold mb-6">
-            Outdoor & Portfolio
+      {/* Header */}
+      <div className="relative z-10 text-center mb-20 px-4">
+        <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          Industry-Specific{" "}
+          <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
+            Advertising & Marketing Solutions
           </span>
+        </h2>
+        <p className="text-xl text-gray-700 max-w-4xl mx-auto">
+          Different industries require different marketing approaches. That’s why we
+          customize our advertising, distribution, and digital marketing strategies
+          based on industry behavior and audience mindset.
+        </p>
+      </div>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
-            Outdoor &{" "}
-            <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
-              Advertising Work
-            </span>
-          </h2>
-
-          <p className="text-xl max-w-3xl mx-auto text-gray-600">
-            High-impact outdoor advertising and integrated campaigns executed
-            across the UAE.
-          </p>
-        </div>
-
-        {/* Outdoor Services */}
-        <div className="max-w-5xl mx-auto mb-28 text-center">
-          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Outdoor & Other Advertising
-          </h3>
-
-          <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            Premium outdoor advertising solutions across high-traffic locations
-            in the UAE.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {[
-              "Bridge Banners",
-              "Unipoles",
-              "Lamp Post Advertising",
-              "Rooftop Advertising",
-              "LED Billboards",
-              "Glass Graphics",
-              "Hoardings",
-              "Taxi, Truck & Van Advertising",
-            ].map((item) => (
-              <div
-                key={item}
-                className="bg-white border border-orange-200 rounded-xl px-6 py-4 font-medium text-gray-700 shadow-sm hover:shadow-md transition"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-
-          <button
-            onClick={() =>
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-full font-semibold text-lg hover:scale-105 transition"
-          >
-            Explore Outdoor Advertising Solutions
-            <ExternalLink className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <div
-              key={project.title}
-              className="group bg-white/70 backdrop-blur-xl border border-orange-200 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:scale-105 transition"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-10 group-hover:opacity-30`}
-                />
+      {/* Flip Cards */}
+      <div className="relative z-10 max-w-screen-xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {industries.map((item, idx) => (
+          <div key={idx} className="flip-card h-72">
+            <div className="flip-inner">
+              {/* Front */}
+              <div className="flip-front bg-white/60 backdrop-blur-xl border border-gray-200 rounded-3xl flex items-center justify-center p-8 shadow-lg">
+                <h4 className="text-2xl font-bold text-gray-900 text-center">
+                  {item.title}
+                </h4>
               </div>
 
-              <div className="p-6">
-                <span className="text-sm text-orange-600">
-                  {project.category}
-                </span>
-                <h3 className="text-2xl font-bold mt-2 mb-3 text-gray-900">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-orange-100 text-orange-700 text-xs rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+              {/* Back */}
+              <div className="flip-back bg-gradient-to-br from-orange-300 to-yellow-900 rounded-3xl p-8 text-white flex items-center justify-center text-center shadow-xl">
+                <p className="text-lg leading-relaxed">{item.description}</p>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+
+      {/* Flip CSS */}
+      <style>{`
+        .flip-card {
+          perspective: 1000px;
+        }
+        .flip-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transition: transform 0.7s;
+          transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-inner {
+          transform: rotateY(180deg);
+        }
+        .flip-front,
+        .flip-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+        }
+        .flip-back {
+          transform: rotateY(180deg);
+        }
+      `}</style>
     </section>
   );
 }
