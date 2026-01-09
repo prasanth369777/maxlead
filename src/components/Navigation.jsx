@@ -10,7 +10,7 @@ export default function Navigation() {
   const servicesRef = useRef(null);
 
   const services = [
-    { name: "Printing Services", path: "/flyer" },
+    { name: "Printing Services", path: "/printing" },
     { name: "Flyer Distribution", path: "/flyer" },
     { name: "SMS Marketing", path: "/flyer" },
     { name: "Digital Marketing", path: "/flyer" },

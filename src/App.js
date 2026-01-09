@@ -5,6 +5,7 @@ import Aboutus from './components/pages/Aboutus';
 import Contactus from './components/pages/Contactus';
 import BlogSectionClassic from './components/pages/Blog';
 import FlyerDistribution from './components/pages/Flyers';
+import PrintingServices from './components/pages/PrintingServices';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/blog" element={<BlogSectionClassic />} />
          <Route path="/contact" element={<Contactus />} />
          <Route path="/flyer" element={<FlyerDistribution/>} />
+          <Route path="/printing" element={<PrintingServices/>} />
       </Routes>
     </Router>
   );

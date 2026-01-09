@@ -1,7 +1,46 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Send, 
+  User, 
+  Briefcase, 
+  MessageSquare, 
+  CheckCircle2, 
+  Loader2,
+  ArrowRight
+} from 'lucide-react';
 import Navigation from "../Navigation";
 import Footer from "../Footer";
+
+/* --- ANIMATION HELPER --- */
+const FadeIn = ({ children, delay = 0, className = "" }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const domRef = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setIsVisible(true);
+      });
+    });
+    if (domRef.current) observer.observe(domRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={domRef}
+      className={`transition-all duration-1000 ease-out transform ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+      } ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,235 +51,257 @@ export default function Contact() {
     message: '',
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-  };
+  const [formStatus, setFormStatus] = useState('idle'); // idle, sending, success
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormStatus('sending');
+    
+    // Simulate API call
+    setTimeout(() => {
+      console.log('Form submitted:', formData);
+      setFormStatus('success');
+      // Reset after 3 seconds
+      setTimeout(() => {
+        setFormStatus('idle');
+        setFormData({ name: '', email: '', company: '', service: '', message: '' });
+      }, 3000);
+    }, 1500);
+  };
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      title: "Email Us",
+      value: "maxleadadvertising@gmail.com",
+      sub: "We reply within 24 hours",
+      color: "bg-blue-500",
+      bg: "bg-blue-50"
+    },
+    {
+      icon: Phone,
+      title: "Call Us",
+      value: "+91 xxxxxxxxxx",
+      sub: "Mon-Fri from 9am to 6pm",
+      color: "bg-green-500",
+      bg: "bg-green-50"
+    },
+    {
+      icon: MapPin,
+      title: "Visit HQ",
+      value: "Coimbatore, Tamil Nadu",
+      sub: "India",
+      color: "bg-purple-500",
+      bg: "bg-purple-50"
+    }
+  ];
 
   return (
     <>
       <Navigation />
 
-      <section
-        id="contact"
-        className="relative py-32 bg-gradient-to-b from-white via-gray-100 to-gray-200 overflow-hidden"
-      >
-        {/* Floating animated blobs */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full blur-3xl opacity-20 animate-float"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-red-400 to-orange-500 rounded-full blur-3xl opacity-20 animate-float-delayed"></div>
-          <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-gradient-to-r from-pink-300 to-orange-400 rounded-full blur-2xl opacity-20 animate-pulse"></div>
+      <section id="contact" className="relative min-h-screen pt-32 pb-20 bg-gray-50 overflow-hidden">
+        
+        {/* --- DYNAMIC BACKGROUND --- */}
+        <div className="absolute inset-0 w-full h-full">
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-orange-200/40 rounded-full blur-[120px] mix-blend-multiply animate-pulse" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-yellow-200/40 rounded-full blur-[100px] mix-blend-multiply" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="text-center mb-20">
-            <div className="inline-block px-4 py-2 bg-gradient-to-r from-orange-500/10 to-yellow-500/10 rounded-full border border-orange-500/20 mb-6">
-              <span className="text-orange-600 font-semibold">
-                Contact MaxLead
-              </span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Grow Your Brand with{" "}
-              <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
-                MaxLead Advertising
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Looking to promote your business? Let’s discuss flyer distribution,
-              SMS marketing, digital ads, or outdoor advertising solutions.
-            </p>
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          
+          {/* --- HEADER --- */}
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <FadeIn>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-orange-600 shadow-sm mb-6">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                    </span>
+                    Let's Chat
+                </div>
+                <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+                    Start a conversation with <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">MaxLead.</span>
+                </h2>
+                <p className="text-xl text-gray-500">
+                    Ready to scale? Whether it's flyer distribution or digital ads, we are here to help you grow.
+                </p>
+            </FadeIn>
           </div>
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Form */}
-            <div>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your Full Name"
-                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:border-orange-500"
-                    />
-                  </div>
+          <div className="grid lg:grid-cols-12 gap-8 items-start">
+            
+            {/* --- LEFT COLUMN: INFO CARDS --- */}
+            <div className="lg:col-span-5 space-y-6">
+                <FadeIn delay={100}>
+                    <div className="grid gap-6">
+                        {contactInfo.map((item, idx) => (
+                            <div key={idx} className="group bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-default">
+                                <div className="flex items-start gap-5">
+                                    <div className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                                        <item.icon className={`w-7 h-7 ${item.color.replace('bg-', 'text-')}`} />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-bold text-gray-900 mb-1">{item.title}</h3>
+                                        <p className="text-gray-900 font-medium text-lg">{item.value}</p>
+                                        <p className="text-gray-500 text-sm mt-1">{item.sub}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </FadeIn>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="your@email.com"
-                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:border-orange-500"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Business / Company Name
-                  </label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    placeholder="Business Name"
-                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:border-orange-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Service Required
-                  </label>
-                  <select
-                    name="service"
-                    required
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:border-orange-500"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="flyer-distribution">Flyer Distribution</option>
-                    <option value="printing">Printing Services</option>
-                    <option value="sms-marketing">SMS Marketing</option>
-                    <option value="digital-marketing">Digital Marketing</option>
-                    <option value="outdoor-advertising">Outdoor Advertising</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Campaign Details
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={6}
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about your promotion, target area, and goals..."
-                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:border-orange-500 resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="group w-full px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 flex items-center justify-center"
-                >
-                  Send Enquiry
-                  <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </form>
+                {/* Map / Decorator Card */}
+                <FadeIn delay={200}>
+                    <div className="relative h-64 w-full bg-gray-900 rounded-3xl overflow-hidden p-8 flex flex-col justify-end shadow-xl">
+                        {/* Abstract Map Pattern */}
+                        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500 blur-[60px] opacity-40"></div>
+                        
+                        <div className="relative z-10">
+                             <h4 className="text-white font-bold text-xl mb-2">Based in Coimbatore</h4>
+                             <p className="text-gray-400 text-sm">Serving clients across Tamil Nadu & UAE</p>
+                        </div>
+                    </div>
+                </FadeIn>
             </div>
 
-            {/* Info */}
-            <div className="space-y-8">
-              <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                  Contact Information
-                </h3>
+            {/* --- RIGHT COLUMN: THE FORM --- */}
+            <div className="lg:col-span-7">
+                <FadeIn delay={300}>
+                    <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden">
+                        {/* Decorative Top Line */}
+                        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-500 via-red-500 to-orange-500"></div>
 
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="ml-4">
-                      <h4 className="font-semibold text-gray-900">Email</h4>
-                      <p className="text-gray-600">
-                        maxleadadvertising@gmail.com
-                      </p>
-                    </div>
-                  </div>
+                        <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                            
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {/* Name */}
+                                <div className="space-y-2 group">
+                                    <label className="text-sm font-semibold text-gray-700 ml-1">Full Name</label>
+                                    <div className="relative">
+                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            required
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            placeholder="John Doe"
+                                            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300"
+                                        />
+                                    </div>
+                                </div>
 
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="ml-4">
-                      <h4 className="font-semibold text-gray-900">Phone</h4>
-                      <p className="text-gray-600">+91 85319 85733</p>
-                    </div>
-                  </div>
+                                {/* Email */}
+                                <div className="space-y-2 group">
+                                    <label className="text-sm font-semibold text-gray-700 ml-1">Email Address</label>
+                                    <div className="relative">
+                                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            required
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            placeholder="john@example.com"
+                                            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
 
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="ml-4">
-                      <h4 className="font-semibold text-gray-900">Location</h4>
-                      <p className="text-gray-600">
-                        Coimbatore, Tamil Nadu
-                      </p>
-                      <p className="text-gray-600">India</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {/* Company */}
+                                <div className="space-y-2 group">
+                                    <label className="text-sm font-semibold text-gray-700 ml-1">Company</label>
+                                    <div className="relative">
+                                        <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+                                        <input
+                                            type="text"
+                                            name="company"
+                                            value={formData.company}
+                                            onChange={handleChange}
+                                            placeholder="Brand Inc."
+                                            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300"
+                                        />
+                                    </div>
+                                </div>
 
-              <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Working Hours
-                </h3>
-                <p className="text-gray-600">
-                  Monday – Friday: 9:00 AM – 6:00 PM
-                </p>
-                <p className="text-gray-600">
-                  Saturday: 10:00 AM – 4:00 PM
-                </p>
-                <p className="text-gray-600">Sunday: Closed</p>
-              </div>
+                                {/* Service */}
+                                <div className="space-y-2 group">
+                                    <label className="text-sm font-semibold text-gray-700 ml-1">Interested Service</label>
+                                    <div className="relative">
+                                        <select
+                                            name="service"
+                                            required
+                                            value={formData.service}
+                                            onChange={handleChange}
+                                            className="w-full pl-4 pr-10 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 appearance-none text-gray-600"
+                                        >
+                                            <option value="">Select a service...</option>
+                                            <option value="flyer">Flyer Distribution</option>
+                                            <option value="printing">Printing Services</option>
+                                            <option value="sms">SMS Marketing</option>
+                                            <option value="digital">Digital Ads</option>
+                                        </select>
+                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                                            <ArrowRight className="w-4 h-4 text-gray-400 rotate-90" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-              <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  Fast Response Guarantee
-                </h3>
-                <p className="text-gray-600">
-                  We respond to all enquiries within 24 hours during business
-                  days.
-                </p>
-              </div>
+                            {/* Message */}
+                            <div className="space-y-2 group">
+                                <label className="text-sm font-semibold text-gray-700 ml-1">Your Message</label>
+                                <div className="relative">
+                                    <MessageSquare className="absolute left-4 top-6 w-5 h-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+                                    <textarea
+                                        name="message"
+                                        rows={4}
+                                        required
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        placeholder="Tell us about your project goals..."
+                                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 resize-none"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Submit Button */}
+                            <button
+                                type="submit"
+                                disabled={formStatus !== 'idle'}
+                                className={`w-full py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 ${
+                                    formStatus === 'success' 
+                                    ? 'bg-green-500 text-white' 
+                                    : 'bg-gray-900 text-white hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30'
+                                }`}
+                            >
+                                {formStatus === 'idle' && (
+                                    <>Send Message <Send className="w-5 h-5" /></>
+                                )}
+                                {formStatus === 'sending' && (
+                                    <><Loader2 className="w-5 h-5 animate-spin" /> Sending...</>
+                                )}
+                                {formStatus === 'success' && (
+                                    <><CheckCircle2 className="w-5 h-5" /> Message Sent!</>
+                                )}
+                            </button>
+
+                        </form>
+                    </div>
+                </FadeIn>
             </div>
+
           </div>
         </div>
-
-        {/* Animations */}
-        <style>
-          {`
-            @keyframes float {
-              0%, 100% { transform: translateY(0); }
-              50% { transform: translateY(-20px); }
-            }
-            .animate-float {
-              animation: float 8s ease-in-out infinite;
-            }
-            .animate-float-delayed {
-              animation: float 10s ease-in-out infinite;
-            }
-          `}
-        </style>
       </section>
 
       <Footer />

@@ -73,10 +73,7 @@ function TestimonialCard({ testimonial }) {
       <div className="relative z-10">
         <div className="flex items-center mb-4">
           {[...Array(testimonial.rating)].map((_, i) => (
-            <Star
-              key={i}
-              className="w-5 h-5 text-yellow-500 fill-current"
-            />
+            <Star key={i} className="w-5 h-5 text-yellow-500 fill-current" />
           ))}
         </div>
 
@@ -108,7 +105,7 @@ export default function Testimonials() {
   return (
     <section className="py-32 bg-gradient-to-b from-white via-gray-200 to-gray-100 relative overflow-hidden">
       {/* Background pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjAzKSIvPjwvZz48L3N2Zz4=')] opacity-30"></div>
+      <div className="absolute inset-0 opacity-30 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjAzKSIvPjwvZz48L3N2Zz4=')]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -118,22 +115,25 @@ export default function Testimonials() {
               Client Testimonials
             </span>
           </div>
+
           <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
             What Our{" "}
             <span className="bg-gradient-to-r from-yellow-500 to-orange-600 bg-clip-text text-transparent">
               Clients Say
             </span>
           </h2>
+
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Hear from businesses that have grown their visibility, reach, and
             leads with MaxLead Advertising.
           </p>
         </div>
 
-        {/* Two-column auto-scrolling testimonials */}
-        <div className="relative h-[600px] overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="relative h-[600px] overflow-hidden">
+        {/* Testimonials */}
+        <div className="relative h-[420px] sm:h-[520px] lg:h-[600px] overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Column 1 */}
+            <div className="relative h-[420px] sm:h-[520px] lg:h-[600px] overflow-hidden">
               <div className="absolute flex flex-col gap-6 animate-scroll hover:[animation-play-state:paused]">
                 {[...testimonials, ...testimonials].map((t, i) => (
                   <TestimonialCard key={`col1-${i}`} testimonial={t} />
@@ -141,7 +141,8 @@ export default function Testimonials() {
               </div>
             </div>
 
-            <div className="relative h-[600px] overflow-hidden">
+            {/* Column 2 – desktop only */}
+            <div className="hidden lg:block relative h-[600px] overflow-hidden">
               <div className="absolute flex flex-col gap-6 animate-scroll hover:[animation-play-state:paused] [animation-direction:reverse]">
                 {[...testimonials, ...testimonials].map((t, i) => (
                   <TestimonialCard key={`col2-${i}`} testimonial={t} />
@@ -153,21 +154,25 @@ export default function Testimonials() {
 
         {/* Stats */}
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center space-x-12">
+          <div className="flex flex-col sm:flex-row items-center gap-10 sm:gap-12 justify-center">
             <div>
               <div className="text-4xl font-bold text-gray-900 mb-2">
                 4.9/5
               </div>
               <div className="text-gray-600">Average Rating</div>
             </div>
-            <div className="h-12 w-px bg-gray-300"></div>
+
+            <div className="hidden sm:block h-12 w-px bg-gray-300"></div>
+
             <div>
               <div className="text-4xl font-bold text-gray-900 mb-2">
                 150+
               </div>
               <div className="text-gray-600">Happy Clients</div>
             </div>
-            <div className="h-12 w-px bg-gray-300"></div>
+
+            <div className="hidden sm:block h-12 w-px bg-gray-300"></div>
+
             <div>
               <div className="text-4xl font-bold text-gray-900 mb-2">
                 98%
