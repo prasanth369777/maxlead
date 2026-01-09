@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import { 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Linkedin, 
+ 
   Mail, 
   Phone, 
   MapPin, 
@@ -34,16 +31,8 @@ export default function Footer() {
               Join 500+ businesses across UAE who trust MaxLead for their advertising needs.
             </p>
             <div className="flex gap-4">
-               {/* Social Icons */}
-               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                  <a 
-                    key={i} 
-                    href="#" 
-                    className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500"
-                  >
-                    <Icon className="w-5 h-5 text-white" />
-                  </a>
-               ))}
+               
+                    
             </div>
           </div>
 
