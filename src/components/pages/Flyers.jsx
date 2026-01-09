@@ -4,12 +4,12 @@ import {
   Users, 
   Megaphone, 
   CheckCircle, 
-  ArrowRight, 
+   
   Layers, 
   Clock, 
   ShieldCheck, 
   BarChart, 
-  ShoppingBag, 
+ 
   Home,
   Building2,
   Phone,
