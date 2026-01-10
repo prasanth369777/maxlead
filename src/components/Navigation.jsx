@@ -12,7 +12,7 @@ import {
   Calendar,
   ArrowRight
 } from "lucide-react";
-import logo from "../assests/logo.png"; // Ensure path matches your structure
+import logo from "../assests/logo.png"; 
 
 const services = [
   { 
@@ -29,25 +29,25 @@ const services = [
   },
   { 
     name: "SMS Marketing", 
-    path: "/sms", // Changed form '/flyer' to likely path
+    path: "/sms", 
     icon: MessageSquare,
     desc: "Direct bulk messaging solutions" 
   },
   { 
     name: "Digital Marketing", 
-    path: "/digital", // Changed form '/flyer' to likely path
+    path: "/digital", 
     icon: Globe,
     desc: "SEO, PPC & Social Media ads" 
   },
   { 
     name: "Outdoor Ads", 
-    path: "/outdoor", // Changed form '/flyer' to likely path
+    path: "/outdoor", 
     icon: Signpost,
     desc: "Billboards & transit advertising" 
   },
   { 
     name: "Event Promotions", 
-    path: "/events", // Changed form '/flyer' to likely path
+    path: "/events", 
     icon: Calendar,
     desc: "Exhibitions & roadshow staffing" 
   },
@@ -58,7 +58,8 @@ export default function Navigation() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const servicesRef = useRef(null);
-  const navigate = useNavigate();
+  // Removed unused 'navigate' hook unless you need it for specific logic
+  // const navigate = useNavigate(); 
 
   // Handle Scroll Effect
   useEffect(() => {
@@ -78,11 +79,7 @@ export default function Navigation() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleLinkClick = (path) => {
-    setMenuOpen(false);
-    setServicesOpen(false);
-    if(path) navigate(path);
-  };
+  // --- FIX: REMOVED THE UNUSED 'handleLinkClick' FUNCTION HERE ---
 
   return (
     <div className="fixed top-0 left-0 w-full z-50 flex justify-center pt-4 px-4">
