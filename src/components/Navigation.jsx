@@ -16,41 +16,31 @@ import logo from "../assests/logo.png";
 
 const services = [
   { 
-    name: "Printing Services", 
-    path: "/printing", 
+    name: "Flyer Distribution", 
+    path: "/flyer", 
     icon: Printer,
     desc: "High-quality offset & digital prints" 
   },
   { 
-    name: "Flyer Distribution", 
-    path: "/flyer", 
+    name: "Printing Services", 
+    path: "/printing", 
     icon: MapPin,
     desc: "Door-to-door targeted campaigns" 
   },
-  { 
-    name: "SMS Marketing", 
-    path: "/sms", 
-    icon: MessageSquare,
-    desc: "Direct bulk messaging solutions" 
-  },
-  { 
+   { 
     name: "Digital Marketing", 
     path: "/digital", 
     icon: Globe,
     desc: "SEO, PPC & Social Media ads" 
   },
+
   { 
     name: "Outdoor Ads", 
     path: "/outdoor", 
     icon: Signpost,
     desc: "Billboards & transit advertising" 
   },
-  { 
-    name: "Event Promotions", 
-    path: "/events", 
-    icon: Calendar,
-    desc: "Exhibitions & roadshow staffing" 
-  },
+
 ];
 
 export default function Navigation() {
@@ -98,7 +88,11 @@ export default function Navigation() {
         <Link to="/" className="flex items-center gap-3 group" onClick={() => setMenuOpen(false)}>
           <div className="relative">
              <div className="absolute inset-0 bg-orange-500 rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
-             <img src={logo} alt="MaxLead" className="relative h-10 w-10 rounded-full object-cover border border-white/10" />
+      <img 
+  src={logo} 
+  alt="MaxLead" 
+  className="relative h-12 w-12 md:h-20 md:w-20 rounded-full object-cover border border-white/10" 
+/>
           </div>
           <span className="font-bold text-xl tracking-tight">MaxLead<span className="text-orange-500">.</span></span>
         </Link>
