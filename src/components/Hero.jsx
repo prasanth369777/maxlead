@@ -55,7 +55,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-gradient-to-br from-white via-gray-100 to-gray-200 min-h-[80vh] flex items-center"
+      className="relative overflow-hidden bg-gradient-to-br from-white via-gray-100 to-gray-200 min-h-[80vh] flex items-center py-6"
     >
       {/* Background Stroke */}
       <h2 className="absolute inset-0 flex items-center justify-center
