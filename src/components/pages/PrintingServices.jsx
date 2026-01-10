@@ -79,13 +79,7 @@ const ScaleIn = ({ children, delay = 0, className = "" }) => {
 };
 
 export default function PrintingServices() {
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const move = (e) => setCursor({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
+  // REMOVED UNUSED CURSOR STATE
 
   // DATA
   const serviceCategories = [
@@ -152,7 +146,7 @@ export default function PrintingServices() {
       <main className="relative overflow-hidden bg-white">
         
         {/* --- HERO SECTION --- */}
-        <section className="relative min-h-screen flex items-center pt-24 pb-20 overflow-hidden bg-gradient-to-b from-green-50/30 to-white mt-10">
+        <section className="relative min-h-screen flex items-center pt-24 pb-20 overflow-hidden bg-gradient-to-b from-green-50/30 to-white">
           {/* Animated Background Blobs */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div 
@@ -169,7 +163,7 @@ export default function PrintingServices() {
           <div className="relative z-10 max-w-[1440px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <FadeIn className="space-y-8">
-              <div className="inline-flex items-center gap-2 bg-green-50 border border-green-100 px-4 py-2 rounded-full shadow-sm">
+              <div className="inline-flex items-center gap-2 bg-green-50 border border-green-100 px-4 py-2 rounded-full shadow-sm mt-10">
                 <Sparkles className="w-4 h-4 text-green-500 animate-pulse" />
                 <span className="text-xs font-bold text-green-700 tracking-wide uppercase">Premier Printing in UAE</span>
               </div>

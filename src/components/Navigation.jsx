@@ -6,10 +6,10 @@ import {
   X, 
   Printer, 
   MapPin, 
-  MessageSquare, 
+
   Globe, 
   Signpost, 
-  Calendar,
+ 
   ArrowRight
 } from "lucide-react";
 import logo from "../assests/logo.png"; 
