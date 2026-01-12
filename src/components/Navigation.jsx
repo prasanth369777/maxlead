@@ -6,10 +6,8 @@ import {
   X, 
   Printer, 
   MapPin, 
-
   Globe, 
   Signpost, 
- 
   ArrowRight
 } from "lucide-react";
 import logo from "../assests/logo.png"; 
@@ -33,14 +31,12 @@ const services = [
     icon: Globe,
     desc: "SEO, PPC & Social Media ads" 
   },
-
   { 
     name: "Outdoor Ads", 
     path: "/outdoor", 
     icon: Signpost,
     desc: "Billboards & transit advertising" 
   },
-
 ];
 
 export default function Navigation() {
@@ -48,8 +44,6 @@ export default function Navigation() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const servicesRef = useRef(null);
-  // Removed unused 'navigate' hook unless you need it for specific logic
-  // const navigate = useNavigate(); 
 
   // Handle Scroll Effect
   useEffect(() => {
@@ -69,8 +63,6 @@ export default function Navigation() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // --- FIX: REMOVED THE UNUSED 'handleLinkClick' FUNCTION HERE ---
-
   return (
     <div className="fixed top-0 left-0 w-full z-50 flex justify-center pt-4 px-4">
       <nav 
@@ -87,22 +79,24 @@ export default function Navigation() {
         {/* --- LOGO --- */}
         <Link to="/" className="flex items-center gap-3 group" onClick={() => setMenuOpen(false)}>
           <div className="relative">
-             <div className="absolute inset-0 bg-orange-500 rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
-      <img 
-  src={logo} 
-  alt="MaxLead" 
-  className="relative h-12 w-12 md:h-20 md:w-20 rounded-full object-cover border border-white/10" 
-/>
+             {/* Changed bg-orange-500 to bg-green-500 */}
+             <div className="absolute inset-0 bg-green-500 rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
+             <img 
+               src={logo} 
+               alt="MaxLead" 
+               className="relative h-12 w-12 md:h-20 md:w-20 rounded-full object-cover border border-white/10" 
+             />
           </div>
-          <span className="font-bold text-xl tracking-tight">MaxLead<span className="text-orange-500">.</span></span>
+          {/* Changed text-orange-500 to text-green-500 */}
+          <span className="font-bold text-xl tracking-tight">MaxLead<span className="text-green-500">.</span></span>
         </Link>
 
         {/* --- DESKTOP MENU --- */}
         <div className="hidden md:flex items-center gap-8">
-          <NavLink to="/" className={({isActive}) => `text-sm font-medium hover:text-orange-500 transition-colors ${isActive ? 'text-orange-500' : 'text-gray-300'}`}>
+          <NavLink to="/" className={({isActive}) => `text-sm font-medium hover:text-green-500 transition-colors ${isActive ? 'text-green-500' : 'text-gray-300'}`}>
             Home
           </NavLink>
-          <NavLink to="/about" className={({isActive}) => `text-sm font-medium hover:text-orange-500 transition-colors ${isActive ? 'text-orange-500' : 'text-gray-300'}`}>
+          <NavLink to="/about" className={({isActive}) => `text-sm font-medium hover:text-green-500 transition-colors ${isActive ? 'text-green-500' : 'text-gray-300'}`}>
             About
           </NavLink>
 
@@ -113,7 +107,7 @@ export default function Navigation() {
             onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
           >
-            <button className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-orange-500 transition-colors py-2">
+            <button className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-green-500 transition-colors py-2">
               Services
               <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} />
             </button>
@@ -133,7 +127,8 @@ export default function Navigation() {
                       onClick={() => setServicesOpen(false)}
                       className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors group"
                     >
-                      <div className="p-2 bg-gray-900 rounded-lg group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-colors text-gray-400">
+                      {/* Updated hover colors to green */}
+                      <div className="p-2 bg-gray-900 rounded-lg group-hover:bg-green-500/10 group-hover:text-green-500 transition-colors text-gray-400">
                         <item.icon className="w-5 h-5" />
                       </div>
                       <div>
@@ -147,15 +142,15 @@ export default function Navigation() {
                   ))}
                 </div>
                 <div className="bg-gray-900/50 p-3 text-center border-t border-gray-800">
-                  <Link to="/services" className="text-xs font-semibold text-orange-500 hover:text-orange-400">View All Services →</Link>
+                  <Link to="/services" className="text-xs font-semibold text-green-500 hover:text-green-400">View All Services →</Link>
                 </div>
             </div>
           </div>
 
-          <NavLink to="/industries" className={({isActive}) => `text-sm font-medium hover:text-orange-500 transition-colors ${isActive ? 'text-orange-500' : 'text-gray-300'}`}>
+          <NavLink to="/industries" className={({isActive}) => `text-sm font-medium hover:text-green-500 transition-colors ${isActive ? 'text-green-500' : 'text-gray-300'}`}>
             Industries
           </NavLink>
-          <NavLink to="/work" className={({isActive}) => `text-sm font-medium hover:text-orange-500 transition-colors ${isActive ? 'text-orange-500' : 'text-gray-300'}`}>
+          <NavLink to="/work" className={({isActive}) => `text-sm font-medium hover:text-green-500 transition-colors ${isActive ? 'text-green-500' : 'text-gray-300'}`}>
             Clients
           </NavLink>
         </div>
@@ -164,7 +159,7 @@ export default function Navigation() {
         <div className="hidden md:block">
           <Link 
             to="/contact" 
-            className="px-5 py-2.5 bg-white text-black text-sm font-bold rounded-full hover:bg-orange-500 hover:text-white transition-all shadow-lg hover:shadow-orange-500/25"
+            className="px-5 py-2.5 bg-white text-black text-sm font-bold rounded-full hover:bg-green-600 hover:text-white transition-all shadow-lg hover:shadow-green-500/25"
           >
             Get a Quote
           </Link>
@@ -201,7 +196,7 @@ export default function Navigation() {
                   onClick={() => setMenuOpen(false)}
                   className="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10"
                 >
-                  <item.icon className="w-4 h-4 text-orange-500" />
+                  <item.icon className="w-4 h-4 text-green-500" />
                   <span className="text-sm text-gray-200">{item.name}</span>
                 </Link>
               ))}
@@ -214,7 +209,7 @@ export default function Navigation() {
           <Link 
             to="/contact" 
             onClick={() => setMenuOpen(false)}
-            className="w-full py-4 bg-orange-600 text-white font-bold rounded-xl text-center mt-2"
+            className="w-full py-4 bg-green-600 text-white font-bold rounded-xl text-center mt-2"
           >
             Contact Us
           </Link>

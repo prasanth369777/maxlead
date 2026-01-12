@@ -94,8 +94,9 @@ export default function IndustrySolutions() {
       
       {/* --- AMBIENT BACKGROUND --- */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+          {/* Changed to bg-green-200/30 */}
           <div 
-            className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-orange-200/30 rounded-full blur-[120px]"
+            className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-green-200/30 rounded-full blur-[120px]"
             style={{ transform: `translate(${cursorPos.x * 0.02}px, ${cursorPos.y * 0.02}px)` }}
           />
           <div 
@@ -108,18 +109,20 @@ export default function IndustrySolutions() {
         
         {/* --- HEADER --- */}
         <div className="text-center mb-24">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-orange-600 shadow-sm mb-6">
-              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+          {/* Changed to text-green-600 and bg-green-500 */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-green-600 shadow-sm mb-6">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               Tailored Strategies
           </div>
           <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight">
             Solutions for Every <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-orange-600 to-orange-500">
+            {/* Changed to green gradient */}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-green-600 to-emerald-500">
               Major Industry
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-             We don't believe in one-size-fits-all. Our marketing strategies are customized to the unique behavior of your specific audience.
+              We don't believe in one-size-fits-all. Our marketing strategies are customized to the unique behavior of your specific audience.
           </p>
         </div>
 
@@ -156,7 +159,8 @@ export default function IndustrySolutions() {
 
                     <div className="flex items-center justify-between border-t border-gray-200/50 pt-6 mt-6">
                       <span className="text-sm font-medium text-gray-500">0{idx + 1}</span>
-                      <div className="flex items-center gap-2 text-sm font-bold text-orange-600 group-hover:gap-3 transition-all">
+                      {/* Changed to text-green-600 */}
+                      <div className="flex items-center gap-2 text-sm font-bold text-green-600 group-hover:gap-3 transition-all">
                         Details <ArrowRight className="w-4 h-4" />
                       </div>
                     </div>
@@ -164,10 +168,12 @@ export default function IndustrySolutions() {
                 </div>
 
                 {/* --- BACK SIDE --- */}
-                <div className="absolute inset-0 h-full w-full bg-gray-900 rounded-[2rem] p-10 flex flex-col justify-center text-center [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-hidden shadow-2xl shadow-orange-500/10">
+                {/* Changed to shadow-green-500/10 */}
+                <div className="absolute inset-0 h-full w-full bg-gray-900 rounded-[2rem] p-10 flex flex-col justify-center text-center [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-hidden shadow-2xl shadow-green-500/10">
                   {/* Dark gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900" />
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-red-500" />
+                  {/* Changed to green gradient */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500" />
                   
                   {/* Content */}
                   <div className="relative z-10">
@@ -185,7 +191,8 @@ export default function IndustrySolutions() {
 
                     <Link 
                       to="/contact" 
-                      className="block w-full px-6 py-3 rounded-full bg-orange-600 text-white text-sm font-bold hover:bg-orange-500 transition-colors shadow-lg shadow-orange-900/20"
+                      // Changed to bg-green-600 and hover:bg-green-500 and shadow-green-900/20
+                      className="block w-full px-6 py-3 rounded-full bg-green-600 text-white text-sm font-bold hover:bg-green-500 transition-colors shadow-lg shadow-green-900/20"
                     >
                       Explore Strategy
                     </Link>

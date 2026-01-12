@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { 
   ArrowRight, 
   Sparkles, 
@@ -8,6 +8,17 @@ import {
   Signpost 
 } from "lucide-react";
 import HeroImage from "../assests/hero-image.png";
+import Printingserv from "../assests/printing/printingService1.png";
+import Flyerserv from "../assests/Flyers/flyerService3.png";
+import Flyerserv1 from "../assests/Flyers/flyerService2.png";
+
+// Array of images for the slideshow
+const heroImages = [
+  HeroImage,
+  Printingserv,
+  Flyerserv,
+  Flyerserv1,
+];
 
 const carouselItems = [
   { name: "Flyer Distribution", icon: MapPin },
@@ -26,11 +37,23 @@ const carouselItems = [
 ];
 
 export default function Hero() {
+  const [currentImage, setCurrentImage] = useState(0);
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
+  // --- Image Slideshow Logic ---
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(timer);
+  }, []);
+
+  // --- Background Particle Animation ---
   useEffect(() => {
     const canvas = document.createElement("canvas");
     canvas.id = "heroCanvas";
@@ -78,7 +101,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-gradient-to-br from-white via-gray-100 to-gray-200 min-h-[80vh] flex flex-col justify-center pt-24"
+      className="relative overflow-hidden bg-gradient-to-br from-white via-gray-100 to-gray-200 min-h-[82vh] flex flex-col justify-center pt-24 mt-10"
     >
       {/* Background Stroke */}
       <h2 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center
@@ -95,7 +118,7 @@ export default function Hero() {
         {/* LEFT TEXT */}
         <div className="lg:w-1/2 text-center lg:text-left mt-10">
           <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm px-4 py-3 rounded-full mb-6 border border-gray-300 shadow-sm animate-fade-in">
-            <Sparkles className="w-4 h-4 text-orange-500" />
+            <Sparkles className="w-4 h-4 text-green-500" />
             <span className="text-sm text-gray-800 font-semibold">
               Advertising & Distribution Experts in UAE
             </span>
@@ -103,20 +126,19 @@ export default function Hero() {
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4.2rem] font-extrabold mb-6 leading-[1.1] text-gray-900 tracking-tight">
             Reach Your Audience <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-orange-600 to-yellow-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-green-600 to-emerald-500">
               With Precision.
             </span>
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            At <strong>MaxLead Advertising</strong>, At Max Lead Advertising, we help businesses grow by connecting them directly with We help businesses grow through door to door flyer distribution, leaflet distribution, digital printing, SMS marketing, and performance-driven digital marketing solutions across UAE.
-.
+            At <strong>MaxLead Advertising</strong>, we help businesses grow by connecting them directly with customers through door to door flyer distribution, leaflet distribution, digital printing, SMS marketing, and performance-driven digital marketing solutions across UAE.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
             <button
               onClick={() => scrollToSection("contact")}
-              className="group px-8 py-4 bg-gray-900 text-white rounded-full font-semibold text-base hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-orange-500/25 flex items-center justify-center gap-2"
+              className="group px-8 py-4 bg-gray-900 text-white rounded-full font-semibold text-base hover:bg-green-600 transition-all duration-300 shadow-lg hover:shadow-green-500/25 flex items-center justify-center gap-2"
             >
               Get a Free Quote
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -131,14 +153,31 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT IMAGE */}
+        {/* RIGHT IMAGE SLIDESHOW */}
         <div className="lg:w-1/2 flex justify-center lg:justify-end pointer-events-none">
           <div className="relative w-full max-w-lg sm:max-w-xl lg:max-w-2xl">
+            
+            {/* Invisible Spacer to maintain height */}
             <img
-              src={HeroImage}
-              alt="Advertising and Distribution Services UAE"
-              className="w-full h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700"
+              src={heroImages[0]}
+              alt="Spacer"
+              className="w-full h-auto opacity-0"
             />
+
+            {/* Cycling Images */}
+            {heroImages.map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt={`Advertising and Distribution Services UAE ${index + 1}`}
+                className={`
+                  absolute top-0 left-0 w-full h-full object-contain drop-shadow-2xl 
+                  transition-all duration-1000 ease-in-out
+                  ${index === currentImage ? "opacity-100 scale-105" : "opacity-0 scale-100"}
+                `}
+              />
+            ))}
+
           </div>
         </div>
       </div>
@@ -154,8 +193,8 @@ export default function Hero() {
           <div className="flex animate-infinite-scroll gap-12 sm:gap-24 px-4 items-center">
             {carouselItems.map((item, index) => (
               <div key={index} className="flex items-center gap-3 group cursor-default select-none">
-                <div className="p-3 bg-white rounded-xl shadow-sm border border-gray-200 group-hover:border-orange-300 group-hover:shadow-md transition-all duration-300">
-                  <item.icon className="w-6 h-6 text-gray-600 group-hover:text-orange-500 transition-colors" />
+                <div className="p-3 bg-white rounded-xl shadow-sm border border-gray-200 group-hover:border-green-300 group-hover:shadow-md transition-all duration-300">
+                  <item.icon className="w-6 h-6 text-gray-600 group-hover:text-green-500 transition-colors" />
                 </div>
                 <span className="text-lg font-bold text-gray-700 whitespace-nowrap group-hover:text-gray-900 transition-colors">
                   {item.name}

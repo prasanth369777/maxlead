@@ -67,38 +67,41 @@ export default function BlogSectionPremium() {
       
       {/* Decorative Background Elements (Static) */}
       <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-white to-gray-50 z-0" />
-      <div className="absolute top-20 right-0 w-[800px] h-[800px] bg-orange-100/40 rounded-full blur-[120px] pointer-events-none" />
+      {/* Changed to green-100/40 */}
+      <div className="absolute top-20 right-0 w-[800px] h-[800px] bg-green-100/40 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* --- HEADER & FILTERS --- */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-16">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-white border border-gray-200 px-4 py-1.5 rounded-full shadow-sm mb-6 text-orange-600">
+            {/* Changed to text-green-600 */}
+            <div className="inline-flex items-center gap-2 bg-white border border-gray-200 px-4 py-1.5 rounded-full shadow-sm mb-6 text-green-600">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span className="text-xs font-bold uppercase tracking-wider">The MaxLead Journal</span>
             </div>
             <h2 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight leading-[1.1]">
-              Insights for <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Growth.</span>
+              {/* Changed to green gradient */}
+              Insights for <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">Growth.</span>
             </h2>
           </div>
 
           <div className="w-full lg:w-auto">
-             <div className="flex flex-wrap gap-2 p-1.5 bg-white border border-gray-200 rounded-full shadow-sm">
-                {categories.map((cat) => (
-                    <button
-                        key={cat}
-                        onClick={() => setActiveCategory(cat)}
-                        className={`px-5 py-2.5 rounded-full text-sm font-semibold ${
-                            activeCategory === cat 
-                            ? "bg-gray-900 text-white shadow-md" 
-                            : "text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-                        }`}
-                    >
-                        {cat}
-                    </button>
-                ))}
-             </div>
+              <div className="flex flex-wrap gap-2 p-1.5 bg-white border border-gray-200 rounded-full shadow-sm">
+                  {categories.map((cat) => (
+                      <button
+                          key={cat}
+                          onClick={() => setActiveCategory(cat)}
+                          className={`px-5 py-2.5 rounded-full text-sm font-semibold ${
+                              activeCategory === cat 
+                              ? "bg-gray-900 text-white shadow-md" 
+                              : "text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                          }`}
+                      >
+                          {cat}
+                      </button>
+                  ))}
+               </div>
           </div>
         </div>
 
@@ -109,24 +112,26 @@ export default function BlogSectionPremium() {
                 
                 {/* Image Side (7 cols) */}
                 <div className="lg:col-span-7 relative overflow-hidden min-h-[300px] lg:min-h-full">
-                   <img 
+                    <img 
                       src={blogs[0].image} 
                       alt={blogs[0].title}
                       className="absolute inset-0 w-full h-full object-cover"
-                   />
-                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/10" />
-                   
-                   <div className="absolute top-6 left-6">
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/10" />
+                    
+                    <div className="absolute top-6 left-6">
                       <span className="bg-white/95 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold text-gray-900 shadow-sm uppercase tracking-wider flex items-center gap-2">
-                         <Sparkles className="w-3 h-3 text-orange-500" /> Featured
+                          {/* Changed to text-green-500 */}
+                          <Sparkles className="w-3 h-3 text-green-500" /> Featured
                       </span>
-                   </div>
+                    </div>
                 </div>
 
                 {/* Content Side (5 cols) */}
                 <div className="lg:col-span-5 p-8 md:p-12 lg:p-16 flex flex-col justify-center relative bg-white">
                     <div className="flex items-center gap-4 text-sm font-medium text-gray-400 mb-6">
-                        <span className="text-orange-600 font-bold bg-orange-50 px-3 py-1 rounded-full">{blogs[0].category}</span>
+                        {/* Changed to text-green-600 and bg-green-50 */}
+                        <span className="text-green-600 font-bold bg-green-50 px-3 py-1 rounded-full">{blogs[0].category}</span>
                         <span className="w-1 h-1 rounded-full bg-gray-300" />
                         <span>{blogs[0].readTime}</span>
                     </div>
@@ -194,7 +199,8 @@ export default function BlogSectionPremium() {
                     </p>
 
                     <div className="flex items-center gap-2 text-sm font-bold text-gray-900">
-                        Read Story <ChevronRight className="w-4 h-4 text-orange-500" />
+                        {/* Changed to text-green-500 */}
+                        Read Story <ChevronRight className="w-4 h-4 text-green-500" />
                     </div>
                 </div>
               </Link>
@@ -206,13 +212,15 @@ export default function BlogSectionPremium() {
         <div className="relative rounded-[3rem] bg-gray-900 overflow-hidden p-12 md:p-20 text-center">
             {/* Abstract Background (Static) */}
             <div className="absolute inset-0 w-full h-full">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/20 rounded-full blur-[100px]" />
+                {/* Changed to bg-green-500/20 */}
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-green-500/20 rounded-full blur-[100px]" />
                 <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]" />
             </div>
 
             <div className="relative z-10 max-w-2xl mx-auto space-y-8">
                 <div className="w-16 h-16 bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <Mail className="w-8 h-8 text-orange-400" />
+                    {/* Changed to text-green-400 */}
+                    <Mail className="w-8 h-8 text-green-400" />
                 </div>
                 
                 <h2 className="text-3xl md:text-5xl font-bold text-white">
@@ -226,9 +234,11 @@ export default function BlogSectionPremium() {
                     <input 
                         type="email" 
                         placeholder="Enter your email address"
-                        className="w-full px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:bg-white/20 focus:border-orange-500"
+                        // Changed focus:border-green-500
+                        className="w-full px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:bg-white/20 focus:border-green-500"
                     />
-                    <button className="px-8 py-4 bg-orange-500 text-white font-bold rounded-full shadow-lg">
+                    {/* Changed to bg-green-500 */}
+                    <button className="px-8 py-4 bg-green-500 text-white font-bold rounded-full shadow-lg">
                         Subscribe
                     </button>
                 </form>

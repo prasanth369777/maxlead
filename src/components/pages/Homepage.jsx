@@ -10,12 +10,13 @@ import FAQ from '../FAQ';
 import Testimonials from '../Testimonials';
 import Contact from '../Contact';
 import Footer from '../Footer';
-
+import Whatsapp from '../pages/whatsapp'
 export default function Home() {
   return (
     <div className="bg-slate-900 text-white">
       <Navigation />
       <Hero />
+      <Whatsapp />
       <Services />
       <About />
       <Work />

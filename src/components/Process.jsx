@@ -52,15 +52,15 @@ export default function ProcessVertical() {
 
   return (
     <section className="relative py-32 bg-gradient-to-b from-white to-gray-100 overflow-hidden">
-      {/* Floating background */}
+      {/* Floating background - Changed to green */}
       <div
-        className="absolute w-72 h-72 bg-orange-300/20 rounded-full blur-3xl pointer-events-none"
+        className="absolute w-72 h-72 bg-green-300/20 rounded-full blur-3xl pointer-events-none"
         style={{
           transform: `translate(${cursorPos.x * 0.03}px, ${cursorPos.y * 0.03}px)`,
         }}
       />
       <div
-        className="absolute w-64 h-64 bg-yellow-300/20 rounded-full blur-3xl pointer-events-none"
+        className="absolute w-64 h-64 bg-green-400/20 rounded-full blur-3xl pointer-events-none"
         style={{
           transform: `translate(${cursorPos.x * -0.02}px, ${cursorPos.y * -0.02}px)`,
         }}
@@ -69,11 +69,13 @@ export default function ProcessVertical() {
       {/* Header */}
       <div className="relative z-10 text-center mb-20 px-4">
         <div className="inline-block px-4 py-2 bg-white/60 rounded-full border border-gray-300 mb-6">
-          <span className="text-orange-500 font-semibold">Our Process</span>
+          {/* Changed to text-green-500 */}
+          <span className="text-green-500 font-semibold">Our Process</span>
         </div>
         <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
           How We{" "}
-          <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
+          {/* Changed to green gradient */}
+          <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
             Deliver Results
           </span>
         </h2>
@@ -91,7 +93,8 @@ export default function ProcessVertical() {
             const Icon = step.icon;
             return (
               <div key={idx} className="text-center relative">
-                <div className="mx-auto mb-6 w-16 h-16 rounded-full bg-gradient-to-r from-orange-400 to-yellow-400 flex items-center justify-center shadow-lg animate-bounce">
+                {/* Changed to green gradient */}
+                <div className="mx-auto mb-6 w-16 h-16 rounded-full bg-gradient-to-r from-green-400 to-green-600 flex items-center justify-center shadow-lg animate-bounce">
                   <Icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -102,7 +105,8 @@ export default function ProcessVertical() {
                 </p>
 
                 {idx !== steps.length - 1 && (
-                  <div className="absolute top-8 right-[-50%] w-full h-px bg-orange-300"></div>
+                  // Changed to bg-green-300
+                  <div className="absolute top-8 right-[-50%] w-full h-px bg-green-300"></div>
                 )}
               </div>
             );
@@ -115,7 +119,8 @@ export default function ProcessVertical() {
             const Icon = step.icon;
             return (
               <div key={idx} className="text-center">
-                <div className="mx-auto mb-6 w-16 h-16 rounded-full bg-gradient-to-r from-orange-400 to-yellow-400 flex items-center justify-center shadow-lg animate-bounce">
+                {/* Changed to green gradient */}
+                <div className="mx-auto mb-6 w-16 h-16 rounded-full bg-gradient-to-r from-green-400 to-green-600 flex items-center justify-center shadow-lg animate-bounce">
                   <Icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
@@ -128,9 +133,9 @@ export default function ProcessVertical() {
         </div>
       </div>
 
-      {/* Decorative */}
-      <div className="absolute top-10 left-10 w-16 h-16 bg-orange-300/20 rounded-full blur-2xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-20 w-24 h-24 bg-yellow-300/20 rounded-full blur-3xl animate-pulse"></div>
+      {/* Decorative - Changed to green */}
+      <div className="absolute top-10 left-10 w-16 h-16 bg-green-300/20 rounded-full blur-2xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-20 w-24 h-24 bg-green-400/20 rounded-full blur-3xl animate-pulse"></div>
 
       <style>{`
         @keyframes bounce {

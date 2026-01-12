@@ -85,7 +85,7 @@ export default function Contact() {
     {
       icon: Phone,
       title: "Call Us",
-      value: "+91 xxxxxxxxxx",
+      value: "+971 522286401",
       sub: "Mon-Fri from 9am to 6pm",
       color: "bg-green-500",
       bg: "bg-green-50"
@@ -93,8 +93,8 @@ export default function Contact() {
     {
       icon: MapPin,
       title: "Visit HQ",
-      value: "Coimbatore, Tamil Nadu",
-      sub: "India",
+      value: "Dubai, UAE",
+      sub: "UAE",
       color: "bg-purple-500",
       bg: "bg-purple-50"
     }
@@ -104,11 +104,12 @@ export default function Contact() {
     <>
       <Navigation />
 
-      <section id="contact" className="relative min-h-screen pt-32 pb-20 bg-gray-50 overflow-hidden">
+      <section id="contact" className="relative min-h-screen pt-32 pb-20 bg-gray-50 overflow-hidden mt-16">
         
         {/* --- DYNAMIC BACKGROUND --- */}
         <div className="absolute inset-0 w-full h-full">
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-orange-200/40 rounded-full blur-[120px] mix-blend-multiply animate-pulse" />
+            {/* Changed to bg-green-200/40 */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-green-200/40 rounded-full blur-[120px] mix-blend-multiply animate-pulse" />
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-yellow-200/40 rounded-full blur-[100px] mix-blend-multiply" />
         </div>
 
@@ -117,15 +118,17 @@ export default function Contact() {
           {/* --- HEADER --- */}
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <FadeIn>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-orange-600 shadow-sm mb-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-green-600 shadow-sm mb-6">
                     <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                      {/* Changed to bg-green-400 and bg-green-500 */}
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
                     Let's Chat
                 </div>
                 <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-                    Start a conversation with <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">MaxLead.</span>
+                    {/* Changed gradient to green/emerald */}
+                    Start a conversation with <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">MaxLead.</span>
                 </h2>
                 <p className="text-xl text-gray-500">
                     Ready to scale? Whether it's flyer distribution or digital ads, we are here to help you grow.
@@ -161,11 +164,12 @@ export default function Contact() {
                     <div className="relative h-64 w-full bg-gray-900 rounded-3xl overflow-hidden p-8 flex flex-col justify-end shadow-xl">
                         {/* Abstract Map Pattern */}
                         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500 blur-[60px] opacity-40"></div>
+                        {/* Changed bg-orange-500 to bg-green-500 */}
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-green-500 blur-[60px] opacity-40"></div>
                         
                         <div className="relative z-10">
-                             <h4 className="text-white font-bold text-xl mb-2">Based in Coimbatore</h4>
-                             <p className="text-gray-400 text-sm">Serving clients across Tamil Nadu & UAE</p>
+                             <h4 className="text-white font-bold text-xl mb-2">Based in UAE</h4>
+                             <p className="text-gray-400 text-sm">Serving clients across UAE</p>
                         </div>
                     </div>
                 </FadeIn>
@@ -175,8 +179,8 @@ export default function Contact() {
             <div className="lg:col-span-7">
                 <FadeIn delay={300}>
                     <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden">
-                        {/* Decorative Top Line */}
-                        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-500 via-red-500 to-orange-500"></div>
+                        {/* Decorative Top Line - Green Gradient */}
+                        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-500 via-emerald-500 to-green-500"></div>
 
                         <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                             
@@ -185,7 +189,7 @@ export default function Contact() {
                                 <div className="space-y-2 group">
                                     <label className="text-sm font-semibold text-gray-700 ml-1">Full Name</label>
                                     <div className="relative">
-                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-green-500 transition-colors" />
                                         <input
                                             type="text"
                                             name="name"
@@ -193,7 +197,8 @@ export default function Contact() {
                                             value={formData.name}
                                             onChange={handleChange}
                                             placeholder="John Doe"
-                                            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300"
+                                            // Changed focus:border-green-500 and ring-green-500
+                                            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all duration-300"
                                         />
                                     </div>
                                 </div>
@@ -202,7 +207,7 @@ export default function Contact() {
                                 <div className="space-y-2 group">
                                     <label className="text-sm font-semibold text-gray-700 ml-1">Email Address</label>
                                     <div className="relative">
-                                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+                                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-green-500 transition-colors" />
                                         <input
                                             type="email"
                                             name="email"
@@ -210,7 +215,7 @@ export default function Contact() {
                                             value={formData.email}
                                             onChange={handleChange}
                                             placeholder="john@example.com"
-                                            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300"
+                                            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all duration-300"
                                         />
                                     </div>
                                 </div>
@@ -221,14 +226,14 @@ export default function Contact() {
                                 <div className="space-y-2 group">
                                     <label className="text-sm font-semibold text-gray-700 ml-1">Company</label>
                                     <div className="relative">
-                                        <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+                                        <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-green-500 transition-colors" />
                                         <input
                                             type="text"
                                             name="company"
                                             value={formData.company}
                                             onChange={handleChange}
                                             placeholder="Brand Inc."
-                                            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300"
+                                            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all duration-300"
                                         />
                                     </div>
                                 </div>
@@ -242,12 +247,12 @@ export default function Contact() {
                                             required
                                             value={formData.service}
                                             onChange={handleChange}
-                                            className="w-full pl-4 pr-10 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 appearance-none text-gray-600"
+                                            className="w-full pl-4 pr-10 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all duration-300 appearance-none text-gray-600"
                                         >
                                             <option value="">Select a service...</option>
                                             <option value="flyer">Flyer Distribution</option>
                                             <option value="printing">Printing Services</option>
-                                            <option value="sms">SMS Marketing</option>
+                                        
                                             <option value="digital">Digital Ads</option>
                                         </select>
                                         <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
@@ -261,7 +266,7 @@ export default function Contact() {
                             <div className="space-y-2 group">
                                 <label className="text-sm font-semibold text-gray-700 ml-1">Your Message</label>
                                 <div className="relative">
-                                    <MessageSquare className="absolute left-4 top-6 w-5 h-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
+                                    <MessageSquare className="absolute left-4 top-6 w-5 h-5 text-gray-400 group-focus-within:text-green-500 transition-colors" />
                                     <textarea
                                         name="message"
                                         rows={4}
@@ -269,7 +274,7 @@ export default function Contact() {
                                         value={formData.message}
                                         onChange={handleChange}
                                         placeholder="Tell us about your project goals..."
-                                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 resize-none"
+                                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all duration-300 resize-none"
                                     />
                                 </div>
                             </div>
@@ -278,10 +283,11 @@ export default function Contact() {
                             <button
                                 type="submit"
                                 disabled={formStatus !== 'idle'}
+                                // Changed hover:bg-green-600 and shadow-green-500/30
                                 className={`w-full py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 ${
                                     formStatus === 'success' 
                                     ? 'bg-green-500 text-white' 
-                                    : 'bg-gray-900 text-white hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30'
+                                    : 'bg-gray-900 text-white hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/30'
                                 }`}
                             >
                                 {formStatus === 'idle' && (

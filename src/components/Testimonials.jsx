@@ -53,8 +53,10 @@ const testimonials = [
 
 function TestimonialCard({ testimonial }) {
   return (
-    <div className="group relative bg-white/80 backdrop-blur-md rounded-2xl p-8 border border-gray-200 hover:border-orange-400/50 shadow-md hover:shadow-xl transition-all duration-300 w-full">
-      <div className="absolute top-6 right-6 text-orange-400/10 group-hover:text-orange-400/20 transition-colors">
+    // Changed hover border to green
+    <div className="group relative bg-white/80 backdrop-blur-md rounded-2xl p-8 border border-gray-200 hover:border-green-400/50 shadow-md hover:shadow-xl transition-all duration-300 w-full">
+      {/* Changed quote icon color to green */}
+      <div className="absolute top-6 right-6 text-green-400/10 group-hover:text-green-400/20 transition-colors">
         <Quote className="w-16 h-16" />
       </div>
 
@@ -93,8 +95,9 @@ export default function Testimonials() {
       
       {/* BACKGROUND ELEMENTS */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-[10%] left-[-5%] w-[500px] h-[500px] bg-orange-200/20 rounded-full blur-[100px]" />
-          <div className="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-yellow-200/20 rounded-full blur-[100px]" />
+          {/* Changed blobs to green/emerald */}
+          <div className="absolute top-[10%] left-[-5%] w-[500px] h-[500px] bg-green-200/20 rounded-full blur-[100px]" />
+          <div className="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-emerald-200/20 rounded-full blur-[100px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -102,13 +105,14 @@ export default function Testimonials() {
         {/* HEADER */}
         <div className="text-center mb-16">
           <div className="inline-block px-4 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm mb-6">
-            <span className="text-orange-600 font-bold text-sm uppercase tracking-wide">
+            {/* Changed text to green */}
+            <span className="text-green-600 font-bold text-sm uppercase tracking-wide">
               Client Stories
             </span>
           </div>
 
           <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight">
-            Loved by <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-500">Businesses</span>
+            Loved by <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">Businesses</span>
           </h2>
 
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">

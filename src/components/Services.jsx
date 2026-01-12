@@ -13,7 +13,8 @@ const services = [
     id: "distribution",
     label: "Flyer Distribution Services",
     icon: MapPin,
-    gradient: "from-yellow-400 to-orange-500",
+    // Changed to green gradient
+    gradient: "from-green-400 to-emerald-500",
     description:
       "Our door to door leaflet distribution and door to door flyer distribution services help brands reach customers directly at their homes, workplaces, and shopping locations across the UAE. We ensure precise targeting, proper coverage, and professional execution.",
     features: [
@@ -31,7 +32,8 @@ const services = [
     id: "print",
     label: "Printing Services",
     icon: Printer,
-    gradient: "from-orange-400 to-yellow-400",
+    // Changed to green gradient
+    gradient: "from-green-400 to-emerald-400",
     description:
       "As a reliable digital printing company in UAE, we deliver high-quality prints that reflect your brand identity and marketing goals. From flyers and brochures to banners and branding materials, we handle everything with precision and speed.",
     features: [
@@ -48,7 +50,8 @@ const services = [
     id: "sms",
     label: "SMS Marketing Services",
     icon: Smartphone,
-    gradient: "from-orange-500 to-red-500",
+    // Changed to green gradient
+    gradient: "from-green-500 to-emerald-600",
     description:
       "SMS remains one of the fastest and most direct communication channels. Our SMS solutions help businesses engage customers instantly — perfect for offers, reminders, alerts, and lead generation.",
     features: [
@@ -64,7 +67,8 @@ const services = [
     id: "digital",
     label: "Digital Marketing Services",
     icon: Megaphone,
-    gradient: "from-red-500 to-orange-500",
+    // Changed to green gradient
+    gradient: "from-emerald-500 to-green-500",
     description:
       "As a performance-focused digital marketing agency, we help brands grow online using data-driven strategies. We don’t just manage tools — we focus on visibility, traffic, leads, and conversions.",
     features: [
@@ -82,7 +86,8 @@ const services = [
     id: "outdoor",
     label: "Outdoor Advertising",
     icon: Layers,
-    gradient: "from-orange-400 to-yellow-400",
+    // Changed to green gradient
+    gradient: "from-green-400 to-emerald-400",
     description:
       "For large-scale brand visibility, we offer outdoor advertising solutions across the UAE, ideal for mass reach and high-impact brand recall.",
     features: [
@@ -104,15 +109,16 @@ export default function Services() {
 
   return (
     <section
-  id="services"
-  className="relative py-40 min-h-[100vh] bg-gradient-to-b from-white to-gray-100"
->
+      id="services"
+      className="relative py-40 min-h-[100vh] bg-gradient-to-b from-white to-gray-100"
+    >
 
       {/* Header */}
       <div className="max-w-screen-xl mx-auto px-4 mb-24 text-center">
         <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
           Our{" "}
-          <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+          {/* Changed to green gradient */}
+          <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
             Advertising, Distribution & Marketing Services
           </span>
         </h2>
@@ -132,11 +138,12 @@ export default function Services() {
               <button
                 key={item.id}
                 onClick={() => setActive(item)}
+                // Changed to green gradient for active, green hover for inactive
                 className={`w-full flex items-center gap-3 px-6 py-4 rounded-xl font-semibold transition-all
                 ${
                   active.id === item.id
-                    ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg"
-                    : "bg-white text-gray-700 border border-gray-200 hover:bg-orange-50"
+                    ? "bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg"
+                    : "bg-white text-gray-700 border border-gray-200 hover:bg-green-50"
                 }`}
               >
                 <Icon className="w-5 h-5" />
@@ -173,7 +180,8 @@ export default function Services() {
           </div>
 
           {/* CTA */}
-          <button className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full font-semibold text-lg transition-all hover:scale-105 hover:shadow-xl">
+          {/* Changed to green gradient */}
+          <button className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-full font-semibold text-lg transition-all hover:scale-105 hover:shadow-xl">
             {active.cta}
             <ArrowRight className="w-5 h-5" />
           </button>

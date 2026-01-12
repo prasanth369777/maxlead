@@ -62,13 +62,13 @@ export default function FAQ() {
 
   return (
     <section className="relative py-32 bg-gray-50 overflow-hidden">
-      {/* Floating blobs */}
+      {/* Floating blobs - changed to green */}
       <div
-        className="absolute w-72 h-72 bg-orange-300/20 rounded-full blur-3xl pointer-events-none transition-transform duration-300"
+        className="absolute w-72 h-72 bg-green-300/20 rounded-full blur-3xl pointer-events-none transition-transform duration-300"
         style={{ transform: `translate(${cursorPos.x * 0.03}px, ${cursorPos.y * 0.03}px)` }}
       />
       <div
-        className="absolute w-64 h-64 bg-orange-400/20 rounded-full blur-3xl pointer-events-none transition-transform duration-300"
+        className="absolute w-64 h-64 bg-green-400/20 rounded-full blur-3xl pointer-events-none transition-transform duration-300"
         style={{ transform: `translate(${cursorPos.x * -0.02}px, ${cursorPos.y * -0.02}px)` }}
       />
 
@@ -76,7 +76,8 @@ export default function FAQ() {
       <div className="text-center mb-20 px-4 relative z-10">
         <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
           Frequently Asked{' '}
-          <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
+          {/* Changed to green gradient */}
+          <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
             Questions
           </span>
         </h2>
@@ -100,7 +101,8 @@ export default function FAQ() {
               <span className="text-lg font-semibold text-gray-900">
                 {faq.question}
               </span>
-              <div className="w-8 h-8 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full flex items-center justify-center">
+              {/* Changed to green gradient */}
+              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center">
                 {openIndex === idx ? (
                   <Minus className="w-5 h-5 text-white" />
                 ) : (
@@ -136,7 +138,8 @@ export default function FAQ() {
           onClick={() =>
             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
           }
-          className="px-8 py-4 bg-gradient-to-r from-orange-400 to-yellow-400 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-400/50"
+          // Changed to green gradient and green hover shadow
+          className="px-8 py-4 bg-gradient-to-r from-green-400 to-green-600 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-400/50"
         >
           Contact Us
         </button>
