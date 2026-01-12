@@ -15,7 +15,6 @@ import {
   TrendingUp,
   MapPin,
   Smile,
-  CheckCircle2
 } from "lucide-react";
 
 /* Values section */
