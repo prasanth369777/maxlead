@@ -1,16 +1,19 @@
 import { useEffect, useState, useRef } from "react";
 import { 
   Signpost, 
+  Map, 
   Truck, 
   Monitor, 
   Maximize, 
   LayoutTemplate, 
   CheckCircle, 
   ArrowRight, 
+  Phone, 
   MessageCircle, 
   Navigation as NavIcon,
   Eye,
   Building,
+  Lightbulb,
   Layers,
   MapPin
 } from "lucide-react";
@@ -19,7 +22,7 @@ import Footer from "../Footer";
 
 /* IMAGES - Replace with your actual assets */
 import outdoorHero from "../../assests/printing/printingHero.gif"; // Placeholder
-
+import outdoorService1 from "../../assests/printing/printingService1.png"; // Placeholder
 
 /* --- ANIMATION COMPONENT --- */
 const FadeIn = ({ children, delay = 0, className = "" }) => {
@@ -50,13 +53,7 @@ const FadeIn = ({ children, delay = 0, className = "" }) => {
 };
 
 export default function OutdoorAds() {
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const move = (e) => setCursor({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
+  // FIX: Removed unused 'cursor' state to prevent build errors
 
   return (
     <>

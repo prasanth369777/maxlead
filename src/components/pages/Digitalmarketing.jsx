@@ -54,14 +54,8 @@ const FadeIn = ({ children, delay = 0, className = "" }) => {
 };
 
 export default function DigitalMarketing() {
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const move = (e) => setCursor({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
-
+  // FIX: Removed unused 'cursor' state to prevent build errors
+  
   return (
     <>
       <Navigation />
@@ -323,7 +317,7 @@ export default function DigitalMarketing() {
 
               {/* Right Col: Email & WhatsApp + Box */}
               <FadeIn delay={200}>
-                 <div className="bg-white p-10 rounded-[3rem] border border-gray-200 shadow-xl h-full flex flex-col justify-center">
+                  <div className="bg-white p-10 rounded-[3rem] border border-gray-200 shadow-xl h-full flex flex-col justify-center">
                     <div className="mb-10">
                         <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6 text-green-600">
                             <Mail className="w-8 h-8" />
