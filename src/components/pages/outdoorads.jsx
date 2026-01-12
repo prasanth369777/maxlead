@@ -1,19 +1,18 @@
 import { useEffect, useState, useRef } from "react";
 import { 
   Signpost, 
-  Map, 
+ 
   Truck, 
   Monitor, 
   Maximize, 
   LayoutTemplate, 
   CheckCircle, 
   ArrowRight, 
-  Phone, 
+
   MessageCircle, 
   Navigation as NavIcon,
   Eye,
   Building,
-  Lightbulb,
   Layers,
   MapPin
 } from "lucide-react";
@@ -22,7 +21,7 @@ import Footer from "../Footer";
 
 /* IMAGES - Replace with your actual assets */
 import outdoorHero from "../../assests/printing/printingHero.gif"; // Placeholder
-import outdoorService1 from "../../assests/printing/printingService1.png"; // Placeholder
+
 
 /* --- ANIMATION COMPONENT --- */
 const FadeIn = ({ children, delay = 0, className = "" }) => {
