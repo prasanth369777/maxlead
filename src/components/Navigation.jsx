@@ -99,6 +99,10 @@ export default function Navigation() {
           <NavLink to="/about" className={({isActive}) => `text-sm font-medium hover:text-green-500 transition-colors ${isActive ? 'text-green-500' : 'text-gray-300'}`}>
             About
           </NavLink>
+           <NavLink to="/blog" className={({isActive}) => `text-sm font-medium hover:text-green-500 transition-colors ${isActive ? 'text-green-500' : 'text-gray-300'}`}>
+           Blog
+          </NavLink>
+
 
           {/* SERVICES MEGA DROPDOWN */}
           <div 
@@ -185,7 +189,7 @@ export default function Navigation() {
         <div className="p-6 flex flex-col gap-6 max-h-[80vh] overflow-y-auto">
           <NavLink to="/" onClick={() => setMenuOpen(false)} className="text-lg font-medium text-gray-300 hover:text-white">Home</NavLink>
           <NavLink to="/about" onClick={() => setMenuOpen(false)} className="text-lg font-medium text-gray-300 hover:text-white">About Us</NavLink>
-          
+          <NavLink to="/blog" onClick={() => setMenuOpen(false)} className="text-lg font-medium text-gray-300 hover:text-white">Blog</NavLink>
           <div className="space-y-3">
             <div className="text-sm font-bold text-gray-500 uppercase tracking-wider">Services</div>
             <div className="grid grid-cols-1 gap-2">

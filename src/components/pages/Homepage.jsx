@@ -10,7 +10,8 @@ import FAQ from '../FAQ';
 import Testimonials from '../Testimonials';
 import Contact from '../Contact';
 import Footer from '../Footer';
-import Whatsapp from '../pages/whatsapp'
+import Whatsapp from '../pages/whatsapp';
+import WhyChooseUs from '../whyus';
 export default function Home() {
   return (
     <div className="bg-slate-900 text-white">
@@ -22,6 +23,7 @@ export default function Home() {
       <Work />
       <Process />
       <Blogsec />
+      <WhyChooseUs />
       <FAQ />
       <Testimonials />
       <Contact />

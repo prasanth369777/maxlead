@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom"; // 1. Import Link
 import {
   Layers,
   Megaphone,
   Printer,
   MapPin,
-  Smartphone,
+  
   ArrowRight,
 } from "lucide-react";
 
@@ -13,7 +14,6 @@ const services = [
     id: "distribution",
     label: "Flyer Distribution Services",
     icon: MapPin,
-    // Changed to green gradient
     gradient: "from-green-400 to-emerald-500",
     description:
       "Our door to door leaflet distribution and door to door flyer distribution services help brands reach customers directly at their homes, workplaces, and shopping locations across the UAE. We ensure precise targeting, proper coverage, and professional execution.",
@@ -27,12 +27,33 @@ const services = [
       "Event & Promotion Distribution",
     ],
     cta: "Explore Flyer Distribution Services",
+    path: "/flyer" // 2. Add Path
   },
+   {
+    id: "digital",
+    label: "Digital Marketing Services",
+    icon: Megaphone,
+    gradient: "from-emerald-500 to-green-500",
+    description:
+      "As a performance-focused digital marketing agency, we help brands grow online using data-driven strategies. We don’t just manage tools — we focus on visibility, traffic, leads, and conversions.",
+    features: [
+      "Social Media Marketing",
+      "Facebook & Instagram Marketing",
+      "YouTube & LinkedIn Marketing",
+      "Snapchat, TikTok & WhatsApp Marketing",
+      "Search Engine Optimization (SEO)",
+      "Search Engine Marketing (SEM)",
+      "Email Marketing",
+      "SMS Marketing Services",
+    ],
+    cta: "Explore Digital Marketing Services",
+    path: "/digital" // 2. Add Path
+  },
+   
   {
     id: "print",
     label: "Printing Services",
     icon: Printer,
-    // Changed to green gradient
     gradient: "from-green-400 to-emerald-400",
     description:
       "As a reliable digital printing company in UAE, we deliver high-quality prints that reflect your brand identity and marketing goals. From flyers and brochures to banners and branding materials, we handle everything with precision and speed.",
@@ -45,48 +66,14 @@ const services = [
       "Specialty Printing Solutions",
     ],
     cta: "Explore Printing Services",
+    path: "/printing" // 2. Add Path
   },
-  {
-    id: "sms",
-    label: "SMS Marketing Services",
-    icon: Smartphone,
-    // Changed to green gradient
-    gradient: "from-green-500 to-emerald-600",
-    description:
-      "SMS remains one of the fastest and most direct communication channels. Our SMS solutions help businesses engage customers instantly — perfect for offers, reminders, alerts, and lead generation.",
-    features: [
-      "Promotional SMS Services",
-      "Transactional SMS Services",
-      "Bulk SMS Campaigns",
-      "Targeted SMS Marketing",
-      "Automated & Scheduled SMS",
-    ],
-    cta: "Explore SMS Marketing Services",
-  },
-  {
-    id: "digital",
-    label: "Digital Marketing Services",
-    icon: Megaphone,
-    // Changed to green gradient
-    gradient: "from-emerald-500 to-green-500",
-    description:
-      "As a performance-focused digital marketing agency, we help brands grow online using data-driven strategies. We don’t just manage tools — we focus on visibility, traffic, leads, and conversions.",
-    features: [
-      "Social Media Marketing",
-      "Facebook & Instagram Marketing",
-      "YouTube & LinkedIn Marketing",
-      "Snapchat, TikTok & WhatsApp Marketing",
-      "Search Engine Optimization (SEO)",
-      "Search Engine Marketing (SEM)",
-      "Email Marketing",
-    ],
-    cta: "Explore Digital Marketing Services",
-  },
+ 
+ 
   {
     id: "outdoor",
     label: "Outdoor Advertising",
     icon: Layers,
-    // Changed to green gradient
     gradient: "from-green-400 to-emerald-400",
     description:
       "For large-scale brand visibility, we offer outdoor advertising solutions across the UAE, ideal for mass reach and high-impact brand recall.",
@@ -101,6 +88,7 @@ const services = [
       "Taxi, Truck & Van Advertising",
     ],
     cta: "Explore Outdoor Advertising Solutions",
+    path: "/outdoor" // 2. Add Path
   },
 ];
 
@@ -117,7 +105,6 @@ export default function Services() {
       <div className="max-w-screen-xl mx-auto px-4 mb-24 text-center">
         <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
           Our{" "}
-          {/* Changed to green gradient */}
           <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
             Advertising, Distribution & Marketing Services
           </span>
@@ -138,7 +125,6 @@ export default function Services() {
               <button
                 key={item.id}
                 onClick={() => setActive(item)}
-                // Changed to green gradient for active, green hover for inactive
                 className={`w-full flex items-center gap-3 px-6 py-4 rounded-xl font-semibold transition-all
                 ${
                   active.id === item.id
@@ -179,12 +165,14 @@ export default function Services() {
             ))}
           </div>
 
-          {/* CTA */}
-          {/* Changed to green gradient */}
-          <button className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-full font-semibold text-lg transition-all hover:scale-105 hover:shadow-xl">
+          {/* CTA - Changed from <button> to <Link> */}
+          <Link 
+            to={active.path}
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-full font-semibold text-lg transition-all hover:scale-105 hover:shadow-xl"
+          >
             {active.cta}
             <ArrowRight className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

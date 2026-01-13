@@ -15,25 +15,25 @@ const steps = [
     icon: Lightbulb,
   },
   {
-    title: "Audience & Location Analysis",
+    title: "Analyze audience and location targeting",
     description:
       "We analyze your target audience, locations, and demographics to ensure precise and effective targeting.",
     icon: Target,
   },
   {
-    title: "Tailored Marketing Strategy",
+    title: "Create a tailored marketing strategy",
     description:
       "Based on insights, we create a customized marketing strategy aligned with your goals and budget.",
     icon: Layout,
   },
   {
-    title: "Campaign Execution",
+    title: "Execute distribution or digital campaigns",
     description:
       "We execute flyer distribution, SMS campaigns, digital ads, or outdoor promotions with precision.",
     icon: Rocket,
   },
   {
-    title: "Tracking & Optimization",
+    title: "Track performance and optimize results",
     description:
       "We track performance, measure results, and optimize campaigns to deliver consistent outcomes.",
     icon: BarChart3,

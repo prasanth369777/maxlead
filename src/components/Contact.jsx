@@ -9,7 +9,8 @@ import {
   MessageSquare, 
   CheckCircle2, 
   Loader2,
-  ArrowRight
+  ArrowRight,
+  Smartphone // Added for mobile icon
 } from 'lucide-react';
 
 /* --- ANIMATION HELPER --- */
@@ -44,6 +45,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    mobile: '', // Added mobile field
     company: '',
     service: '',
     message: '',
@@ -66,7 +68,7 @@ export default function Contact() {
       // Reset after 3 seconds
       setTimeout(() => {
         setFormStatus('idle');
-        setFormData({ name: '', email: '', company: '', service: '', message: '' });
+        setFormData({ name: '', email: '', mobile: '', company: '', service: '', message: '' }); // Reset mobile
       }, 3000);
     }, 1500);
   };
@@ -100,13 +102,10 @@ export default function Contact() {
 
   return (
     <>
-
-
       <section id="contact" className="relative min-h-screen pt-32 pb-20 bg-gray-50 overflow-hidden ">
         
         {/* --- DYNAMIC BACKGROUND --- */}
         <div className="absolute inset-0 w-full h-full">
-            {/* Changed to bg-green-200/40 */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-green-200/40 rounded-full blur-[120px] mix-blend-multiply animate-pulse" />
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-green-200/40 rounded-full blur-[100px] mix-blend-multiply" />
         </div>
@@ -118,14 +117,12 @@ export default function Contact() {
             <FadeIn>
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-green-600 shadow-sm mb-6">
                     <span className="relative flex h-2 w-2">
-                      {/* Changed to bg-green-400 and bg-green-500 */}
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
                     Let's Chat
                 </div>
                 <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-                    {/* Changed gradient to green/emerald */}
                     Start a conversation with <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">MaxLead.</span>
                 </h2>
                 <p className="text-xl text-gray-500">
@@ -162,7 +159,6 @@ export default function Contact() {
                     <div className="relative h-64 w-full bg-gray-900 rounded-3xl overflow-hidden p-8 flex flex-col justify-end shadow-xl">
                         {/* Abstract Map Pattern */}
                         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-                        {/* Changed bg-orange-500 to bg-green-500 */}
                         <div className="absolute top-0 right-0 w-32 h-32 bg-green-500 blur-[60px] opacity-40"></div>
                         
                         <div className="relative z-10">
@@ -195,7 +191,6 @@ export default function Contact() {
                                             value={formData.name}
                                             onChange={handleChange}
                                             placeholder="John Doe"
-                                            // Changed focus:border-green-500 and ring-green-500
                                             className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all duration-300"
                                         />
                                     </div>
@@ -220,6 +215,23 @@ export default function Contact() {
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-6">
+                                {/* Mobile Number - Added Field */}
+                                <div className="space-y-2 group">
+                                    <label className="text-sm font-semibold text-gray-700 ml-1">Mobile Number</label>
+                                    <div className="relative">
+                                        <Smartphone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-green-500 transition-colors" />
+                                        <input
+                                            type="tel"
+                                            name="mobile"
+                                            required
+                                            value={formData.mobile}
+                                            onChange={handleChange}
+                                            placeholder="+971 50 123 4567"
+                                            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all duration-300"
+                                        />
+                                    </div>
+                                </div>
+
                                 {/* Company */}
                                 <div className="space-y-2 group">
                                     <label className="text-sm font-semibold text-gray-700 ml-1">Company</label>
@@ -235,27 +247,26 @@ export default function Contact() {
                                         />
                                     </div>
                                 </div>
+                            </div>
 
-                                {/* Service */}
-                                <div className="space-y-2 group">
-                                    <label className="text-sm font-semibold text-gray-700 ml-1">Interested Service</label>
-                                    <div className="relative">
-                                        <select
-                                            name="service"
-                                            required
-                                            value={formData.service}
-                                            onChange={handleChange}
-                                            className="w-full pl-4 pr-10 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all duration-300 appearance-none text-gray-600"
-                                        >
-                                            <option value="">Select a service...</option>
-                                            <option value="flyer">Flyer Distribution</option>
-                                            <option value="printing">Printing Services</option>
-                                        
-                                            <option value="digital">Digital Ads</option>
-                                        </select>
-                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                                            <ArrowRight className="w-4 h-4 text-gray-400 rotate-90" />
-                                        </div>
+                            {/* Service */}
+                            <div className="space-y-2 group">
+                                <label className="text-sm font-semibold text-gray-700 ml-1">Interested Service</label>
+                                <div className="relative">
+                                    <select
+                                        name="service"
+                                        required
+                                        value={formData.service}
+                                        onChange={handleChange}
+                                        className="w-full pl-4 pr-10 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all duration-300 appearance-none text-gray-600"
+                                    >
+                                        <option value="">Select a service...</option>
+                                        <option value="flyer">Flyer Distribution</option>
+                                        <option value="printing">Printing Services</option>
+                                        <option value="digital">Digital Ads</option>
+                                    </select>
+                                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                                        <ArrowRight className="w-4 h-4 text-gray-400 rotate-90" />
                                     </div>
                                 </div>
                             </div>
@@ -281,7 +292,6 @@ export default function Contact() {
                             <button
                                 type="submit"
                                 disabled={formStatus !== 'idle'}
-                                // Changed hover:bg-green-600 and shadow-green-500/30
                                 className={`w-full py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 ${
                                     formStatus === 'success' 
                                     ? 'bg-green-500 text-white' 

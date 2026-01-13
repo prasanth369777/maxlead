@@ -18,63 +18,64 @@ const industries = [
   {
     icon: ShoppingBag,
     title: "Retail & FMCG",
-    description: "Boost footfall and product visibility for retail brands, supermarkets, and furniture stores through targeted hyper-local distribution.",
+    description: "Helping retail brands, supermarkets, FMCG companies, jewelry stores, and furniture brands increase footfall and product visibility through targeted distribution and promotions.",
     color: "from-blue-400 to-indigo-600",
     background: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=500"
   },
   {
     icon: Utensils,
-    title: "Food & Hospitality",
-    description: "Drive bookings for restaurants, cafes, and hotels using location-based marketing and appetizing visual campaigns.",
+    title: "Food,Hospitality & Lifestyle ",
+    description: "Driving awareness and customer engagement for restaurants, cafes, hotels, luxury brands, and travel businesses using location-based marketing and digital visibility."
+,
     color: "from-orange-400 to-red-600",
     background: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=500"
   },
   {
     icon: HeartPulse,
-    title: "Healthcare",
-    description: "Build trust for clinics, hospitals, and wellness centers with responsible, targeted communication strategies.",
+    title: "Healthcare & Wellness",
+    description: "Supporting clinics, hospitals, wellness centers, beauty salons, and cosmetic brands with responsible, targeted communication and trust-based marketing.",
     color: "from-emerald-400 to-teal-600",
     background: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&q=80&w=500"
   },
   {
     icon: Building2,
-    title: "Real Estate",
-    description: "Generate high-quality leads for developers and agents through strategic community distribution and premium collateral.",
+    title: "Real Estate & Automotive",
+    description: "Generating leads and brand visibility for real estate developers, car rentals, and automobile dealers through strategic distribution and digital campaigns.",
     color: "from-purple-400 to-violet-600",
     background: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=500"
   },
   {
     icon: GraduationCap,
-    title: "Education",
-    description: "Help schools and training institutes reach parents and students effectively during key enrollment periods.",
+    title: "Education & Institutions",
+    description: "Helping schools, universities, training institutes, and driving schools reach parents and students through targeted offline and online campaigns.",
     color: "from-yellow-400 to-orange-500",
     background: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=500"
   },
   {
     icon: Ticket,
-    title: "Events",
-    description: "Maximize attendance for exhibitions and conferences with high-reach promotional activations.",
+    title: "Events, Exhibitions & Promotions ",
+    description: "Promoting exhibitions, events, conferences, and activations with high-impact distribution and promotional strategies.",
     color: "from-pink-400 to-rose-600",
     background: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=500"
   },
   {
     icon: Briefcase,
-    title: "Prof. Services",
-    description: "Compliant marketing solutions for banks, law firms, and financial consultants to build authority.",
+    title: "Professional & Financial Services",
+    description: "Supporting banks, insurance companies, lawyers, advocates, and crypto companies with compliant and effective marketing solutions.",
     color: "from-slate-400 to-slate-600",
     background: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=500"
   },
   {
     icon: Smartphone,
-    title: "E-Commerce",
-    description: "Bridge the gap between offline and online for digital brands using QR-driven physical campaigns.",
+    title: "E-Commerce & Digital Brands",
+    description: "Helping online-first brands and digital platforms grow traffic, visibility, and conversions using digital marketing and performance campaigns.",
     color: "from-cyan-400 to-blue-500",
     background: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=500"
   },
   {
     icon: FerrisWheel,
-    title: "Entertainment",
-    description: "Drive excitement and ticket sales for theme parks and leisure centers with engaging visual print media.",
+    title: "Entertainment & Leisure ",
+    description: "Promoting amusement parks and theme parks with high-reach campaigns designed to drive footfall and engagement.",
     color: "from-fuchsia-400 to-purple-600",
     background: "https://images.unsplash.com/photo-1605840275083-b1d8c66699b1?auto=format&fit=crop&q=80&w=500"
   },
@@ -115,14 +116,14 @@ export default function IndustrySolutions() {
               Tailored Strategies
           </div>
           <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight">
-            Solutions for Every <br className="hidden md:block" />
+            Industry-Specific Advertisingns <br className="hidden md:block" />
             {/* Changed to green gradient */}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-green-600 to-emerald-500">
-              Major Industry
+               & Marketing Solution
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We don't believe in one-size-fits-all. Our marketing strategies are customized to the unique behavior of your specific audience.
+             Different industries require different marketing approaches. That’s why we customize our advertising, distribution, and digital marketing strategies based on industry behavior and audience mindset.
           </p>
         </div>
 
