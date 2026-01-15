@@ -1,27 +1,29 @@
 import { useEffect, useState, useRef } from "react";
 import { 
   Signpost, 
- 
   Truck, 
   Monitor, 
   Maximize, 
   LayoutTemplate, 
   CheckCircle, 
   ArrowRight, 
-
   MessageCircle, 
   Navigation as NavIcon,
   Eye,
   Building,
   Layers,
-  MapPin
+  MapPin,
+  PenTool,
+  FileCheck,
+  Printer,
+  BarChart3
 } from "lucide-react";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
+import ScrollToTop from "../ScrollToTop";
 
 /* IMAGES - Replace with your actual assets */
-import outdoorHero from "../../assests/printing/printingHero.gif"; // Placeholder
-
+import outdoorHero from "../../assests/Outdoorads/od1.webp"; // Placeholder
 
 /* --- ANIMATION COMPONENT --- */
 const FadeIn = ({ children, delay = 0, className = "" }) => {
@@ -52,10 +54,10 @@ const FadeIn = ({ children, delay = 0, className = "" }) => {
 };
 
 export default function OutdoorAds() {
-  // FIX: Removed unused 'cursor' state to prevent build errors
-
+  
   return (
     <>
+    <ScrollToTop />
       <Navigation />
 
       <main className="relative overflow-hidden bg-white">
@@ -80,7 +82,7 @@ export default function OutdoorAds() {
                 <span className="text-xs font-bold text-green-700 tracking-wide uppercase">Premier Outdoor Advertising UAE</span>
               </div>
 
-              <h1 className="text-5xl lg:text-7xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
                 Outdoor Advertising & Other Advertising Company in <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
                   Dubai, UAE
@@ -93,7 +95,7 @@ export default function OutdoorAds() {
 
               <div className="flex flex-wrap gap-4 pt-4">
                 <button className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-full font-bold shadow-lg hover:shadow-green-500/30 hover:scale-105 transition-all duration-300">
-                  Get Free Media Plan
+                  Get a Free Outdoor Media Plan
                 </button>
                 <button className="px-8 py-4 bg-white border border-gray-200 text-gray-700 rounded-full font-bold hover:border-green-200 hover:bg-green-50 transition-all duration-300">
                   Request a Quote
@@ -115,9 +117,9 @@ export default function OutdoorAds() {
                 <div className="absolute bottom-8 left-8 bg-white/95 backdrop-blur-md p-6 rounded-2xl shadow-xl max-w-[260px] animate-bounce-slow">
                   <div className="flex items-center gap-3 mb-2">
                     <Eye className="w-6 h-6 text-green-600" />
-                    <span className="font-bold text-gray-900 text-lg">High Visibility</span>
+                    <span className="font-bold text-gray-900 text-lg">Mass Visibility</span>
                   </div>
-                  <p className="text-sm text-gray-600">Repeated exposure to thousands of potential customers daily.</p>
+                  <p className="text-sm text-gray-600">Your message seen by thousands every single day.</p>
                 </div>
               </div>
             </FadeIn>
@@ -140,15 +142,28 @@ export default function OutdoorAds() {
                   In a fast-moving city like Dubai, people spend hours every day commuting, shopping, dining, and traveling. That means outdoor advertising gives your brand repeated exposure to thousands of potential customers every single day. Whether you want to launch a new product, promote a retail offer, advertise a real estate project, or build long-term brand awareness, our outdoor advertising solutions in UAE deliver consistent, high-visibility results.
                 </p>
                 <p>
-                  Max Lead Advertising is a leading outdoor advertising company in Dubai, UAE, helping brands gain powerful visibility through high-impact OOH (Out of Home) advertising solutions.
+                  Max Lead Advertising is a leading outdoor advertising company in Dubai, UAE, helping brands gain powerful visibility through high-impact OOH (Out of Home) advertising solutions.Heavy daily traffic,
+
+
+Busy business districts,
+
+
+Large residential communities,
+
+
+Shopping malls and entertainment hubs,
+
+
+Millions of tourists every year,
+
                 </p>
               </div>
             </FadeIn>
             
             <FadeIn delay={200}>
-              <div className="bg-green-50 rounded-[2rem] p-10 border border-green-100 relative overflow-hidden">
+              <div className="bg-green-50 rounded-[2rem] p-10 border border-green-100 relative overflow-hidden h-full">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-green-200 rounded-full blur-[50px] opacity-50" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 relative z-10">Why Businesses Choose Outdoor Advertising</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 relative z-10">Why Businesses in Dubai Choose Outdoor Advertising</h3>
                 <ul className="space-y-5 relative z-10">
                   {[
                     "Mass Visibility – Your brand is seen by thousands of people daily",
@@ -177,24 +192,27 @@ export default function OutdoorAds() {
                 At Max Lead Advertising, we provide complete outdoor advertising and OOH media solutions in Dubai and across the UAE. From planning and printing to approvals and installation, we manage everything for you.
               </p>
             </FadeIn>
+            
+            {/* Visual trigger for outdoor formats */}
+            
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
               {[
-                { title: "Billboard & Hoarding", icon: Maximize, desc: "High-visibility roads and highways. Perfect for real estate, retail offers, and brand campaigns." },
-                { title: "LED Billboard Advertising", icon: Monitor, desc: "Dynamic, bright visuals with video and animation. Ideal for malls and busy intersections." },
-                { title: "Bridge Banner Advertising", icon: LayoutTemplate, desc: "Placed on flyovers and bridges to capture commuters. Great for limited-time offers." },
-                { title: "Lamp Post Advertising", icon: NavIcon, desc: "Target specific neighborhoods and streets. Highly effective for local retail and clinics." },
-                { title: "Rooftop & Building-Top", icon: Building, desc: "Skyline visibility in high-rise areas and business districts." },
-                { title: "Glass Graphics & Window", icon: Layers, desc: "Shop-front advertising for malls and showrooms to turn locations into marketing tools." },
-                { title: "Taxi, Van & Truck Ads", icon: Truck, desc: "Mobile billboards that move across the city creating thousands of daily impressions." },
+                { title: "Billboard & Hoarding Advertising", icon: Maximize, desc: "Our billboard advertising and hoarding services in UAE place your brand on high-visibility roads, highways, and busy commercial areas. These large-format displays are perfect for promoting:   High-visibility roads, highways, and busy commercial areas. Perfect for real estate projects, retail offers, events, and brand campaigns." },
+                { title: "LED Billboard Advertising", icon: Monitor, desc: "With LED screen advertising in Dubai, your ads become dynamic and eye-catching. LED billboards allow:  Dynamic, bright visuals with video and animation. Day and night visibility ideal for malls, main roads, and busy intersections." },
+                { title: "Bridge Banner Advertising", icon: LayoutTemplate, desc: "Bridge banners and road banners are placed on flyovers and overhead bridges, capturing the attention of drivers and commuters. These ads are perfect for limited-time offers, events, and brand promotions." },
+                { title: "Lamp Post Advertising", icon: NavIcon, desc: "Lamp post advertising in Dubai is a great way to target specific neighborhoods, streets, and commercial zones. These ads are highly effective for:  Target specific neighborhoods, streets, and commercial zones. Highly effective for local retail, restaurants, and clinics." },
+                { title: "Rooftop & Building-Top Advertising", icon: Building, desc: "Rooftop hoardings and building-top ads give your brand skyline visibility. These are especially powerful in areas with high-rise buildings, highways, and business districts." },
+                { title: "Glass Graphics & Window Branding", icon: Layers, desc: "We provide glass branding, window graphics, and shop-front advertising for malls, showrooms, offices, and retail outlets. This helps turn your physical location into a marketing tool." },
+                { title: "Taxi, Van & Truck Advertising", icon: Truck, desc: "With vehicle branding and mobile billboard advertising, your message moves across the city. Branded taxis, vans, and trucks create thousands of impressions daily across different locations in the UAE." },
               ].map((service, idx) => (
                 <FadeIn key={idx} delay={idx * 100}>
                   <div className="group bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-green-200 transition-all duration-300 h-full">
                     <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-6 text-green-600 group-hover:scale-110 transition-transform">
                       <service.icon className="w-7 h-7" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                    <p className="text-gray-600">{service.desc}</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{service.desc}</p>
                   </div>
                 </FadeIn>
               ))}
@@ -208,6 +226,8 @@ export default function OutdoorAds() {
             <FadeIn className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Outdoor Advertising Process</h2>
               <p className="text-gray-600 text-lg">We follow a proven process to ensure your OOH advertising campaign in Dubai delivers results.</p>
+              {/* Visual trigger for workflow */}
+              
             </FadeIn>
 
             <div className="relative">
@@ -216,18 +236,22 @@ export default function OutdoorAds() {
 
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
                 {[
-                  { title: "Location Research", text: "We study traffic flow, footfall, and audience movement." },
-                  { title: "Media Planning", text: "We choose the best billboards, roads, and zones for your brand." },
-                  { title: "Design Support", text: "We help optimize your creatives for maximum outdoor visibility." },
-                  { title: "Approvals & Install", text: "We handle government permits, printing, and professional installation." },
+                  { title: "Location Research", text: "We study traffic flow, footfall, and audience movement.", icon: MapPin },
+                  { title: "Media Planning", text: "We choose the best billboards, roads, and zones for your brand.", icon: LayoutTemplate },
+                  { title: "Design Support", text: "We help optimize your creatives for outdoor visibility.", icon: PenTool },
+                  { title: "Government Approvals", text: "We handle permits and compliance.", icon: FileCheck },
+                  { title: "High-Quality Printing", text: "Using durable outdoor-grade materials.", icon: Printer },
+                  { title: "Professional Installation", text: "Safe and secure mounting.", icon: Layers },
+                  { title: "Monitoring & Reporting", text: "Ensuring your ads stay visible and effective.", icon: BarChart3 },
                 ].map((item, i) => (
                   <FadeIn key={i} delay={i * 100}>
-                    <div className="bg-white p-8 rounded-3xl border border-gray-100 hover:border-green-300 transition-all duration-300 hover:-translate-y-2 h-full text-center group">
-                      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-6 shadow-lg ring-8 ring-white mx-auto">
-                        {i + 1}
+                    <div className="bg-white p-6 rounded-3xl border border-gray-100 hover:border-green-300 transition-all duration-300 hover:-translate-y-2 h-full text-center group">
+                      <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white mb-6 shadow-lg ring-4 ring-white mx-auto relative z-10">
+                        <item.icon className="w-6 h-6" />
+                        <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center text-xs font-bold border-2 border-white">{i + 1}</div>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                      <p className="text-gray-600">{item.text}</p>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                      <p className="text-gray-600 text-sm">{item.text}</p>
                     </div>
                   </FadeIn>
                 ))}
@@ -240,9 +264,9 @@ export default function OutdoorAds() {
         <section className="py-24 bg-green-50">
            <div className="max-w-[1440px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
               <FadeIn>
-                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Choose Max Lead Advertising?</h2>
+                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Choose Max Lead Advertising</h2>
                  <p className="text-lg text-gray-600 mb-6">
-                    Max Lead is more than just an outdoor advertising agency in Dubai. We are a full-service advertising and branding company in UAE with deep local expertise.
+                   Max Lead is more than just an outdoor advertising agency in Dubai. We are a full-service advertising and branding company in UAE with deep local expertise.
                  </p>
                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {[
@@ -251,7 +275,7 @@ export default function OutdoorAds() {
                         "Transparent pricing",
                         "Local market knowledge",
                         "Fast turnaround times",
-                        "Integrated offline & digital solutions"
+                        "Integrated offline and digital marketing solutions"
                     ].map((item, i) => (
                         <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
                             <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
@@ -259,6 +283,9 @@ export default function OutdoorAds() {
                         </div>
                     ))}
                  </div>
+                 <p className="mt-6 text-green-700 font-medium italic">
+                    We don’t just place your ad – we help you get real visibility and real results.
+                 </p>
               </FadeIn>
 
               <FadeIn delay={200}>
@@ -274,7 +301,7 @@ export default function OutdoorAds() {
                             </div>
                             <div>
                                 <h4 className="font-bold text-gray-900">Strong Offline Presence</h4>
-                                <p className="text-sm text-gray-500">Builds immense brand recall and trust.</p>
+                                <p className="text-sm text-gray-500">Better brand recall & massive visibility.</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
@@ -283,7 +310,7 @@ export default function OutdoorAds() {
                             </div>
                             <div>
                                 <h4 className="font-bold text-gray-900">Online Engagement</h4>
-                                <p className="text-sm text-gray-500">Drives targeted traffic and conversions.</p>
+                                <p className="text-sm text-gray-500">Higher conversion rates & targeted leads.</p>
                             </div>
                         </div>
                     </div>
@@ -300,7 +327,7 @@ export default function OutdoorAds() {
               {[
                 { q: "How much does outdoor advertising cost in Dubai?", a: "Costs depend on location, size, and duration. We provide customized media plans based on your budget." },
                 { q: "How long should an outdoor ad run?", a: "Most campaigns run for 2 to 4 weeks, but longer campaigns build stronger brand recall." },
-                { q: "Do you handle government approvals?", a: "Yes. We manage all permits and legal requirements ensuring a hassle-free process." },
+                { q: "Do you handle government approvals?", a: "Yes. We manage all permits and legal requirements." },
                 { q: "Which locations are best?", a: "We recommend locations based on your target audience, business type, and campaign goals." }
               ].map((faq, index) => (
                 <FadeIn key={index} delay={index * 50}>

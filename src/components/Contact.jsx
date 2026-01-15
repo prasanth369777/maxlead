@@ -10,7 +10,8 @@ import {
   CheckCircle2, 
   Loader2,
   ArrowRight,
-  Smartphone // Added for mobile icon
+  Smartphone,
+  AlertCircle // Added for error state
 } from 'lucide-react';
 
 /* --- ANIMATION HELPER --- */
@@ -42,35 +43,65 @@ const FadeIn = ({ children, delay = 0, className = "" }) => {
 };
 
 export default function Contact() {
+  // State for controlled inputs
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    mobile: '', // Added mobile field
+    mobile: '',
     company: '',
     service: '',
     message: '',
   });
 
-  const [formStatus, setFormStatus] = useState('idle'); // idle, sending, success
+  // State for submission status: idle, sending, success, error
+  const [formStatus, setFormStatus] = useState('idle'); 
+  const [result, setResult] = useState(""); // Stores specific message from API
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  /* --- WEB3FORMS SUBMISSION LOGIC --- */
+  const onSubmit = async (event) => {
+    event.preventDefault();
     setFormStatus('sending');
+    setResult("Sending....");
+
+    const formDataObj = new FormData(event.target);
     
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setFormStatus('success');
-      // Reset after 3 seconds
-      setTimeout(() => {
-        setFormStatus('idle');
-        setFormData({ name: '', email: '', mobile: '', company: '', service: '', message: '' }); // Reset mobile
-      }, 3000);
-    }, 1500);
+    // ⚠️ REPLACE THIS WITH YOUR ACTUAL ACCESS KEY ⚠️
+    formDataObj.append("access_key", "YOUR_ACCESS_KEY_HERE");   
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataObj
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Form Submitted Successfully");
+        setFormStatus('success');
+        
+        // Reset form fields
+        setFormData({ name: '', email: '', mobile: '', company: '', service: '', message: '' });
+        
+        // Reset status after 5 seconds to allow new submission
+        setTimeout(() => {
+          setFormStatus('idle');
+          setResult("");
+        }, 5000);
+      } else {
+        console.log("Error", data);
+        setResult(data.message);
+        setFormStatus('error');
+      }
+    } catch (error) {
+      console.error("Submission Error", error);
+      setResult("Something went wrong. Please try again.");
+      setFormStatus('error');
+    }
   };
 
   const contactInfo = [
@@ -105,7 +136,7 @@ export default function Contact() {
       <section id="contact" className="relative min-h-screen pt-32 pb-20 bg-gray-50 overflow-hidden ">
         
         {/* --- DYNAMIC BACKGROUND --- */}
-        <div className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 w-full h-full pointer-events-none">
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-green-200/40 rounded-full blur-[120px] mix-blend-multiply animate-pulse" />
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-green-200/40 rounded-full blur-[100px] mix-blend-multiply" />
         </div>
@@ -176,7 +207,7 @@ export default function Contact() {
                         {/* Decorative Top Line - Green Gradient */}
                         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-500 via-emerald-500 to-green-500"></div>
 
-                        <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                        <form onSubmit={onSubmit} className="space-y-6 relative z-10">
                             
                             <div className="grid md:grid-cols-2 gap-6">
                                 {/* Name */}
@@ -215,7 +246,7 @@ export default function Contact() {
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-6">
-                                {/* Mobile Number - Added Field */}
+                                {/* Mobile Number */}
                                 <div className="space-y-2 group">
                                     <label className="text-sm font-semibold text-gray-700 ml-1">Mobile Number</label>
                                     <div className="relative">
@@ -264,6 +295,7 @@ export default function Contact() {
                                         <option value="flyer">Flyer Distribution</option>
                                         <option value="printing">Printing Services</option>
                                         <option value="digital">Digital Ads</option>
+                                        <option value="outdoor">Outdoor Ads</option>
                                     </select>
                                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                                         <ArrowRight className="w-4 h-4 text-gray-400 rotate-90" />
@@ -291,10 +323,12 @@ export default function Contact() {
                             {/* Submit Button */}
                             <button
                                 type="submit"
-                                disabled={formStatus !== 'idle'}
+                                disabled={formStatus === 'sending' || formStatus === 'success'}
                                 className={`w-full py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 ${
                                     formStatus === 'success' 
                                     ? 'bg-green-500 text-white' 
+                                    : formStatus === 'error'
+                                    ? 'bg-red-500 text-white'
                                     : 'bg-gray-900 text-white hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/30'
                                 }`}
                             >
@@ -307,7 +341,17 @@ export default function Contact() {
                                 {formStatus === 'success' && (
                                     <><CheckCircle2 className="w-5 h-5" /> Message Sent!</>
                                 )}
+                                {formStatus === 'error' && (
+                                    <><AlertCircle className="w-5 h-5" /> Failed. Try Again.</>
+                                )}
                             </button>
+
+                            {/* Result Text Feedback */}
+                            {result && (
+                                <div className={`text-center text-sm font-medium mt-2 ${formStatus === 'error' ? 'text-red-600' : 'text-green-600'}`}>
+                                    {result}
+                                </div>
+                            )}
 
                         </form>
                     </div>

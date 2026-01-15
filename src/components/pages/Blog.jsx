@@ -4,6 +4,7 @@ import Navigation from "../Navigation";
 import Footer from "../Footer";
 import { ArrowUpRight, Clock, User, Sparkles, TrendingUp } from "lucide-react";
 import Lenis from "@studio-freight/lenis";
+import ScrollToTop from "../ScrollToTop";
 
 /* --- DATA --- */
 const blogs = [
@@ -110,6 +111,7 @@ export default function BlogSectionModern() {
 
   return (
     <>
+     <ScrollToTop />
       <Navigation />
 
       <main className="bg-gray-50 min-h-screen">

@@ -1,13 +1,60 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
   Mail, 
   Phone, 
   MapPin, 
-  Send
+  Send,
+  Loader2,
+  CheckCircle2
 } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
+  // --- NEWSLETTER LOGIC ---
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle"); // idle, sending, success, error
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    if(!email) return;
+
+    setStatus("sending");
+    setMessage("");
+
+    const formData = new FormData();
+    formData.append("email", email);
+    // ⚠️ REPLACE WITH YOUR ACTUAL ACCESS KEY ⚠️
+    formData.append("access_key", "YOUR_ACCESS_KEY_HERE"); 
+    formData.append("subject", "New Footer Newsletter Subscriber");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus("success");
+        setEmail("");
+        setMessage("Subscribed successfully!");
+        // Reset after 3 seconds
+        setTimeout(() => {
+            setStatus("idle");
+            setMessage("");
+        }, 3000);
+      } else {
+        setStatus("error");
+        setMessage("Error. Please try again.");
+      }
+    } catch (error) {
+      setStatus("error");
+      setMessage("Connection failed.");
+    }
+  };
 
   return (
     <footer className="relative bg-gray-950 text-white pt-20 pb-10 overflow-hidden">
@@ -18,7 +65,6 @@ export default function Footer() {
         <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]" />
       </div>
 
-      {/* --- INCREASED WIDTH HERE: max-w-[1440px] --- */}
       <div className="relative z-10 max-w-[1440px] mx-auto px-6">
         
         {/* --- TOP SECTION (CTA & BRAND) --- */}
@@ -32,20 +78,45 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Newsletter */}
+          {/* Newsletter Form */}
           <div className="lg:flex lg:justify-end items-center">
             <div className="w-full max-w-md bg-white/5 border border-white/10 rounded-2xl p-6">
               <h3 className="font-semibold mb-2">Subscribe to our newsletter</h3>
-              <form className="relative">
+              
+              <form onSubmit={handleSubscribe} className="relative">
                 <input 
                   type="email" 
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email" 
-                  className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 pr-12 focus:outline-none focus:border-green-500 text-sm"
+                  disabled={status === 'sending' || status === 'success'}
+                  className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 pr-12 focus:outline-none focus:border-green-500 text-sm transition-colors"
                 />
-                <button className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
-                  <Send className="w-4 h-4" />
+                
+                <button 
+                  type="submit"
+                  disabled={status === 'sending' || status === 'success'}
+                  className={`absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-lg transition-colors ${
+                    status === 'success' ? 'bg-green-600 text-white' : 'bg-green-500 hover:bg-green-600'
+                  }`}
+                >
+                  {status === 'sending' ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : status === 'success' ? (
+                    <CheckCircle2 className="w-4 h-4" />
+                  ) : (
+                    <Send className="w-4 h-4" />
+                  )}
                 </button>
               </form>
+
+              {/* Feedback Message */}
+              {message && (
+                <p className={`text-xs mt-2 ${status === 'error' ? 'text-red-400' : 'text-green-400'}`}>
+                  {message}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -65,27 +136,38 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-6 text-white">Company</h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              {['Home', 'About Us', 'Services', 'Our Work', 'Contact'].map((item) => (
-                <li key={item}>
-                  <Link to="/" className="hover:text-green-500 flex items-center gap-1 transition-colors">
-                    {item}
+              {[
+                { name: 'Home', link: '/' },
+                { name: 'About Us', link: '/about' },
+                { name: 'Services', link: '/flyer' }, // Generic services page anchor if exists
+                { name: 'Our Work', link: '/work' }, // Or whatever your portfolio route is
+                { name: 'Contact', link: '/contact' }
+              ].map((item, idx) => (
+                <li key={idx}>
+                  <Link to={item.link} className="hover:text-green-500 flex items-center gap-1 transition-colors">
+                    {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Services Links - Mapped to Specific Routes */}
           <div>
             <h4 className="font-bold mb-6 text-white">Services</h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              {['Printing Services', 'Flyer Distribution','Digital Ads', 'Outdoor Media'].map((item) => (
-                <li key={item}>
-                  <Link to="/services" className="hover:text-green-500 transition-colors">
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link to="/printing" className="hover:text-green-500 transition-colors">Printing Services</Link>
+              </li>
+              <li>
+                <Link to="/flyer" className="hover:text-green-500 transition-colors">Flyer Distribution</Link>
+              </li>
+              <li>
+                <Link to="/digital" className="hover:text-green-500 transition-colors">Digital Ads</Link>
+              </li>
+              <li>
+                <Link to="/outdoor" className="hover:text-green-500 transition-colors">Outdoor Media</Link>
+              </li>
             </ul>
           </div>
 
@@ -95,15 +177,15 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-green-500 shrink-0" />
-                <span>UAE</span>
+                <span>Dubai, UAE</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-green-500 shrink-0" />
-                <a href="mailto:info@maxlead.com" className="hover:text-white transition-colors">info@maxlead.com</a>
+                <a href="mailto:maxleadadvertising@gmail.com" className="hover:text-white transition-colors">maxleadadvertising@gmail.com</a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-green-500 shrink-0" />
-                <a href="tel:+971 522286401" className="hover:text-white transition-colors">+971 522286401</a>
+                <a href="tel:+971522286401" className="hover:text-white transition-colors">+971 52 228 6401</a>
               </li>
             </ul>
           </div>

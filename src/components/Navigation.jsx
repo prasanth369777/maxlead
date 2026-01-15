@@ -14,7 +14,7 @@ import logo from "../assests/logo.png";
 
 const services = [
   { 
-    name: "Flyer Distribution", 
+    name: "Door to Door Flyer Distribution", 
     path: "/flyer", 
     icon: Printer,
     desc: "High-quality offset & digital prints" 
@@ -146,7 +146,7 @@ export default function Navigation() {
                   ))}
                 </div>
                 <div className="bg-gray-900/50 p-3 text-center border-t border-gray-800">
-                  <Link to="/services" className="text-xs font-semibold text-green-500 hover:text-green-400">View All Services →</Link>
+                  <Link to="/flyer" className="text-xs font-semibold text-green-500 hover:text-green-400">View All Services →</Link>
                 </div>
             </div>
           </div>

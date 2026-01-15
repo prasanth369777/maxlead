@@ -16,14 +16,17 @@ import {
   Video,
   Linkedin,
   MousePointerClick,
-  Monitor
+  Monitor,
+  
+
 } from "lucide-react";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
+import ScrollToTop from "../ScrollToTop";
 
 /* IMAGES - Using placeholders, replace with specific digital marketing assets */
-import marketingHero from "../../assests/printing/printingHero.gif"; 
-import marketingService1 from "../../assests/printing/printingService1.png";
+import marketingHero from "../../assests/digitalmarketing/dm2.webp"; 
+import marketingService1 from "../../assests/digitalmarketing/dm1.webp";
 
 /* --- ANIMATION COMPONENT --- */
 const FadeIn = ({ children, delay = 0, className = "" }) => {
@@ -54,10 +57,10 @@ const FadeIn = ({ children, delay = 0, className = "" }) => {
 };
 
 export default function DigitalMarketing() {
-  // FIX: Removed unused 'cursor' state to prevent build errors
   
   return (
     <>
+    <ScrollToTop />
       <Navigation />
 
       <main className="relative overflow-hidden bg-white">
@@ -82,23 +85,24 @@ export default function DigitalMarketing() {
                 <span className="text-xs font-bold text-green-700 tracking-wide uppercase">Results-Driven Agency</span>
               </div>
 
-              <h1 className="text-5xl lg:text-7xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
                 Digital Marketing Agency in <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
                   Dubai, UAE
-                </span>
+                </span> <br/>
+                That Delivers Real Business Growth
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
-                At Max Lead Advertising, we helping brands attract the right audience, convert visitors into leads, and turn those leads into loyal customers. We deliver real business growth.
+                At Max Lead Advertising, we are a results-driven digital marketing agency in Dubai, UAE helping brands attract the right audience, convert visitors into leads, and turn those leads into loyal customers.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-4">
                 <button className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-full font-bold shadow-lg hover:shadow-green-500/30 hover:scale-105 transition-all duration-300">
-                  Get Free Strategy
+                  Get a Free Digital Marketing Strategy
                 </button>
                 <button className="px-8 py-4 bg-white border border-gray-200 text-gray-700 rounded-full font-bold hover:border-green-200 hover:bg-green-50 transition-all duration-300">
-                  Request a Quote
+                  Request a Quick Quote
                 </button>
               </div>
             </FadeIn>
@@ -119,7 +123,7 @@ export default function DigitalMarketing() {
                     <BarChart className="w-6 h-6 text-green-600" />
                     <span className="font-bold text-gray-900 text-lg">ROI Focused</span>
                   </div>
-                  <p className="text-sm text-gray-600">We don't run random ads. Every campaign is built to make you money.</p>
+                  <p className="text-sm text-gray-600">We focus on leads and sales, not just likes and clicks.</p>
                 </div>
               </div>
             </FadeIn>
@@ -145,24 +149,29 @@ export default function DigitalMarketing() {
                 <p>
                   We don’t run random ads or post content without a purpose. Every campaign we manage is built around one goal: helping your business make more money. That is why many businesses choose us as their internet marketing agency for long-term success.
                 </p>
+                <p className="font-medium text-green-700">
+                  From increasing brand awareness to driving qualified leads and boosting conversions, our digital marketing approach is practical, transparent, and focused on ROI.
+                </p>
               </div>
             </FadeIn>
             
             <FadeIn delay={200}>
-              <div className="bg-green-50 rounded-[2rem] p-10 border border-green-100 relative overflow-hidden">
+              <div className="bg-green-50 rounded-[2rem] p-10 border border-green-100 relative overflow-hidden h-full">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-green-200 rounded-full blur-[50px] opacity-50" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 relative z-10">Our Practical Approach</h3>
-                <ul className="space-y-5 relative z-10">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 relative z-10">Our Core Philosophy</h3>
+                <ul className="space-y-6 relative z-10">
                   {[
-                    "Custom online marketing strategies based on goals",
-                    "Practical, transparent, and focused on ROI",
-                    "From increasing brand awareness to driving qualified leads",
-                    "Boosting conversions with measurable data",
-                    "Everything under one roof with one clear strategy"
+                    "We serve as a growth partner, not just a service provider.",
+                    "We build marketing systems that generate consistent leads.",
+                    "Custom strategies for startups, locals shops, and brands.",
+                    "Practical, transparent approaches focused on ROI.",
+                    "Long-term success over short-term tricks."
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-medium text-lg">{item}</span>
+                      <div className="bg-white p-2 rounded-full shadow-sm">
+                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                      </div>
+                      <span className="text-gray-700 font-medium text-lg pt-1">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -177,7 +186,7 @@ export default function DigitalMarketing() {
             <FadeIn className="text-center max-w-4xl mx-auto mb-20 space-y-4">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Complete Digital Marketing Services That Work Together</h2>
               <p className="text-xl text-gray-600">
-                Real growth happens when all your digital channels work together. That is why we provide a full range of digital marketing services in UAE, allowing you to reach your customers wherever they are online.
+                Real growth happens when all your digital channels work together. That is why we provide a full range of digital marketing services in UAE, allowing you to reach your customers wherever they are online. Instead of managing multiple agencies, you get everything under one roof with one clear strategy.
               </p>
             </FadeIn>
 
@@ -185,10 +194,11 @@ export default function DigitalMarketing() {
               {[
                 { title: "Social Media Marketing", icon: Share2, desc: "Facebook, Instagram, LinkedIn, TikTok, Snapchat & YouTube strategies." },
                 { title: "Search Engine Optimization (SEO)", icon: Search, desc: "Rank higher on Google and drive organic traffic." },
-                { title: "Google Ads (SEM)", icon: Target, desc: "Search Engine Marketing for instant leads and sales." },
+                { title: "Search Engine Marketing (Google Ads)", icon: Target, desc: "Instant leads via targeted PPC campaigns." },
                 { title: "Email Marketing", icon: Mail, desc: "Automated campaigns to build loyalty and repeat sales." },
                 { title: "SMS Marketing", icon: MessageCircle, desc: "Direct reach to customers for offers and updates." },
                 { title: "WhatsApp Marketing", icon: Phone, desc: "Build relationships and follow up leads directly." },
+                
               ].map((service, idx) => (
                 <FadeIn key={idx} delay={idx * 100}>
                   <div className="group bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-green-200 transition-all duration-300 h-full">
@@ -209,11 +219,18 @@ export default function DigitalMarketing() {
           <div className="max-w-[1440px] mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <FadeIn>
-                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl h-[600px] group">
+                 {/* Visual trigger for social media ecosystem */}
+                 
+
+[Image of social media marketing ecosystem diagram]
+
+                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl h-[650px] group mt-6">
                    <img src={marketingService1} alt="Social Media Marketing" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-10">
-                      <h3 className="text-white text-3xl font-bold mb-2">Content & Ads</h3>
-                      <p className="text-gray-200 text-lg">We create content plans, designs, paid campaigns, and handle audience targeting.</p>
+                      <h3 className="text-white text-3xl font-bold mb-2">Complete Social Media System</h3>
+                      <p className="text-gray-200 text-lg">
+                        Content planning • Creative design • Paid ad campaigns • Audience targeting • Lead generation
+                      </p>
                    </div>
                 </div>
               </FadeIn>
@@ -224,7 +241,7 @@ export default function DigitalMarketing() {
                   Social media is where your customers spend a large part of their time. As a leading digital marketing agency, we use platforms like Facebook, Instagram, TikTok, LinkedIn, Snapchat, YouTube, and WhatsApp to help businesses grow their audience and generate real enquiries.
                 </p>
                 
-                <div className="space-y-6">
+                <div className="space-y-8">
                   {/* Platform 1 */}
                   <div className="flex gap-4">
                     <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 flex-shrink-0">
@@ -232,7 +249,7 @@ export default function DigitalMarketing() {
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-gray-900">Facebook & Instagram Marketing</h4>
-                      <p className="text-gray-600 mt-1">We run highly targeted campaigns that put your brand in front of people who are most likely to buy from you. Designed for performance (leads, traffic, sales).</p>
+                      <p className="text-gray-600 mt-2">We run highly targeted Facebook and Instagram campaigns that put your brand in front of people who are most likely to buy from you. Whether your goal is leads, website traffic, or sales, our campaigns are designed for performance.</p>
                     </div>
                   </div>
 
@@ -243,7 +260,7 @@ export default function DigitalMarketing() {
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-gray-900">YouTube Marketing</h4>
-                      <p className="text-gray-600 mt-1">Video is powerful. We help businesses use YouTube ads and video campaigns to increase brand awareness and conversions.</p>
+                      <p className="text-gray-600 mt-2">Video is one of the most powerful tools in digital marketing. We help businesses use YouTube ads and video campaigns to increase brand awareness and conversions.</p>
                     </div>
                   </div>
 
@@ -254,7 +271,7 @@ export default function DigitalMarketing() {
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-gray-900">LinkedIn Marketing</h4>
-                      <p className="text-gray-600 mt-1">For B2B companies, LinkedIn is a goldmine. We help you reach decision-makers, business owners, and professionals strategically.</p>
+                      <p className="text-gray-600 mt-2">For B2B companies, LinkedIn is a goldmine. We help you reach decision-makers, business owners, and professionals through strategic LinkedIn marketing.</p>
                     </div>
                   </div>
 
@@ -265,7 +282,18 @@ export default function DigitalMarketing() {
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-gray-900">TikTok & Snapchat Marketing</h4>
-                      <p className="text-gray-600 mt-1">Perfect for brands reaching younger audiences with creative and engaging content. We build campaigns that capture attention and drive action.</p>
+                      <p className="text-gray-600 mt-2">These platforms are perfect for brands that want to reach younger audiences with creative and engaging content. We build campaigns that capture attention and drive action.</p>
+                    </div>
+                  </div>
+
+                  {/* Platform 5 */}
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-green-600 flex-shrink-0">
+                      <Phone className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-900">WhatsApp Marketing</h4>
+                      <p className="text-gray-600 mt-2">We help you use WhatsApp to follow up leads, send offers, and build relationships that lead to sales.</p>
                     </div>
                   </div>
                 </div>
@@ -303,7 +331,10 @@ export default function DigitalMarketing() {
                     <p className="text-gray-600 text-lg leading-relaxed">
                       If you need instant leads, Google Ads is one of the fastest ways to get them. As a professional digital marketing company, we create and manage Google Ads campaigns that target people who are already searching for what you offer.
                     </p>
-                    <div className="grid grid-cols-2 gap-4 mt-6">
+                    <p className="text-gray-600 text-lg mt-4 mb-4">
+                      We focus on ensuring you get the best return on your ad spend.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
                         {["Keyword Targeting", "Ad Copywriting", "Landing Page Optimization", "Conversion Tracking"].map((item, i) => (
                             <div key={i} className="flex items-center gap-2 text-gray-700 font-medium">
                                 <div className="w-2 h-2 bg-green-500 rounded-full" />
@@ -315,7 +346,7 @@ export default function DigitalMarketing() {
                 </div>
               </FadeIn>
 
-              {/* Right Col: Email & WhatsApp + Box */}
+              {/* Right Col: Email & SMS + Box */}
               <FadeIn delay={200}>
                   <div className="bg-white p-10 rounded-[3rem] border border-gray-200 shadow-xl h-full flex flex-col justify-center">
                     <div className="mb-10">
@@ -324,20 +355,13 @@ export default function DigitalMarketing() {
                         </div>
                         <h3 className="text-3xl font-bold text-gray-900 mb-4">Email Marketing & SMS Marketing</h3>
                         <p className="text-gray-600 text-lg leading-relaxed">
-                            Not every customer buys the first time. That is why follow-up is critical. Our email marketing and SMS marketing services help you stay connected with your leads and customers. We create automated campaigns that send the right message at the right time, increasing repeat sales and customer loyalty.
+                            Not every customer buys the first time. That is why follow-up is critical.
+                        </p>
+                        <p className="text-gray-600 text-lg leading-relaxed mt-4">
+                            Our email marketing and SMS marketing services help you stay connected with your leads and customers. We create automated campaigns that send the right message at the right time, increasing repeat sales and customer loyalty.
                         </p>
                     </div>
-                    
-                    <div className="border-t border-gray-100 pt-10">
-                        <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6 text-green-600">
-                            <MessageCircle className="w-8 h-8" />
-                        </div>
-                        <h3 className="text-3xl font-bold text-gray-900 mb-4">WhatsApp Marketing</h3>
-                        <p className="text-gray-600 text-lg leading-relaxed">
-                            We help you use WhatsApp to follow up leads, send offers, and build relationships that lead to sales. Direct, personal, and highly effective.
-                        </p>
-                    </div>
-                 </div>
+                  </div>
               </FadeIn>
 
             </div>
@@ -350,6 +374,8 @@ export default function DigitalMarketing() {
             <FadeIn className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">How Our Digital Marketing System Works</h2>
               <p className="text-gray-600 text-lg">We follow a clear process to make sure every campaign delivers results.</p>
+              {/* Visual trigger for marketing process */}
+              
             </FadeIn>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -416,7 +442,7 @@ export default function DigitalMarketing() {
               {[
                 { q: "What does a digital marketing agency do?", a: "A digital marketing agency helps businesses attract customers online through social media, search engines, email, and online advertising." },
                 { q: "How much do digital marketing services cost in the UAE?", a: "Costs depend on your goals, platforms, and competition. We provide custom plans based on your business." },
-                { q: "How long does SEO take to show results?", a: "SEO usually starts showing results within 3 to 6 months, but it delivers long-term growth." },
+                { q: "How long does SEO take to show results?", a: "SEO usually starts showing results within 4 to 6 months minimum, but it delivers long-term growth." },
                 { q: "Which platform is best for my business?", a: "That depends on your audience. Our team helps you choose the right platforms for maximum return." }
               ].map((faq, index) => (
                 <FadeIn key={index} delay={index * 50}>
@@ -446,19 +472,19 @@ export default function DigitalMarketing() {
                   Start Growing Your Business with a Professional Digital Marketing Agency
                 </h2>
                 <p className="text-xl text-gray-600">
-                  If you are looking for the best digital marketing agency in Dubai, Max Lead Advertising is here to help. Whether you need leads, sales, or brand visibility, our digital marketing services are designed to move your business forward.
+                  If you are looking for a best digital marketing agency in Dubai, Max Lead Advertising is here to help. Whether you need leads, sales, or brand visibility, our digital marketing services are designed to move your business forward.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <a href="/contact">
                     <button className="px-10 py-5 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-full font-bold shadow-xl hover:shadow-green-500/30 flex items-center justify-center gap-3 transform hover:-translate-y-1 transition-all text-lg">
                       <Monitor className="w-6 h-6" />
-                      Get Your Free Strategy
+                      Get Your Free Digital Marketing Strategy
                     </button>
                   </a>
                   <a href="/contact">
                     <button className="px-10 py-5 bg-white border border-gray-300 text-gray-800 rounded-full font-bold hover:bg-gray-50 flex items-center justify-center gap-3 transition-all text-lg hover:border-gray-400">
                       <Users className="w-6 h-6 text-green-600" />
-                      Talk to Experts
+                      Talk to Our Digital Marketing Experts
                     </button>
                   </a>
                 </div>

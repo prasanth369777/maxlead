@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
+import ScrollToTop from "../ScrollToTop";
 import { 
-  
   CheckCircle2, 
   Trophy, 
   Users, 
@@ -10,6 +10,22 @@ import {
 } from "lucide-react";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
+
+/* --- IMPORTED LOGOS --- */
+// Adjust the path '../assests/clientlogo/' if your folder structure is slightly different
+import alkLogo from "../../assests/clientlogo/alk logo_converted.webp";
+import almLogo from "../../assests/clientlogo/alm logo_converted.webp";
+import alsaLogo from "../../assests/clientlogo/alsa logo_converted.webp";
+import cfLogo from "../../assests/clientlogo/cf logo_converted.webp";
+import galaLogo from "../../assests/clientlogo/gala_converted.webp";
+import hrLogo from "../../assests/clientlogo/hr logo_converted.webp";
+import kalLogo from "../../assests/clientlogo/kal logo_converted.webp";
+import kamLogo from "../../assests/clientlogo/kamlogo_converted.webp";
+import luluLogo from "../../assests/clientlogo/lulu logo_converted.webp";
+import mpcLogo from "../../assests/clientlogo/mpc logo_converted.webp";
+import msLogo from "../../assests/clientlogo/ms logo_converted.webp";
+import nesLogo from "../../assests/clientlogo/nes logo_converted.webp";
+import smLogo from "../../assests/clientlogo/smlogo_converted.webp";
 
 /* --- ANIMATION COMPONENT --- */
 const FadeIn = ({ children, delay = 0, className = "" }) => {
@@ -39,50 +55,21 @@ const FadeIn = ({ children, delay = 0, className = "" }) => {
   );
 };
 
-/* --- CLIENTS DATA (Based on your Screenshot) --- */
+/* --- CLIENTS DATA --- */
 const clients = [
-  { 
-    name: "LuLu Hypermarket", 
-    category: "Retail", 
-    // Using Wikimedia URL for immediate preview
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/8/87/LuLu_Group_International_Logo.svg/1200px-LuLu_Group_International_Logo.svg.png" 
-  },
-  { 
-    name: "GMC Hospital", 
-    category: "Healthcare", 
-    // Using a placeholder representation or public URL if available
-    logo: "https://thumbay.com/wp-content/uploads/2016/02/GMC-Hospital-Ajman-Change-of-Name.jpg" 
-  },
-  { 
-    name: "Burjeel Hospital", 
-    category: "Healthcare", 
-    logo: "https://upload.wikimedia.org/wikipedia/en/2/26/Burjeel_Holdings_Logo.jpg" 
-  },
-  { 
-    name: "Al Madina", 
-    category: "Retail", 
-    logo: "https://almadinahypermarket.com/wp-content/uploads/2020/12/logo-1.png" 
-  },
-  { 
-    name: "Ahalia Group", 
-    category: "Healthcare", 
-    logo: "https://ahaliagroup.com/wp-content/uploads/2019/04/ahalia-logo.png" 
-  },
-  { 
-    name: "Aster Hospital", 
-    category: "Healthcare", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Aster_DM_Healthcare_Logo.svg/2560px-Aster_DM_Healthcare_Logo.svg.png" 
-  },
-  { 
-    name: "Fitness First", 
-    category: "Wellness", 
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Fitness_First_Logo_2011.png/800px-Fitness_First_Logo_2011.png" 
-  },
-  { 
-    name: "Thumbay Hospital", 
-    category: "Healthcare", 
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Thumbay_Group_logo.svg/1200px-Thumbay_Group_logo.svg.png" 
-  },
+  { name: "LuLu Hypermarket", category: "Retail", logo: luluLogo },
+  { name: "Nesto Group", category: "Retail", logo: nesLogo },
+  { name: "Gala Supermarket", category: "Retail", logo: galaLogo },
+  { name: "Al Madina", category: "Retail", logo: almLogo },
+  { name: "Kalyan", category: "Retail", logo: kalLogo },
+  { name: "MPC", category: "Healthcare", logo: mpcLogo },
+  { name: "Al Saeedi", category: "Automotive", logo: alsaLogo },
+  { name: "Car Fare", category: "Services", logo: cfLogo },
+  { name: "Kam", category: "Corporate", logo: kamLogo },
+  { name: "HR Group", category: "Corporate", logo: hrLogo },
+  { name: "MS Group", category: "Construction", logo: msLogo },
+  { name: "SM Group", category: "General", logo: smLogo },
+  { name: "ALK", category: "General", logo: alkLogo },
 ];
 
 const stats = [
@@ -103,6 +90,7 @@ export default function Clients() {
 
   return (
     <>
+    <ScrollToTop />
       <Navigation />
 
       <main className="relative overflow-hidden bg-white mt-10">
@@ -158,7 +146,8 @@ export default function Clients() {
         {/* --- CLIENT LOGO GRID --- */}
         <section className="py-24 bg-white">
           <div className="max-w-[1440px] mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {/* Added grid-cols-5 for larger screens to fit more logos cleanly */}
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
               {clients.map((client, idx) => (
                 <FadeIn key={idx} delay={idx * 50}>
                   <div className="group h-48 flex flex-col items-center justify-center p-8 bg-white rounded-3xl border border-gray-100 hover:border-green-200 hover:shadow-xl transition-all duration-500 relative overflow-hidden cursor-pointer">

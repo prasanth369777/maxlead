@@ -9,16 +9,19 @@ import {
   Layers, 
   Zap, 
   Palette, 
-  Box 
+  Box,
+  Truck,
+  ScanEye,
 } from "lucide-react";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
+import ScrollToTop from "../ScrollToTop";
 
 /* IMAGES */
 import printingHero from "../../assests/printing/printingHero.gif";
-import printingService1 from "../../assests/printing/printingService1.png";
-import printingService2 from "../../assests/printing/printingService2.png";
-import printingService3 from "../../assests/printing/printingService3.png";
+import printingService1 from "../../assests/printing/printingService1.webp";
+import printingService2 from "../../assests/printing/printingService2.webp";
+import printingService3 from "../../assests/printing/printingService3.webp";
 
 /* --- ANIMATION COMPONENTS --- */
 
@@ -79,13 +82,12 @@ const ScaleIn = ({ children, delay = 0, className = "" }) => {
 };
 
 export default function PrintingServices() {
-  // REMOVED UNUSED CURSOR STATE
-
+  
   // DATA
   const serviceCategories = [
     {
-      title: "Marketing & Promotional",
-      desc: "Increase brand visibility and drive customer action with high-impact promotional tools.",
+      title: "Marketing & Promotional Prints",
+      desc: "Promotional printing plays a vital role in increasing brand visibility and driving customer action. Our marketing and promotional prints are designed to support offers, product launches, and campaigns across offline channels.",
       items: ["Flyers & Leaflets", "Posters", "Banners", "Stickers"],
       icon: Zap,
       color: "text-green-600",
@@ -93,8 +95,8 @@ export default function PrintingServices() {
       img: printingService1 
     },
     {
-      title: "Corporate & Office",
-      desc: "Professional stationery that represents your brand identity with consistency and quality.",
+      title: "Corporate & Office Printing",
+      desc: "Corporate printed materials represent your brand identity and professionalism. We provide reliable corporate printing services in Dubai for businesses that value consistency and quality.",
       items: ["Business Cards", "Letterheads", "Envelopes", "Company Profiles"],
       icon: Box,
       color: "text-emerald-600",
@@ -103,7 +105,7 @@ export default function PrintingServices() {
     },
     {
       title: "Large Format Printing",
-      desc: "Essential for outdoor visibility, retail branding, and delivering impact at scale.",
+      desc: "Large format printing is essential for outdoor visibility, retail branding, and event promotions. Our large format printing services in Dubai are built to deliver impact at scale.",
       items: ["Flex Banners", "Roll-up Standees", "Hoardings", "Backdrops"],
       icon: Layers,
       color: "text-teal-600",
@@ -111,8 +113,8 @@ export default function PrintingServices() {
       img: printingService3
     },
     {
-      title: "Event & Exhibition",
-      desc: "Visual consistency for conferences and events. Fast timelines and professional results.",
+      title: "Event & Exhibition Printing",
+      desc: "Events and exhibitions demand clear branding, professional presentation, and visual consistency. We provide specialized event printing services in UAE for exhibitions, conferences, and promotional events.",
       items: ["Event Branding", "Booth Graphics", "Stage Backdrops", "Display Boards"],
       icon: Palette,
       color: "text-lime-600",
@@ -120,8 +122,8 @@ export default function PrintingServices() {
       img: printingService1 
     },
     {
-      title: "Branding & Custom",
-      desc: "Extend your presence across vehicles, walls, and custom display areas.",
+      title: "Branding & Custom Prints",
+      desc: "Branding is about visibility beyond traditional formats. Our branding and custom printing services help businesses extend their presence across vehicles, walls, and custom display areas.",
       items: ["Vehicle Branding", "Wall Graphics", "Custom Signage", "Promotional Displays"],
       icon: Sparkles,
       color: "text-cyan-600",
@@ -130,7 +132,7 @@ export default function PrintingServices() {
     },
     {
       title: "Specialty Printing",
-      desc: "Premium finishes and unique display solutions for high-end impressions.",
+      desc: "For businesses that require premium finishes or unique display solutions, we offer advanced specialty printing services in Dubai.These solutions are ideal for indoor signage, corporate branding, retail displays, and premium visual communication. Specialty printing allows brands to create distinctive, high-end impressions.",
       items: ["UV Printing", "Acrylic Printing", "Foam Board Printing"],
       icon: Printer,
       color: "text-green-700",
@@ -141,6 +143,7 @@ export default function PrintingServices() {
 
   return (
     <>
+    <ScrollToTop />
       <Navigation />
 
       <main className="relative overflow-hidden bg-white">
@@ -165,13 +168,13 @@ export default function PrintingServices() {
             <FadeIn className="space-y-8">
               <div className="inline-flex items-center gap-2 bg-green-50 border border-green-100 px-4 py-2 rounded-full shadow-sm mt-10">
                 <Sparkles className="w-4 h-4 text-green-500 animate-pulse" />
-                <span className="text-xs font-bold text-green-700 tracking-wide uppercase">Premier Printing in UAE</span>
+                <span className="text-xs font-bold text-green-700 tracking-wide uppercase">Trusted Printing Company</span>
               </div>
 
-              <h1 className="text-5xl lg:text-7xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
                 Digital Printing <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">
-                  Services in Dubai.
+                  Services in Dubai, UAE.
                 </span>
               </h1>
 
@@ -180,11 +183,17 @@ export default function PrintingServices() {
               </p>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <button className="px-8 py-4 bg-gray-900 text-white rounded-full font-semibold shadow-lg hover:shadow-green-500/20 hover:bg-green-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95">
-                  Get a Free Quote
+                <button 
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                  className="px-8 py-4 bg-gray-900 text-white rounded-full font-semibold shadow-lg hover:shadow-green-500/20 hover:bg-green-600 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95"
+                >
+                  Get a Printing Consultation
                 </button>
-                <button className="px-8 py-4 bg-white border border-gray-200 text-gray-700 rounded-full font-semibold hover:border-green-200 hover:bg-green-50 transition-all duration-300 hover:scale-105 active:scale-95">
-                  View Portfolio
+                <button 
+                   onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+                   className="px-8 py-4 bg-white border border-gray-200 text-gray-700 rounded-full font-semibold hover:border-green-200 hover:bg-green-50 transition-all duration-300 hover:scale-105 active:scale-95"
+                >
+                  Explore Services
                 </button>
               </div>
 
@@ -245,28 +254,25 @@ export default function PrintingServices() {
             </FadeIn>
             <FadeIn delay={200} className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                Printing is more than putting ink on paper. It is about representing
-                your brand the right way. At <strong>Max Lead Advertising</strong>,
-                we understand how important print quality, color accuracy, and
-                finishing are to your business image.
+                Printing is more than putting ink on paper. It is about representing your brand the right way. At Max Lead Advertising, we understand how important print quality, color accuracy, and finishing are to your business image.
               </p>
               <p>
-                We serve as a full-service printing company in Dubai, supporting
-                marketing campaigns, corporate branding, retail promotions, events,
-                and exhibitions. Whether you need short-run prints or bulk printing, 
-                we guide you through material selection.
+                We serve as a full-service printing company in Dubai, supporting marketing campaigns, corporate branding, retail promotions, events, and exhibitions. Whether you need short-run prints or bulk printing, we guide you through material selection, print formats, and finishing options to ensure the final output meets your expectations.
+              </p>
+              <p>
+                Our digital printing services are suitable for businesses that want speed, flexibility, and professional results without compromise.
               </p>
             </FadeIn>
           </div>
         </section>
 
         {/* --- SERVICES GRID --- */}
-        <section className="py-24 bg-gray-50">
+        <section id="services" className="py-24 bg-gray-50">
           <div className="max-w-[1440px] mx-auto px-6">
-            <FadeIn className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <FadeIn className="text-center max-w-4xl mx-auto mb-16 space-y-4">
               <h2 className="text-3xl md:text-5xl font-bold text-gray-900">Our Printing Services</h2>
               <p className="text-xl text-gray-600">
-                We offer a wide range of printing services in Dubai and across UAE, organized clearly so you can find the perfect solution.
+                We offer a wide range of printing services in Dubai and across UAE, organized into clear categories so you can easily find the solution that fits your requirement.
               </p>
             </FadeIn>
 
@@ -319,30 +325,34 @@ export default function PrintingServices() {
                 <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
                   <div className="space-y-6">
                     <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-                      Why Professional Printing Matters
+                      Why Professional Printing Matters for Your Business
                     </h2>
                     <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                      Poor print quality can weaken trust, while well-designed and high-quality prints enhance credibility. Professional printing supports your marketing efforts effectively.
+                      Professional printing plays a crucial role in how customers perceive your brand. Poor print quality can weaken trust, while well-designed and high-quality prints enhance credibility.
+                      <br/><br/>
+                      Whether it’s a flyer, banner, or branded display, professional printing supports your marketing efforts more effectively than low-quality alternatives.
                     </p>
-                    <button className="flex items-center gap-2 text-green-400 font-bold hover:text-green-300 transition group/btn">
-                      Learn more about our quality <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="flex items-center gap-2 text-green-400 font-bold hover:text-green-300 transition group/btn">
+                      Start your project now <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </button>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {[
-                      "Consistent color accuracy",
-                      "Durable materials",
-                      "Clean finishing",
-                      "Better brand perception",
-                      "Long-term usability",
-                      "High-res output"
-                    ].map((benefit, i) => (
-                      <div key={i} className="bg-white/10 backdrop-blur-sm border border-white/10 p-4 rounded-xl flex items-center gap-3 hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-default">
-                        <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                        <span className="font-medium">{benefit}</span>
+                  <div>
+                     <p className="text-gray-400 mb-4 font-semibold uppercase tracking-widest text-sm">Choosing us ensures:</p>
+                     <div className="grid sm:grid-cols-1 gap-4">
+                        {[
+                          "Consistent color accuracy",
+                          "Durable materials",
+                          "Clean finishing",
+                          "Better brand perception",
+                          "Long-term usability"
+                        ].map((benefit, i) => (
+                          <div key={i} className="bg-white/10 backdrop-blur-sm border border-white/10 p-4 rounded-xl flex items-center gap-3 hover:bg-white/20 hover:scale-[1.02] transition-all duration-300 cursor-default">
+                            <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
+                            <span className="font-medium text-lg">{benefit}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
                   </div>
                 </div>
               </div>
@@ -355,7 +365,7 @@ export default function PrintingServices() {
           <div className="max-w-[1440px] mx-auto px-6">
             <FadeIn className="text-center max-w-2xl mx-auto mb-16 space-y-4">
               <h2 className="text-3xl md:text-5xl font-bold text-gray-900">Our Printing Process</h2>
-              <p className="text-gray-600">A structured workflow to ensure quality and timeliness.</p>
+              <p className="text-gray-600">We follow a structured process to ensure every printing project meets quality and timeline expectations.</p>
             </FadeIn>
 
             <div className="relative">
@@ -364,18 +374,19 @@ export default function PrintingServices() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 relative z-10">
                 {[
-                  { title: "Understand", desc: "We discuss purpose & quantity." },
-                  { title: "Guidance", desc: "Advice on layout & paper." },
-                  { title: "Production", desc: "Modern digital printing." },
-                  { title: "Quality Check", desc: "Strict inspection." },
-                  { title: "Delivery", desc: "Safe delivery across UAE." },
+                  { title: "Requirement Understanding", desc: "We discuss your purpose, quantity, and usage requirements.", icon: MessageCircle },
+                  { title: "Design & Material Guidance", desc: "Our team advises on layout, paper, material, and finish options.", icon: Palette },
+                  { title: "Print Production", desc: "Printing is executed using modern digital printing technology.", icon: Printer },
+                  { title: "Quality Check", desc: "Every print job goes through quality inspection.", icon: ScanEye },
+                  { title: "Delivery Across UAE", desc: "Finished materials are delivered safely and on time.", icon: Truck },
                 ].map((step, i) => (
                   <FadeIn key={i} delay={i * 150}>
                     <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-center hover:-translate-y-3 hover:shadow-xl transition-all duration-300 h-full flex flex-col items-center group">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-xl mb-4 shadow-lg ring-4 ring-white group-hover:scale-110 transition-transform">
-                        {i + 1}
+                      <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white mb-4 shadow-lg ring-4 ring-white group-hover:scale-110 transition-transform relative z-10">
+                        <step.icon className="w-7 h-7" />
+                        <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center text-xs font-bold border-2 border-white">{i + 1}</div>
                       </div>
-                      <h4 className="font-bold text-lg text-gray-900 mb-2">{step.title}</h4>
+                      <h4 className="font-bold text-lg text-gray-900 mb-2 leading-tight">{step.title}</h4>
                       <p className="text-sm text-gray-500">{step.desc}</p>
                     </div>
                   </FadeIn>
@@ -390,10 +401,11 @@ export default function PrintingServices() {
           <div className="max-w-[1440px] mx-auto px-6 grid lg:grid-cols-2 gap-20">
             {/* Left: Why Choose */}
             <FadeIn>
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">Why Choose Max Lead?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Max Lead Advertising?</h2>
+              <p className="text-gray-600 mb-8">Businesses across UAE choose Max Lead Advertising for their printing needs because we focus on quality, clarity, and long-term value.</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  "Experienced digital printing company",
+                  "Experienced digital printing company in UAE",
                   "Wide range of printing solutions",
                   "Modern printing technology",
                   "Fast turnaround times",
@@ -406,11 +418,13 @@ export default function PrintingServices() {
                   </div>
                 ))}
               </div>
+              <p className="mt-6 text-sm italic text-gray-500">We don’t just print materials — we help businesses communicate better through print.</p>
             </FadeIn>
 
             {/* Right: Industries */}
             <FadeIn delay={200}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">Industries We Serve</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Industries We Serve</h2>
+              <p className="text-gray-600 mb-8">Each industry has different requirements, and we tailor our printing solutions accordingly.</p>
               <div className="flex flex-wrap gap-3">
                 {[
                   "Retail & FMCG",
@@ -420,7 +434,7 @@ export default function PrintingServices() {
                   "Healthcare & Clinics",
                   "Education & Training Institutes",
                 ].map((ind, i) => (
-                  <span key={i} className="px-5 py-3 bg-gray-100 hover:bg-green-600 hover:text-white rounded-full text-gray-700 font-medium transition-all cursor-default shadow-sm hover:shadow-lg hover:-translate-y-1">
+                  <span key={i} className="px-6 py-4 bg-gray-50 hover:bg-green-600 hover:text-white rounded-2xl text-gray-800 font-bold transition-all cursor-default shadow-sm hover:shadow-lg hover:-translate-y-1 border border-gray-100">
                     {ind}
                   </span>
                 ))}
@@ -462,28 +476,27 @@ export default function PrintingServices() {
         </section>
 
         {/* --- CTA SECTION --- */}
-        <section className="py-20 bg-white">
+        <section id="contact" className="py-20 bg-white">
           <FadeIn className="max-w-[1440px] mx-auto px-6">
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden group">
-              <div className="relative z-10 max-w-3xl mx-auto space-y-8">
+              <div className="relative z-10 max-w-4xl mx-auto space-y-8">
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-                  Ready to print?
+                  Get High-Quality Printing Services in Dubai, UAE
                 </h2>
-                <p className="text-xl text-gray-600">
-                  If you are looking for reliable digital printing services in Dubai, UAE,
-                  Max Lead Advertising is ready to support your business.
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  If you are looking for reliable digital printing services in Dubai, UAE, Max Lead Advertising is ready to support your business. As a trusted printing company in Dubai, we deliver quality prints that help your brand stand out and communicate effectively.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <a href="/contact">
                     <button className="px-8 py-4 bg-gradient-to-r from-green-600 to-teal-700 text-white rounded-full font-bold shadow-lg hover:shadow-green-500/30 flex items-center justify-center gap-2 transform hover:-translate-y-1 transition-all hover:scale-105 active:scale-95">
                       <Phone className="w-5 h-5" />
-                      Contact Us Today
+                      Contact us today for a printing consultation
                     </button>
                   </a>
-                  <a href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/+971522286401" target="_blank" rel="noopener noreferrer">
                     <button className="px-8 py-4 bg-white border border-gray-300 text-gray-800 rounded-full font-bold hover:bg-gray-50 flex items-center justify-center gap-2 transition-all hover:border-gray-400 hover:scale-105 active:scale-95">
                       <MessageCircle className="w-5 h-5 text-green-600" />
-                      WhatsApp Quote
+                      WhatsApp us to get a quick quote
                     </button>
                   </a>
                 </div>

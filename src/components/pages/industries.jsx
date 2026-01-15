@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
+import ScrollToTop from "../ScrollToTop";
 
 /* --- ANIMATION COMPONENT --- */
 const FadeIn = ({ children, delay = 0, className = "" }) => {
@@ -114,6 +115,7 @@ export default function Industries() {
 
   return (
     <>
+    <ScrollToTop />
       <Navigation />
 
       <main className="relative overflow-hidden bg-white mt-10">

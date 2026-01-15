@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
 import { 
   ShoppingBag, 
   Utensils, 
@@ -49,7 +50,7 @@ const industries = [
     title: "Education & Institutions",
     description: "Helping schools, universities, training institutes, and driving schools reach parents and students through targeted offline and online campaigns.",
     color: "from-yellow-400 to-orange-500",
-    background: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=500"
+    background: "https://images.pexels.com/photos/8926554/pexels-photo-8926554.jpeg"
   },
   {
     icon: Ticket,
@@ -77,7 +78,7 @@ const industries = [
     title: "Entertainment & Leisure ",
     description: "Promoting amusement parks and theme parks with high-reach campaigns designed to drive footfall and engagement.",
     color: "from-fuchsia-400 to-purple-600",
-    background: "https://images.unsplash.com/photo-1605840275083-b1d8c66699b1?auto=format&fit=crop&q=80&w=500"
+    background: "https://images.pexels.com/photos/167491/pexels-photo-167491.jpeg"
   },
 ];
 
@@ -191,12 +192,11 @@ export default function IndustrySolutions() {
                     </p>
 
                     <Link 
-                      to="/contact" 
-                      // Changed to bg-green-600 and hover:bg-green-500 and shadow-green-900/20
-                      className="block w-full px-6 py-3 rounded-full bg-green-600 text-white text-sm font-bold hover:bg-green-500 transition-colors shadow-lg shadow-green-900/20"
-                    >
-                      Explore Strategy
-                    </Link>
+  to="/contact"  // ✅ Changed to an existing route defined in App.js
+  className="block w-full px-6 py-3 rounded-full bg-green-600 text-white text-sm font-bold hover:bg-green-500 transition-colors shadow-lg shadow-green-900/20"
+>
+  Explore Strategy
+</Link>
                   </div>
                   
                   {/* Decorative faint icon bg */}

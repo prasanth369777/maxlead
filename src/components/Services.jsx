@@ -90,6 +90,21 @@ const services = [
     cta: "Explore Outdoor Advertising Solutions",
     path: "/outdoor" // 2. Add Path
   },
+  {
+   
+    label: "Delivery Services",
+    icon: Printer,
+    gradient: "from-green-400 to-emerald-400",
+    description:
+      "Max Lead Advertising offers reliable gift delivery and corporate delivery services in UAE, helping businesses deliver promotional items, corporate gifts, and marketing materials safely and on time.",
+    features: [
+      "Corporate Gift Delivery",
+      " Promotional Item Delivery",
+      "Office-to-Office Delivery"
+    ],
+    cta: "Explore Delivery Services",
+   
+  },
 ];
 
 export default function Services() {
@@ -98,20 +113,33 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative py-40 min-h-[100vh] bg-gradient-to-b from-white to-gray-100"
+      className="relative py-40 min-h-[110vh] bg-gradient-to-b from-white to-gray-100"
     >
 
       {/* Header */}
       <div className="max-w-screen-xl mx-auto px-4 mb-24 text-center">
         <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-          Our{" "}
+          {" "}
           <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
-            Advertising, Distribution & Marketing Services
+            Your One-Stop Advertising, Distribution & Digital Marketing Company 
           </span>
         </h2>
-        <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-          We offer complete advertising and promotional solutions under one roof.
-          Click on any service to explore detailed solutions.
+        <p className="text-xl text-gray-600 max-w-7xl mx-auto">
+          Max Lead Advertising was built with one clear mission — to help businesses reach real customers, not just impressions.
+We understand that even the best product or service cannot succeed if people don’t know about it. That’s why our solutions focus on visibility, reach, and response. From physical flyer distribution to digital platforms, we create marketing systems that work together.
+As a full-service digital marketing company and digital printing company, we combine strategy, execution, and tracking to help brands grow efficiently.
+
+        </p>
+      </div>
+       <div className="max-w-screen-xl mx-auto px-4 mb-24 text-center">
+        <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          {" "}
+          <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
+            Our Advertising, Distribution & Marketing Services 
+          </span>
+        </h2>
+        <p className="text-xl text-gray-600 max-w-7xl mx-auto">
+      We offer complete advertising and promotional solutions under one roof. Click on any service to explore detailed solutions.
         </p>
       </div>
 

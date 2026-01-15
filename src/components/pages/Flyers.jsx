@@ -11,17 +11,21 @@ import {
   Home,
   Building2,
   Phone,
-  MessageCircle
+  MessageCircle,
+  ShoppingBag,
+  Target,
+  Calendar
 } from "lucide-react";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
+import ScrollToTop from "../ScrollToTop";
 
 /* IMAGES */
 import flyerHero from "../../assests/Flyers/flyerhero.gif";
-import flyerService1 from "../../assests/Flyers/flyerService1.png";
-import flyerService2 from "../../assests/Flyers/flyerService2.png";
-import flyerService3 from "../../assests/Flyers/flyerService3.png";
-import flyerCTA from "../../assests/Flyers/flyerService1.png"; 
+import flyerService1 from "../../assests/Flyers/flyerService1.webp";
+import flyerService2 from "../../assests/Flyers/flyerService2.webp";
+import flyerService3 from "../../assests/Flyers/ddf2.webp";
+import flyerCTA from "../../assests/Flyers/ddf.webp"; 
 
 /* --- ANIMATION COMPONENT --- */
 const FadeIn = ({ children, delay = 0, className = "" }) => {
@@ -58,8 +62,69 @@ export default function FlyerDistribution() {
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
+  /* Service Data Mapping */
+  const services = [
+    {
+      title: "Door-to-Door Distribution",
+      desc: "Our door to door flyer distribution service involves delivering flyers directly to homes in villas, apartments, and residential communities. This method is ideal for businesses targeting local customers, families, and neighborhood audiences. Every distribution is planned area-wise to ensure proper coverage.",
+      icon: Home,
+      img: flyerService1,
+      color: "text-green-600",
+      bg: "bg-green-100"
+    },
+    {
+      title: "Hand-to-Hand Distribution",
+      desc: "Hand-to-hand distribution allows direct interaction with potential customers. Flyers are distributed personally in busy streets, malls, metro stations, and commercial zones. This method works well for promotions, events, and time-sensitive campaigns.",
+      icon: Users,
+      img: flyerService2,
+      color: "text-blue-600",
+      bg: "bg-blue-100"
+    },
+    {
+      title: "Retail and In-Store Distribution",
+      desc: "We place flyers inside supermarkets, retail outlets, shopping malls, and stores where customers are already in a buying mindset. This increases the chances of response and engagement, especially for FMCG brands, restaurants, and service providers.",
+      icon: ShoppingBag,
+      img: flyerService3,
+      color: "text-purple-600",
+      bg: "bg-purple-100"
+    },
+    {
+      title: "Residential Area Distribution",
+      desc: "Residential area distribution focuses on specific communities based on demographics, income groups, and lifestyle. We distribute flyers in apartments, villas, gated communities, and housing societies to ensure precise targeting.",
+      icon: MapPin,
+      img: flyerService1,
+      color: "text-teal-600",
+      bg: "bg-teal-100"
+    },
+    {
+      title: "Commercial Area Distribution",
+      desc: "For B2B and service-based businesses, commercial area distribution is highly effective. Flyers are distributed in offices, business centers, and corporate locations across Dubai and UAE.",
+      icon: Building2,
+      img: flyerService3,
+      color: "text-indigo-600",
+      bg: "bg-indigo-100"
+    },
+    {
+      title: "Targeted Area Distribution",
+      desc: "Targeted flyer distribution helps businesses reach customers based on location, area type, and audience behavior. This approach improves conversion and avoids unnecessary distribution in irrelevant zones.",
+      icon: Target,
+      img: flyerService2,
+      color: "text-red-600",
+      bg: "bg-red-100"
+    },
+    {
+      title: "Event / Promotion Distribution",
+      desc: "We support exhibitions, events, roadshows, and promotional campaigns with on-ground flyer distribution. This service is ideal for increasing footfall and immediate visibility during events.",
+      icon: Calendar,
+      img: flyerService3,
+      color: "text-orange-600",
+      bg: "bg-orange-100"
+    }
+  ];
+
   return (
     <>
+    <ScrollToTop />
       <Navigation />
 
       <section className="relative pt-32 pb-20 bg-gradient-to-b from-[#f0fdf4] via-white to-[#f0fdf4] overflow-hidden">
@@ -85,41 +150,25 @@ export default function FlyerDistribution() {
                 </div>
 
                 <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
-                  Flyer Distribution Services in{" "}
+                  Flyer Distribution Services in <br />
                   <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
                     Dubai, UAE
                   </span>
                 </h1>
 
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  In a competitive market like the UAE, visibility plays a major role in business growth. 
-                  At <strong>Max Lead Advertising</strong>, we provide professional flyer distribution services designed to help businesses connect directly with their target audience.
-                </p>
+                <div className="text-lg text-gray-600 leading-relaxed space-y-4">
+                  <p>
+                    In a competitive market like the UAE, visibility plays a major role in business growth. At Max Lead Advertising, we provide professional flyer distribution services in Dubai, UAE that help businesses connect directly with their target audience. From residential communities to commercial hubs, our structured and strategic distribution approach ensures your message reaches the right people at the right location.
+                  </p>
+                  <p>
+                   
+As one of the trusted flyer distribution companies in Dubai UAE, we specialize in door to door flyer distribution, leaflet distribution, and targeted offline marketing campaigns designed to create real awareness and response.
 
-                {/* Trusted Avatar Snippet */}
-                <div className="flex items-center justify-center lg:justify-start gap-4 pt-4 opacity-90">
-                  <div className="flex -space-x-4">
-                    {[
-                      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64",
-                      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64",
-                      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=64&h=64",
-                      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64",
-                    ].map((src, i) => (
-                      <img
-                        key={i}
-                        src={src}
-                        alt={`Trusted Client ${i + 1}`}
-                        className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm ring-1 ring-gray-200"
-                      />
-                    ))}
-                  </div>
-                  <div className="text-sm font-medium text-gray-600">
-                    Trusted by <span className="text-gray-900 font-bold block sm:inline">500+ Businesses</span> in UAE
-                  </div>
+                  </p>
                 </div>
 
                 <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-                  <button className="px-8 py-3.5 rounded-full bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold shadow-lg hover:shadow-green-500/30 transition transform hover:-translate-y-1">
+                  <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="px-8 py-3.5 rounded-full bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold shadow-lg hover:shadow-green-500/30 transition transform hover:-translate-y-1">
                     Get a Quote
                   </button>
                   <button className="px-8 py-3.5 rounded-full bg-white border border-gray-200 text-gray-700 font-bold shadow-sm hover:bg-gray-50 transition">
@@ -141,133 +190,85 @@ export default function FlyerDistribution() {
             </FadeIn>
           </div>
 
-          {/* 2. ABOUT / INTRO SECTION */}
+        {/* 2. ABOUT / INTRO SECTION (Existing Code) */}
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <FadeIn>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-                  Professional Door to Door Flyer Distribution in Dubai
-                </h2>
-                <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
-                    <p>
-                    Flyer distribution remains one of the most effective offline marketing methods when executed correctly. Unlike digital ads that can be skipped, physical flyers are tangible and memorable.
-                    </p>
-                    <p>
-                    As one of the trusted flyer distribution companies in Dubai UAE, we specialize in door to door leaflet distribution and targeted campaigns.
-                    </p>
-                </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+                Professional Door to Door Flyer Distribution in Dubai, UAE
+              </h2>
+              <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
+                <p>
+                  Flyer distribution remains one of the most effective offline marketing methods when executed correctly. Unlike digital ads that can be skipped or ignored, physical flyers are tangible, visible, and memorable. Our door to door leaflet distribution services are designed to maximize reach while maintaining accuracy and compliance.
+                </p>
+                <p>
+                  Whether you are a small business or an established brand, our flyer distribution solutions are customized to your goals and audience.
+                </p>
+              </div>
             </FadeIn>
 
             <FadeIn delay={200}>
-                <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
-                    <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                        <span className="bg-green-100 p-2 rounded-lg"><Layers className="w-5 h-5 text-green-600"/></span>
-                        We help businesses promote:
-                    </h3>
-                    <ul className="grid grid-cols-1 gap-3">
-                        {[
-                        "New product launches",
-                        "Store openings & Retail offers",
-                        "Events and exhibitions",
-                        "Brand awareness campaigns",
-                        "Real Estate & Healthcare promotions"
-                        ].map((item, idx) => (
-                        <li key={idx} className="flex items-center gap-3 text-gray-700">
-                            <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                            {item}
-                        </li>
-                        ))}
-                    </ul>
-                </div>
+              <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <span className="bg-green-100 p-2 rounded-lg"><Layers className="w-5 h-5 text-green-600"/></span>
+                  We help businesses promote:
+                </h3>
+                <ul className="grid grid-cols-1 gap-3">
+                  {[
+                    "New product launches",
+                    "Store openings",
+                    "Offers and discounts",
+                    "Events and exhibitions",
+                    "Brand awareness campaigns"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-3 text-gray-700">
+                      <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </FadeIn>
           </div>
 
+          {/* --- NEW BOTTOM IMAGE SECTION --- */}
+          <FadeIn delay={400}>
+            <div className="mt-16 relative w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-gray-100 group">
+              <img 
+                src={flyerService3} 
+                alt="Door to Door Distribution Service" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Subtle Overlay for better depth */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+            </div>
+          </FadeIn>
+
           {/* 3. SERVICES SECTION */}
           <div className="space-y-12">
-            <div className="text-center max-w-3xl mx-auto space-y-4">
-               <h2 className="text-3xl md:text-5xl font-bold text-gray-900">Our Distribution Services</h2>
-               <p className="text-lg text-gray-600">We offer a complete range of flyer and leaflet distribution solutions across Dubai and UAE, planned carefully to ensure coverage and targeting.</p>
+            <div className="text-center max-w-4xl mx-auto space-y-4">
+               <h2 className="text-3xl md:text-5xl font-bold text-gray-900">Our Flyer Distribution Services</h2>
+               <p className="text-lg text-gray-600">
+                 At Max Lead Advertising, we offer a complete range of flyer and leaflet distribution solutions across Dubai and UAE. Each service is planned carefully to ensure coverage, targeting, and effectiveness.
+               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-                {/* Service 1 */}
-                <FadeIn delay={100}>
-                    <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col">
-                        <div className="h-48 overflow-hidden">
-                            <img src={flyerService1} alt="Door to Door" className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                        </div>
-                        <div className="p-8 flex-1 flex flex-col">
-                            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6 text-green-600">
-                                <Home className="w-6 h-6" />
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {services.map((service, index) => (
+                    <FadeIn key={index} delay={index * 100}>
+                        <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col">
+                            <div className="h-48 overflow-hidden">
+                                <img src={service.img} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                             </div>
-                            <h3 className="text-2xl font-bold mb-3">Door-to-Door</h3>
-                            <p className="text-gray-600 flex-1">Our door to door flyer distribution service involves delivering flyers directly to homes in villas, apartments, and residential communities. This method is ideal for businesses targeting local customers, families, and neighborhood audiences. Every distribution is planned area-wise to ensure proper coverage..</p>
-                        </div>
-                    </div>
-                </FadeIn>
-
-                {/* Service 2 */}
-                <FadeIn delay={200}>
-                    <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col">
-                        <div className="h-48 overflow-hidden">
-                            <img src={flyerService2} alt="Hand to Hand" className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                        </div>
-                        <div className="p-8 flex-1 flex flex-col">
-                            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6 text-blue-600">
-                                <Users className="w-6 h-6" />
+                            <div className="p-8 flex-1 flex flex-col">
+                                <div className={`w-12 h-12 ${service.bg} rounded-xl flex items-center justify-center mb-6 ${service.color}`}>
+                                    <service.icon className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+                                <p className="text-gray-600 flex-1">{service.desc}</p>
                             </div>
-                            <h3 className="text-2xl font-bold mb-3">Hand-to-Hand</h3>
-                            <p className="text-gray-600 flex-1">Hand-to-hand distribution allows direct interaction with potential customers. Flyers are distributed personally in busy streets, malls, metro stations, and commercial zones. This method works well for promotions, events, and time-sensitive campaigns.</p>
                         </div>
-                    </div>
-                </FadeIn>
-
-                {/* Service 3 */}
-                <FadeIn delay={300}>
-                    <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col">
-                        <div className="h-48 overflow-hidden">
-                            <img src={flyerService3} alt="Commercial Distribution" className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                        </div>
-                        <div className="p-8 flex-1 flex flex-col">
-                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6 text-purple-600">
-                                <Building2 className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-2xl font-bold mb-3">Retail and In-Store Distribution</h3>
-                            <p className="text-gray-600 flex-1">We place flyers inside supermarkets, retail outlets, shopping malls, and stores where customers are already in a buying mindset. This increases the chances of response and engagement, especially for FMCG brands, restaurants, and service providers.</p>
-                        </div>
-                    </div>
-                </FadeIn>
-                
-                {/* Service 4*/}
-                <FadeIn delay={300}>
-                    <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col">
-                        <div className="h-48 overflow-hidden">
-                            <img src={flyerService3} alt="Commercial Distribution" className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                        </div>
-                        <div className="p-8 flex-1 flex flex-col">
-                            <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-6 text-teal-600">
-                                <Building2 className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-2xl font-bold mb-3">Residential Area Distribution</h3>
-                            <p className="text-gray-600 flex-1">Residential area distribution focuses on specific communities based on demographics, income groups, and lifestyle. We distribute flyers in apartments, villas, gated communities, and housing societies to ensure precise targeting.</p>
-                        </div>
-                    </div>
-                </FadeIn>
-
-                {/* Service 5*/}
-                <FadeIn delay={300}>
-                    <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col">
-                        <div className="h-48 overflow-hidden">
-                            <img src={flyerService3} alt="Commercial Distribution" className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                        </div>
-                        <div className="p-8 flex-1 flex flex-col">
-                            <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-6 text-indigo-600">
-                                <Building2 className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-2xl font-bold mb-3">Commercial Area Distribution</h3>
-                            <p className="text-gray-600 flex-1">For B2B and service-based businesses, commercial area distribution is highly effective. Flyers are distributed in offices, business centers, and corporate locations across Dubai and UAE.</p>
-                        </div>
-                    </div>
-                </FadeIn>
+                    </FadeIn>
+                ))}
             </div>
           </div>
 
@@ -279,16 +280,17 @@ export default function FlyerDistribution() {
 
              <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
                 <FadeIn>
-                    <h2 className="text-3xl md:text-5xl font-bold mb-6">Why Flyer Distribution Still Works in UAE</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold mb-6">Why Flyer Distribution Still Works in Dubai, UAE</h2>
                     <p className="text-gray-300 text-lg mb-8">
-                        Despite the digital boom, the UAE's high residential density and strong retail culture make physical marketing impactful. It offers direct touch-points that screens cannot match.
+                        Despite the growth of digital platforms, flyer distribution in Dubai continues to deliver strong results. The UAE’s diverse population, high residential density, and strong retail culture make physical marketing highly impactful.
                     </p>
+                    <h4 className="text-xl font-bold mb-4 text-green-400">Flyer distribution works because:</h4>
                     <ul className="space-y-4">
                         {[
-                            "Tangible & Visible: Hard to ignore compared to digital ads.",
-                            "Cost-Effective: Lower CPM compared to mass media.",
-                            "Hyper-Local: Target specific neighborhoods precisely.",
-                            "High Recall: Physical interaction improves memory."
+                            "Flyers are visible and tangible",
+                            "Customers can read at their convenience",
+                            "It creates local brand familiarity",
+                            "It is cost-effective compared to mass media"
                         ].map((item, i) =>(
                             <li key={i} className="flex items-center gap-3">
                                 <span className="bg-green-500/20 p-1 rounded-full"><CheckCircle className="w-5 h-5 text-green-400"/></span>
@@ -297,39 +299,50 @@ export default function FlyerDistribution() {
                         ))}
                     </ul>
                 </FadeIn>
-                <FadeIn delay={200} className="grid grid-cols-2 gap-4">
-                    {[
-                        { label: "Direct Reach", icon: MapPin },
-                        { label: "Audience Targeting", icon: Users },
-                        { label: "High Visibility", icon: Megaphone },
-                        { label: "Quick Launch", icon: Clock },
-                    ].map((stat, i) => (
-                        <div key={i} className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/20 transition">
-                            <stat.icon className="w-8 h-8 text-green-400 mb-3" />
-                            <h4 className="font-bold text-lg">{stat.label}</h4>
+                
+                {/* BENEFITS SECTION INTEGRATED */}
+                <FadeIn delay={200}>
+                    <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/10">
+                        <h3 className="text-2xl font-bold mb-6 text-white">Benefits of Our Services</h3>
+                        <p className="text-gray-300 mb-6">Choosing the right flyer distribution company is essential for campaign success. Our services offer:</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                             {[
+                                "Direct reach to potential customers",
+                                "Area-specific and audience-based targeting",
+                                "High brand recall and visibility",
+                                "Suitable for all types of businesses",
+                                "Cost-effective offline advertising",
+                                "Supports quick promotions and launches"
+                             ].map((benefit, i) => (
+                                <div key={i} className="flex items-start gap-3">
+                                    <div className="mt-1"><Clock className="w-4 h-4 text-green-400" /></div>
+                                    <span className="text-sm font-medium text-gray-200">{benefit}</span>
+                                </div>
+                             ))}
                         </div>
-                    ))}
+                    </div>
                 </FadeIn>
              </div>
           </div>
 
           {/* 5. PROCESS SECTION */}
           <div className="space-y-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-center">Our Distribution Process</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center">Our Door-to-Door Flyer Distribution Process</h2>
+            <p className="text-center text-gray-600 max-w-2xl mx-auto">We follow a structured process to deliver consistent and reliable results:</p>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                 {[
-                    { title: "Goal Setting", icon: ShieldCheck, desc: "Discuss goals & target audience." },
-                    { title: "Planning", icon: MapPin, desc: "Identify suitable residential/commercial areas." },
-                    { title: "Strategy", icon: Layers, desc: "Select door-to-door or hand-to-hand." },
-                    { title: "Execution", icon: Users, desc: "Trained team executes the campaign." },
-                    { title: "Reporting", icon: BarChart, desc: "Track progress and transparency." },
+                    { title: "Understanding Your Objective", icon: ShieldCheck, desc: "We discuss your campaign goals, target audience, and expected outcome." },
+                    { title: "Area & Audience Planning", icon: MapPin, desc: "Based on your objective, we identify suitable residential, commercial, or targeted areas." },
+                    { title: "Distribution Strategy", icon: Layers, desc: "We select the right distribution method — door to door, hand to hand, retail, or event-based." },
+                    { title: "Execution", icon: Users, desc: "Our trained distribution team executes the campaign according to the plan." },
+                    { title: "Monitoring & Reporting", icon: BarChart, desc: "We track the distribution process and provide transparency wherever applicable." },
                 ].map((step, i) => (
                     <FadeIn key={i} delay={i * 100}>
                         <div className="flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition h-full">
                             <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center text-white font-bold text-xl mb-4 shadow-green-200 shadow-lg">
                                 {i + 1}
                             </div>
-                            <h4 className="font-bold text-lg mb-2">{step.title}</h4>
+                            <h4 className="font-bold text-lg mb-2 leading-tight">{step.title}</h4>
                             <p className="text-sm text-gray-500">{step.desc}</p>
                         </div>
                     </FadeIn>
@@ -339,33 +352,41 @@ export default function FlyerDistribution() {
 
            {/* 6. WHY CHOOSE US & AREAS */}
            <div className="grid md:grid-cols-2 gap-12 bg-green-50 rounded-3xl p-10 border border-green-100">
-                <div>
-                    <h3 className="text-2xl font-bold mb-6">Why Choose Max Lead?</h3>
-                    <ul className="space-y-4">
-                        {[
-                            "Experienced advertising & distribution company",
-                            "Trained and supervised distribution teams",
-                            "Transparent and ethical practices",
-                            "Integrated offline & online support"
-                        ].map((point, i) => (
-                            <li key={i} className="flex items-start gap-3 bg-white p-3 rounded-lg shadow-sm">
-                                <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
-                                <span className="text-gray-700 font-medium">{point}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                <div>
-                    <h3 className="text-2xl font-bold mb-6">Areas We Cover</h3>
-                    <p className="mb-4 text-gray-600">Our flyer and leaflet distribution services are available across major locations in UAE.</p>
-                    <div className="flex flex-wrap gap-2">
-                        {["Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Ras Al Khaimah", "Fujairah", "Umm Al Quwain"].map((city) => (
-                            <span key={city} className="px-4 py-2 bg-white text-gray-800 font-semibold rounded-full border border-gray-200 shadow-sm">
-                                {city}
-                            </span>
-                        ))}
-                    </div>
-                </div>
+               <div>
+                   <h3 className="text-2xl font-bold mb-6">Why Choose Max Lead Advertising?</h3>
+                   <p className="mb-6 text-gray-600">As an experienced flyer distribution company in Dubai UAE, Max Lead Advertising stands out for its professionalism, planning, and execution.</p>
+                   <ul className="space-y-4">
+                       {[
+                           "Experienced advertising and distribution company",
+                           "UAE-wide coverage",
+                           "Trained and supervised distribution teams",
+                           "Transparent and ethical practices",
+                           "Customized campaign planning",
+                           "Integrated offline and online marketing support"
+                       ].map((point, i) => (
+                           <li key={i} className="flex items-start gap-3 bg-white p-3 rounded-lg shadow-sm">
+                               <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
+                               <span className="text-gray-700 font-medium">{point}</span>
+                           </li>
+                       ))}
+                   </ul>
+                   <p className="mt-6 text-sm italic text-gray-500">We don’t believe in simply distributing flyers. We focus on delivering campaigns that align with business objectives.</p>
+               </div>
+               <div className="flex flex-col justify-center">
+                   <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 h-full">
+                        <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                             <MapPin className="text-green-600"/> Areas We Cover Across UAE
+                        </h3>
+                        <p className="mb-6 text-gray-600">Our flyer and leaflet distribution services are available across major locations in UAE. Whether you want local distribution or wider coverage, we can plan accordingly.</p>
+                        <div className="flex flex-wrap gap-3">
+                            {["Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Other Emirates"].map((city) => (
+                                <span key={city} className="px-5 py-3 bg-gray-50 text-gray-800 font-semibold rounded-xl border border-gray-200 shadow-sm hover:border-green-400 hover:bg-green-50 transition cursor-default">
+                                    {city}
+                                </span>
+                            ))}
+                        </div>
+                   </div>
+               </div>
            </div>
 
 
@@ -387,6 +408,10 @@ export default function FlyerDistribution() {
                   a: "Retail stores, restaurants, real estate, clinics, events, education institutes, and service providers benefit greatly from flyer distribution.",
                 },
                 {
+                  q: "How do you choose distribution areas?",
+                  a: "Areas are selected based on your target audience, business type, and campaign objective.",
+                },
+                {
                   q: "Do you offer targeted flyer distribution?",
                   a: "Yes, we provide targeted area distribution based on location, audience type, and campaign goals.",
                 },
@@ -405,7 +430,7 @@ export default function FlyerDistribution() {
 
           {/* 8. CTA SECTION */}
           <FadeIn>
-            <div className="relative rounded-[2.5rem] overflow-hidden bg-gray-900 text-white text-center p-12 md:p-24">
+            <div id="contact" className="relative rounded-[2.5rem] overflow-hidden bg-gray-900 text-white text-center p-12 md:p-24">
               
               <div className="absolute inset-0 opacity-40">
                 <img
@@ -416,14 +441,13 @@ export default function FlyerDistribution() {
                 <div className="absolute inset-0 bg-black/60"></div>
               </div>
 
-              <div className="relative z-10 max-w-2xl mx-auto space-y-8">
+              <div className="relative z-10 max-w-3xl mx-auto space-y-8">
                 <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-                  Start Your Flyer Distribution Campaign Today
+                  Start Your Flyer Distribution Campaign in Dubai Today
                 </h2>
 
                 <p className="text-lg text-gray-300">
-                  If you are looking for reliable flyer distribution services in Dubai, UAE,
-                  Max Lead Advertising is here to help. Reach the right audience with precision.
+                  If you are looking for reliable flyer distribution services in Dubai, UAE, Max Lead Advertising is here to help. As a trusted flyer distribution company in Dubai UAE, we ensure your brand message reaches the right audience with precision and professionalism.
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -432,19 +456,19 @@ export default function FlyerDistribution() {
                   <a href="/contact">
                     <button className="px-8 py-4 rounded-full bg-gradient-to-r from-green-600 to-teal-700 text-white font-bold text-lg hover:shadow-lg hover:shadow-green-500/40 transition flex items-center justify-center gap-2">
                       <Phone className="w-5 h-5" />
-                      Contact Us Free
+                      Contact us today
                     </button>
                   </a>
 
                   {/* WHATSAPP */}
                   <a
-                    href="https://wa.me/971XXXXXXXXX"
+                    href="https://wa.me/+971522286401"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <button className="px-8 py-4 rounded-full bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition flex items-center justify-center gap-2">
                       <MessageCircle className="w-5 h-5 text-green-600" />
-                      WhatsApp Quote
+                      WhatsApp us
                     </button>
                   </a>
 

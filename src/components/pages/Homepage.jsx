@@ -12,11 +12,15 @@ import Contact from '../Contact';
 import Footer from '../Footer';
 import Whatsapp from '../pages/whatsapp';
 import WhyChooseUs from '../whyus';
+import ScrollToTop from "../ScrollToTop";
+import Clientlogo from "../pages/clientlogo";
 export default function Home() {
   return (
     <div className="bg-slate-900 text-white">
+      <ScrollToTop />
       <Navigation />
       <Hero />
+      <Clientlogo />
       <Whatsapp />
       <Services />
       <About />
