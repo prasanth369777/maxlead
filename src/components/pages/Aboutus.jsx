@@ -5,13 +5,13 @@ import Tilt from "react-parallax-tilt";
 import Lenis from "@studio-freight/lenis";
 import ScrollToTop from "../ScrollToTop";
 import {
-  Users,
+
   Target,
-  Zap,
+
   Award,
   Lightbulb,
   MonitorSmartphone,
-  Code,
+
   Rocket,
   TrendingUp,
   MapPin,

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+
 
 /* --- IMPORT LOGOS --- */
 import alkLogo from "../../assests/clientlogo/alk logo_converted.webp";
