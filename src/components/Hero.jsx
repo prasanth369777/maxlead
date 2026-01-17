@@ -165,7 +165,7 @@ export default function Hero() {
 
       </div>
 
-      {/* =========================================
+     {/* =========================================
           BOTTOM INFINITE CAROUSEL 
       ========================================== */}
       <div className="relative z-20 mt-16 lg:mt-24 border-t border-white/50 bg-white/40 backdrop-blur-md py-8">
@@ -174,13 +174,25 @@ export default function Hero() {
            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white/80 to-transparent z-10" />
            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white/80 to-transparent z-10" />
 
-          <div className="flex animate-infinite-scroll gap-20 px-4">
+          {/* Scrolling Container */}
+          <div className="flex animate-infinite-scroll gap-20 px-4 w-max">
+            
+            {/* 1. ORIGINAL SET */}
             {carouselItems.map((item, index) => (
-              <div key={index} className="flex items-center gap-3 text-gray-600 group shrink-0 hover:text-green-700 transition-colors cursor-default">
+              <div key={`original-${index}`} className="flex items-center gap-3 text-gray-600 group shrink-0 hover:text-green-700 transition-colors cursor-default">
                 <item.icon className="w-6 h-6 group-hover:scale-110 transition-transform text-green-600/80 group-hover:text-green-600" />
                 <span className="text-lg font-bold tracking-tight">{item.name}</span>
               </div>
             ))}
+
+            {/* 2. DUPLICATE SET (Required for seamless loop) */}
+            {carouselItems.map((item, index) => (
+              <div key={`duplicate-${index}`} className="flex items-center gap-3 text-gray-600 group shrink-0 hover:text-green-700 transition-colors cursor-default">
+                <item.icon className="w-6 h-6 group-hover:scale-110 transition-transform text-green-600/80 group-hover:text-green-600" />
+                <span className="text-lg font-bold tracking-tight">{item.name}</span>
+              </div>
+            ))}
+
           </div>
         </div>
       </div>

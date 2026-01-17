@@ -1,4 +1,4 @@
-
+import { useEffect, useState } from "react";
 
 /* --- IMPORT LOGOS --- */
 import alkLogo from "../../assests/clientlogo/alk logo_converted.webp";
@@ -53,11 +53,12 @@ export default function ClientLogos() {
         <div className="flex animate-infinite-scroll w-max">
           
           {/* 1. Original Set */}
-          <div className="flex items-center gap-12 px-6">
+          <div className="flex items-center gap-16 px-8">
             {logos.map((logo, index) => (
               <div 
                 key={`logo-1-${index}`} 
-                className="w-32 h-20 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                // Removed grayscale/opacity. Added scale on hover.
+                className="w-32 h-24 flex items-center justify-center transition-transform duration-300 hover:scale-110"
               >
                 <img 
                   src={logo.src} 
@@ -69,11 +70,12 @@ export default function ClientLogos() {
           </div>
 
           {/* 2. Duplicate Set (for seamless loop) */}
-          <div className="flex items-center gap-12 px-6">
+          <div className="flex items-center gap-16 px-8">
             {logos.map((logo, index) => (
               <div 
                 key={`logo-2-${index}`} 
-                className="w-32 h-20 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                // Removed grayscale/opacity. Added scale on hover.
+                className="w-32 h-24 flex items-center justify-center transition-transform duration-300 hover:scale-110"
               >
                 <img 
                   src={logo.src} 
@@ -94,7 +96,7 @@ export default function ClientLogos() {
           100% { transform: translateX(-50%); }
         }
         .animate-infinite-scroll {
-          animation: scroll 30s linear infinite;
+          animation: scroll 40s linear infinite;
         }
         /* Pause animation on hover if desired */
         .animate-infinite-scroll:hover {

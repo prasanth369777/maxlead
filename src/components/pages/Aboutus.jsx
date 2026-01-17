@@ -275,46 +275,59 @@ export default function Aboutus() {
              </div>
           </div>
 
-          {/* ==================== 
+         {/* ==================== 
               6. STRATEGIC APPROACH 
              ==================== */}
-          <div className="mb-24 flex flex-col lg:flex-row gap-20 items-center">
-             <div className="lg:w-1/2">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Our Strategic Marketing Approach</h2>
-                <p className="text-gray-600 text-xl mb-10">
+          <div className="mb-16 lg:mb-24 flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+             
+             {/* Left Text Content */}
+             <div className="lg:w-1/2 w-full">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 md:mb-8 text-center lg:text-left">
+                   Our Strategic Marketing Approach
+                </h2>
+                <p className="text-gray-600 text-lg md:text-xl mb-8 md:mb-10 text-center lg:text-left">
                    Most advertising companies simply deliver what the client asks for. We go one step further.
                 </p>
-                <div className="space-y-8">
-                   <div className="bg-white border-l-8 border-green-500 pl-8 py-4 shadow-sm">
-                      <h4 className="text-xl font-bold text-gray-900 mb-2">Before We Start</h4>
-                      <p className="text-gray-600 text-lg">We focus on your target audience, business location, competition, budget, and marketing goal. This ensures every campaign is designed to bring real results.</p>
+                
+                <div className="space-y-6 md:space-y-8">
+                   <div className="bg-white border-l-8 border-green-500 pl-6 md:pl-8 py-4 shadow-sm rounded-r-xl">
+                      <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-2">Before We Start</h4>
+                      <p className="text-gray-600 text-base md:text-lg">
+                         We focus on your target audience, business location, competition, budget, and marketing goal. This ensures every campaign is designed to bring real results.
+                      </p>
                    </div>
-                   <div className="bg-white border-l-8 border-gray-800 pl-8 py-4 shadow-sm">
-                      <h4 className="text-xl font-bold text-gray-900 mb-2">Data-Driven Execution</h4>
-                      <p className="text-gray-600 text-lg">We use data, experience, and local market knowledge to decide where to distribute, who to target, what message to use, and how often your brand should be seen.</p>
+                   <div className="bg-white border-l-8 border-gray-800 pl-6 md:pl-8 py-4 shadow-sm rounded-r-xl">
+                      <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-2">Data-Driven Execution</h4>
+                      <p className="text-gray-600 text-base md:text-lg">
+                         We use data, experience, and local market knowledge to decide where to distribute, who to target, what message to use, and how often your brand should be seen.
+                      </p>
                    </div>
                 </div>
-                <p className="mt-10 font-bold text-green-700 text-lg">
+
+                <p className="mt-8 md:mt-10 font-bold text-green-700 text-lg text-center lg:text-left">
                    This approach is what separates Max Lead from ordinary flyer distribution or printing companies.
                 </p>
              </div>
+
+             {/* Right Stats Display */}
              <div className="lg:w-1/2 w-full">
-                {/* Stats Display */}
-                <div className="bg-gray-900 rounded-[3rem] p-12 text-white relative overflow-hidden w-full">
-                   <div className="absolute top-0 right-0 w-80 h-80 bg-green-500/20 rounded-full blur-[80px]"></div>
-                   <div className="grid grid-cols-2 gap-10 relative z-10">
+                <div className="bg-gray-900 rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 text-white relative overflow-hidden w-full shadow-2xl">
+                   {/* Background Glow */}
+                   <div className="absolute top-0 right-0 w-60 h-60 md:w-80 md:h-80 bg-green-500/20 rounded-full blur-[60px] md:blur-[80px]"></div>
+                   
+                   {/* Grid */}
+                   <div className="grid grid-cols-2 gap-6 md:gap-10 relative z-10">
                       {stats.map((stat, i) => (
-                         <div key={i} className="text-center p-6 bg-white/5 rounded-2xl backdrop-blur-sm">
-                            <stat.icon className="w-10 h-10 text-green-400 mx-auto mb-4" />
-                            <div className="text-4xl lg:text-5xl font-bold mb-2">{stat.value}</div>
-                            <div className="text-sm text-gray-400 uppercase tracking-widest">{stat.label}</div>
+                         <div key={i} className="text-center p-4 md:p-6 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/5 hover:bg-white/10 transition-colors">
+                            <stat.icon className="w-8 h-8 md:w-10 md:h-10 text-green-400 mx-auto mb-3 md:mb-4" />
+                            <div className="text-3xl md:text-4xl lg:text-5xl font-bold mb-1 md:mb-2">{stat.value}</div>
+                            <div className="text-xs md:text-sm text-gray-400 uppercase tracking-widest">{stat.label}</div>
                          </div>
                       ))}
                    </div>
                 </div>
              </div>
-          </div>
-
+          </div>  
           {/* ==================== 
               7. WHY CHOOSE US 
              ==================== */}
