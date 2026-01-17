@@ -21,7 +21,6 @@ import {
 } from "lucide-react";
 
 /* --- IMPORTED IMAGES --- */
-// Replace these with your actual image paths
 import image1 from "../../assests/Flyers/flyerService2.webp";
 import image2 from "../../assests/printing/printingService2.webp";
 import image3 from "../../assests/digitalmarketing/dm1.webp";
@@ -81,7 +80,6 @@ export default function Aboutus() {
           }}
         />
 
-        {/* UPDATED: Increased container width to max-w-screen-2xl */}
         <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12">
           
           {/* ==================== 
@@ -98,7 +96,6 @@ export default function Aboutus() {
               </span>
             </h1>
             
-            {/* UPDATED: Increased text width to max-w-6xl */}
             <p className="text-lg md:text-xl text-gray-600 max-w-6xl mx-auto leading-relaxed text-justify md:text-center">
               Max Lead Advertising is a trusted advertising and distribution company in UAE that helps businesses connect with the right audience through powerful offline and online marketing. From door-to-door flyer distribution and digital printing to SMS marketing and digital marketing services, we provide everything businesses need to increase visibility, generate leads, and grow revenue.
               <br /><br />
@@ -107,14 +104,15 @@ export default function Aboutus() {
           </div>
 
           {/* ==================== 
-              1.5 NEW IMAGE GALLERY SECTION 
+              1.5 IMAGE GALLERY SECTION 
              ==================== */}
           <div className="mb-24 grid grid-cols-2 md:grid-cols-4 gap-4 h-64 md:h-80">
              {[image1, image2, image3, image4].map((img, idx) => (
                 <div key={idx} className={`relative overflow-hidden rounded-3xl shadow-lg group h-full ${idx % 2 !== 0 ? 'mt-8' : ''}`}>
                    <img 
                      src={img} 
-                     alt={`Gallery Image ${idx + 1}`} 
+                     // FIXED: Removed words like "Image" to satisfy linter
+                     alt={`Max Lead Advertising Service ${idx + 1}`} 
                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                    />
                    <div className="absolute inset-0 bg-green-900/20 group-hover:bg-transparent transition-colors duration-300"></div>
@@ -149,7 +147,6 @@ export default function Aboutus() {
                </div>
             </div>
             <div className="xl:w-1/2 relative w-full">
-               {/* Visual Representation (Abstract) */}
                <div className="grid grid-cols-2 gap-6">
                   <div className="bg-gray-900 text-white p-10 rounded-[2rem] h-80 flex flex-col justify-between hover:scale-[1.02] transition-transform">
                      <Megaphone className="w-12 h-12 text-green-400" />
@@ -196,7 +193,6 @@ export default function Aboutus() {
               4. OUR JOURNEY 
              ==================== */}
           <div className="mb-24 bg-green-50/50 p-10 md:p-16 rounded-[3rem] border border-green-100">
-             {/* Increased inner width for Journey section */}
              <div className="max-w-6xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10 text-center">Our Journey</h2>
                 <div className="space-y-8 text-gray-700 text-lg md:text-xl leading-relaxed text-justify">
