@@ -21,6 +21,7 @@ import {
 import Navigation from "../Navigation";
 import Footer from "../Footer";
 import ScrollToTop from "../ScrollToTop";
+import Whatsapp from '../pages/whatsapp';
 
 /* IMAGES - Replace with your actual assets */
 import outdoorHero from "../../assests/Outdoorads/od1.webp"; // Placeholder
@@ -57,6 +58,7 @@ export default function OutdoorAds() {
   
   return (
     <>
+     <Whatsapp />
     <ScrollToTop />
       <Navigation />
 

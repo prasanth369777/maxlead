@@ -5,6 +5,7 @@ import Footer from "../Footer";
 import { ArrowUpRight, Clock, User, Sparkles, TrendingUp } from "lucide-react";
 import Lenis from "@studio-freight/lenis";
 import ScrollToTop from "../ScrollToTop";
+import Whatsapp from '../pages/whatsapp';
 
 /* --- DATA --- */
 const blogs = [
@@ -83,6 +84,7 @@ const FadeIn = ({ children, delay = 0, className = "" }) => {
     });
     if (domRef.current) observer.observe(domRef.current);
     return () => observer.disconnect();
+    
   }, []);
 
   return (
@@ -111,25 +113,28 @@ export default function BlogSectionModern() {
 
   return (
     <>
-     <ScrollToTop />
+      <Whatsapp />
+      <ScrollToTop />
       <Navigation />
 
-      <main className="bg-gray-50 min-h-screen">
+      <main className="bg-gray-50 min-h-screen py-10">
         
         {/* --- HEADER SECTION --- */}
         <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-white">
-            {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-100/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-50/50 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3" />
+            {/* Background Decor - Changed to green/emerald */}
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-green-100/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-50/50 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3" />
 
             <div className="max-w-7xl mx-auto relative z-10 text-center">
                 <FadeIn>
-                    <div className="inline-flex items-center gap-2 bg-orange-50 border border-orange-100 text-orange-600 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+                    {/* Badge - Changed to green */}
+                    <div className="inline-flex items-center gap-2 bg-green-50 border border-green-100 text-green-600 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
                         <Sparkles className="w-4 h-4" />
                         <span>The MaxLead Journal</span>
                     </div>
                     <h1 className="text-5xl md:text-7xl font-bold text-gray-900 tracking-tight mb-6">
-                        Insights for <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">Growth</span>
+                        {/* Gradient Text - Changed to green gradient */}
+                        Insights for <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500">Growth</span>
                     </h1>
                     <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
                         Expert strategies on marketing, flyer distribution, and digital transformation to scale your business.
@@ -162,10 +167,12 @@ export default function BlogSectionModern() {
                         </div>
                         
                         <div className="p-8 md:p-12 flex flex-col justify-center relative">
-                            <div className="flex items-center gap-2 text-sm font-medium text-orange-500 mb-4">
+                            {/* Featured Label - Changed to green */}
+                            <div className="flex items-center gap-2 text-sm font-medium text-green-500 mb-4">
                                 <Sparkles className="w-4 h-4" /> Featured Story
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight group-hover:text-orange-600 transition-colors">
+                            {/* Title Hover - Changed to green */}
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight group-hover:text-green-600 transition-colors">
                                 {blogs[0].title}
                             </h2>
                             <p className="text-gray-600 text-lg mb-8 line-clamp-3">
@@ -182,8 +189,9 @@ export default function BlogSectionModern() {
                                         <p className="text-gray-500">{blogs[0].date} • {blogs[0].readTime}</p>
                                     </div>
                                 </div>
-                                <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center group-hover:bg-orange-500 transition-colors">
-                                    <ArrowUpRight className="w-6 h-6 text-orange-500 group-hover:text-white transition-colors" />
+                                {/* Arrow Button - Changed to green */}
+                                <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center group-hover:bg-green-500 transition-colors">
+                                    <ArrowUpRight className="w-6 h-6 text-green-500 group-hover:text-white transition-colors" />
                                 </div>
                             </div>
                         </div>
@@ -213,7 +221,8 @@ export default function BlogSectionModern() {
                                 <div className="flex items-center gap-2 text-xs font-semibold text-gray-400 mb-3">
                                     <Clock className="w-3 h-3" /> {blog.readTime}
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:text-orange-500 transition-colors">
+                                {/* Title Hover - Changed to green */}
+                                <h3 className="text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:text-green-500 transition-colors">
                                     {blog.title}
                                 </h3>
                                 <p className="text-gray-500 text-sm line-clamp-2 mb-6 flex-1">
@@ -242,7 +251,8 @@ export default function BlogSectionModern() {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <FadeIn>
                         <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
-                            Trending <span className="text-orange-500">Now</span>
+                            {/* Changed highlight to green */}
+                            Trending <span className="text-green-500">Now</span>
                         </h2>
                         <p className="text-gray-400">Most read articles across the advertising world.</p>
                     </FadeIn>
@@ -265,7 +275,8 @@ export default function BlogSectionModern() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                                 
                                 <div className="absolute bottom-0 left-0 p-8 w-full">
-                                    <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-orange-400 border border-orange-500/30 bg-orange-500/10 rounded-full uppercase">
+                                    {/* Category Badge - Changed to green */}
+                                    <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-green-400 border border-green-500/30 bg-green-500/10 rounded-full uppercase">
                                         {news.category}
                                     </span>
                                     <h3 className="text-2xl font-bold text-white leading-tight group-hover:translate-x-2 transition-transform duration-300">

@@ -16,6 +16,8 @@ import {
 import Navigation from "../Navigation";
 import Footer from "../Footer";
 import ScrollToTop from "../ScrollToTop";
+import Whatsapp from '../pages/whatsapp';
+
 
 /* IMAGES */
 import printingHero from "../../assests/printing/printingHero.gif";
@@ -143,6 +145,7 @@ export default function PrintingServices() {
 
   return (
     <>
+     <Whatsapp />
     <ScrollToTop />
       <Navigation />
 

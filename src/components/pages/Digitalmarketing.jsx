@@ -23,6 +23,7 @@ import {
 import Navigation from "../Navigation";
 import Footer from "../Footer";
 import ScrollToTop from "../ScrollToTop";
+import Whatsapp from '../pages/whatsapp';
 
 /* IMAGES - Using placeholders, replace with specific digital marketing assets */
 import marketingHero from "../../assests/digitalmarketing/dm2.webp"; 
@@ -60,6 +61,7 @@ export default function DigitalMarketing() {
   
   return (
     <>
+     <Whatsapp />
     <ScrollToTop />
       <Navigation />
 

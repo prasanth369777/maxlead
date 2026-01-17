@@ -19,6 +19,7 @@ import {
 import Navigation from "../Navigation";
 import Footer from "../Footer";
 import ScrollToTop from "../ScrollToTop";
+import Whatsapp from '../pages/whatsapp';
 
 /* IMAGES */
 import flyerHero from "../../assests/Flyers/flyerhero.gif";
@@ -26,6 +27,7 @@ import flyerService1 from "../../assests/Flyers/flyerService1.webp";
 import flyerService2 from "../../assests/Flyers/flyerService2.webp";
 import flyerService3 from "../../assests/Flyers/ddf2.webp";
 import flyerCTA from "../../assests/Flyers/ddf.webp"; 
+import Flyer1 from "../../assests/Flyers/ddf3.webp";
 
 /* --- ANIMATION COMPONENT --- */
 const FadeIn = ({ children, delay = 0, className = "" }) => {
@@ -65,7 +67,7 @@ export default function FlyerDistribution() {
   /* Service Data Mapping */
   const services = [
     {
-      title: "Door-to-Door Distribution",
+      title: "Door-to-Door Flyer Distribution",
       desc: "Our door to door flyer distribution service involves delivering flyers directly to homes in villas, apartments, and residential communities. This method is ideal for businesses targeting local customers, families, and neighborhood audiences. Every distribution is planned area-wise to ensure proper coverage.",
       icon: Home,
       img: flyerService1,
@@ -73,10 +75,10 @@ export default function FlyerDistribution() {
       bg: "bg-green-100"
     },
     {
-      title: "Hand-to-Hand Distribution",
+      title: "Hand-to-Hand flyer Distribution",
       desc: "Hand-to-hand distribution allows direct interaction with potential customers. Flyers are distributed personally in busy streets, malls, metro stations, and commercial zones. This method works well for promotions, events, and time-sensitive campaigns.",
       icon: Users,
-      img: flyerService2,
+      img: Flyer1,
       color: "text-blue-600",
       bg: "bg-blue-100"
     },
@@ -124,6 +126,7 @@ export default function FlyerDistribution() {
 
   return (
     <>
+     <Whatsapp />
     <ScrollToTop />
       <Navigation />
 

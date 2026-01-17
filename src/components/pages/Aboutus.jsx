@@ -4,14 +4,12 @@ import Footer from "../Footer";
 import Tilt from "react-parallax-tilt";
 import Lenis from "@studio-freight/lenis";
 import ScrollToTop from "../ScrollToTop";
+import Whatsapp from '../pages/whatsapp';
 import {
-
   Target,
-
   Award,
   Lightbulb,
   MonitorSmartphone,
-
   Rocket,
   TrendingUp,
   MapPin,
@@ -21,6 +19,13 @@ import {
   Megaphone,
   Globe
 } from "lucide-react";
+
+/* --- IMPORTED IMAGES --- */
+// Replace these with your actual image paths
+import image1 from "../../assests/Flyers/flyerService2.webp";
+import image2 from "../../assests/printing/printingService2.webp";
+import image3 from "../../assests/digitalmarketing/dm1.webp";
+import image4 from "../../assests/Outdoorads/od1.webp";
 
 /* Stats Section Data */
 const stats = [
@@ -54,7 +59,8 @@ export default function Aboutus() {
 
   return (
     <>
-    <ScrollToTop />
+      <Whatsapp />
+      <ScrollToTop />
       <Navigation />
 
       <section
@@ -98,6 +104,22 @@ export default function Aboutus() {
               <br /><br />
               Since our establishment in 2015, we have supported hundreds of businesses across Dubai, Abu Dhabi, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, and Fujairah with reliable, cost-effective, and result-driven advertising solutions. We don’t believe in guesswork or generic campaigns. Every strategy we create is based on data, location targeting, and audience behavior.
             </p>
+          </div>
+
+          {/* ==================== 
+              1.5 NEW IMAGE GALLERY SECTION 
+             ==================== */}
+          <div className="mb-24 grid grid-cols-2 md:grid-cols-4 gap-4 h-64 md:h-80">
+             {[image1, image2, image3, image4].map((img, idx) => (
+                <div key={idx} className={`relative overflow-hidden rounded-3xl shadow-lg group h-full ${idx % 2 !== 0 ? 'mt-8' : ''}`}>
+                   <img 
+                     src={img} 
+                     alt={`Gallery Image ${idx + 1}`} 
+                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                   />
+                   <div className="absolute inset-0 bg-green-900/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                </div>
+             ))}
           </div>
 
           {/* ==================== 

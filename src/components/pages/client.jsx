@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
+import Whatsapp from '../pages/whatsapp';
 
 /* --- IMPORTED LOGOS --- */
 // Adjust the path '../assests/clientlogo/' if your folder structure is slightly different
@@ -90,6 +91,7 @@ export default function Clients() {
 
   return (
     <>
+     <Whatsapp />
     <ScrollToTop />
       <Navigation />
 

@@ -16,6 +16,7 @@ import {
 import Navigation from "../Navigation";
 import Footer from "../Footer";
 import ScrollToTop from "../ScrollToTop";
+import Whatsapp from '../pages/whatsapp';
 
 /* --- ANIMATION HELPER --- */
 const FadeIn = ({ children, delay = 0, className = "" }) => {
@@ -137,6 +138,7 @@ export default function Contact() {
 
   return (
     <>
+     <Whatsapp />
     <ScrollToTop />
       <Navigation />
 
